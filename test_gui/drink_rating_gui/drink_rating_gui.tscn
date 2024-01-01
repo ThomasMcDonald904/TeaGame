@@ -170,6 +170,7 @@ theme_override_font_sizes/font_size = 40
 text = "0"
 
 [node name="TargetDrink" parent="Control/HBoxContainer" instance=ExtResource("2_lo1yo")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Rating" type="Panel" parent="Control/HBoxContainer"]
@@ -292,3 +293,4 @@ text = "0"
 [connection signal="value_changed" from="Control/HBoxContainer/ServedDrink/VBox/FloralitySliderContainer/FloralitySlider" to="Control/HBoxContainer/ServedDrink" method="_on_florality_slider_value_changed"]
 [connection signal="value_changed" from="Control/HBoxContainer/ServedDrink/VBox/SpicednessSliderContainer/SpicednessSlider" to="Control/HBoxContainer/ServedDrink" method="_on_spicedness_slider_value_changed"]
 [connection signal="value_changed" from="Control/HBoxContainer/ServedDrink/VBox/NuttynessSliderContainer/NuttynessSlider" to="Control/HBoxContainer/ServedDrink" method="_on_nuttyness_slider_value_changed"]
+[connection signal="button_up" from="Control/HBoxContainer/Rating/VBox/Button" to="Control/HBoxContainer/Rating" method="_on_button_button_up"]

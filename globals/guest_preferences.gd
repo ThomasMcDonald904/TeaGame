@@ -61,10 +61,10 @@ var nuttyness_tolerance_upper_bound: float:
 	get:
 		return nuttyness_tolerance_upper_bound
 
-func _init(_temperature, _astringency, _sweetness, _florality, _spicedness, _nuttyness, 
-	_temp_lower_bound, _temp_upper_bound, _astringency_lower_bound, _astringency_upper_bound,
-	_sweetness_lower_bound, _sweetness_upper_bound, _florality_lower_bound, _florality_upper_bound,
-	_spicedness_lower_bound, _spicedness_upper_bound, _nuttyness_lower_bound, _nuttyness_upper_bound):
+func _init(_temperature: float = 0.0, _astringency: float = 0.0, _sweetness: float = 0.0, _florality: float = 0.0, _spicedness: float = 0.0, _nuttyness: float = 0.0, 
+	_temp_lower_bound: float = 0.0, _temp_upper_bound: float = 0.0, _astringency_lower_bound: float = 0.0, _astringency_upper_bound: float = 0.0,
+	_sweetness_lower_bound: float = 0.0, _sweetness_upper_bound: float = 0.0, _florality_lower_bound: float = 0.0, _florality_upper_bound: float = 0.0,
+	_spicedness_lower_bound: float = 0.0, _spicedness_upper_bound: float = 0.0, _nuttyness_lower_bound: float = 0.0, _nuttyness_upper_bound: float = 0.0):
 	super._init(_temperature, _astringency, _sweetness, _florality, _spicedness, _nuttyness)
 	temperature_tolerance_lower_bound = _temp_lower_bound
 	temperature_tolerance_upper_bound = _temp_upper_bound
