@@ -22,4 +22,5 @@ func show_main_menu():
 func show_brewdio():
 	var brewdio_packed_scene:PackedScene = resource_preloader.get_resource("brewdio")
 	brewdio_scene = brewdio_packed_scene.instantiate()
+	main_menu_scene.queue_free()
 	add_child(brewdio_scene)

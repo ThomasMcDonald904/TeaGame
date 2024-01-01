@@ -39,7 +39,7 @@ var nuttyness: float:  # 0 to 10
 	get:
 		return nuttyness
 
-func _init(_temperature, _astringency, _sweetness, _florality, _spicedness, _nuttyness):
+func _init(_temperature: float = 0.0, _astringency: float = 0.0, _sweetness: float = 0.0, _florality: float = 0.0, _spicedness: float = 0.0, _nuttyness: float = 0.0):
 	temperature = _temperature
 	astringency = _astringency
 	sweetness = _sweetness
