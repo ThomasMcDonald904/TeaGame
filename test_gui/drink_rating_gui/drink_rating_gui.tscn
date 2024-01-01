@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://lnkboql8br3i"]
+[gd_scene load_steps=5 format=3 uid="uid://lnkboql8br3i"]
 
 [ext_resource type="Script" path="res://test_gui/drink_rating_gui/served_drink.gd" id="1_nrpm4"]
 [ext_resource type="Script" path="res://test_gui/drink_rating_gui/target_drink.gd" id="2_3dfsx"]
+[ext_resource type="Script" path="res://test_gui/drink_rating_gui/rating.gd" id="3_u0aoc"]
 
 [sub_resource type="Theme" id="Theme_vcyt8"]
 
@@ -393,6 +394,7 @@ text = "0"
 [node name="Rating" type="Panel" parent="Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("3_u0aoc")
 
 [node name="VBox" type="VBoxContainer" parent="Control/HBoxContainer/Rating"]
 layout_mode = 1
@@ -407,6 +409,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 85
 text = "Rating"
 horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/HBoxContainer/Rating/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Rating : 0"
 
 [connection signal="value_changed" from="Control/HBoxContainer/ServedDrink/VBox/TempSliderContainer/TempSlider" to="Control/HBoxContainer/ServedDrink" method="_on_temp_slider_value_changed"]
 [connection signal="value_changed" from="Control/HBoxContainer/ServedDrink/VBox/AstringencySliderContainer/AstringencySlider" to="Control/HBoxContainer/ServedDrink" method="_on_astringency_slider_value_changed"]
