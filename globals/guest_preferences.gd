@@ -1,0 +1,14 @@
+class_name GuestPreferences extends DrinkProperties
+
+var temperature_tolerance_lower_bound
+var temperature_tolerance_upper_bound
+var astringency_tolerance_lower_bound
+var astringency_tolerance_upper_bound
+var sweetness_tolerance_lower_bound
+var sweetness_tolerance_upper_bound
+var florality_tolerance_lower_bound
+var florality_tolerance_upper_bound
+var spicedness_tolerance_lower_bound
+var spicedness_tolerance_upper_bound
+var nuttyness_tolerance_lower_bound
+var nuttyness_tolerance_upper_bound
