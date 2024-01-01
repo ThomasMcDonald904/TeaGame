@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgqroods48176"]
+[gd_scene load_steps=2 format=3 uid="uid://bgqroods48176"]
 
 [ext_resource type="Texture2D" uid="uid://w5jhnrp2ayo0" path="res://resources/textures/test_32.png" id="1_qhceu"]
-[ext_resource type="PackedScene" uid="uid://1e6q4wp51b0a" path="res://test_gui/target_drink_debug.tscn" id="2_6yjky"]
 
 [node name="Brewdio" type="Node2D"]
 texture_filter = 1
@@ -9,23 +8,3 @@ texture_filter = 1
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(794, 411)
 texture = ExtResource("1_qhceu")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 854.0
-offset_bottom = 942.0
-
-[node name="TargetDrink" parent="CanvasLayer/Control" instance=ExtResource("2_6yjky")]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.673
-anchor_bottom = 0.918
-offset_left = 3.0
-offset_top = -3.0
-offset_right = 0.257996
-offset_bottom = 0.243958
-grow_horizontal = 2
-grow_vertical = 2
