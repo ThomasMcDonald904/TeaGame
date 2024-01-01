@@ -18,10 +18,14 @@ func get_guest_preferences():
 	var florality_upper_bound = $VBox/FloralityTitleContainer/UpperBound.value
 	var spicedness_lower_bound = $VBox/SpicednessTitleContainer/LowerBound.value
 	var spicedness_upper_bound = $VBox/SpicednessTitleContainer/UpperBound.value
-	var nuttyness_lower_bound = $VBox/NuttynnessTitleContainer/LowerBound.value
-	var nuttyness_upper_bound = $VBox/NuttynnessTitleContainer/UpperBound.value
+	var nuttyness_lower_bound = $VBox/NuttynessTitleContainer/LowerBound.value
+	var nuttyness_upper_bound = $VBox/NuttynessTitleContainer/UpperBound.value
 	
-	#return GuestPreferences.new()
+	return GuestPreferences.new(temperature, astringency, sweetness, florality, spicedness, nuttyness,
+	temp_lower_bound, temp_upper_bound, astringency_lower_bound, astringency_upper_bound, 
+	sweetness_lower_bound, sweetness_upper_bound, florality_lower_bound, florality_upper_bound,
+	spicedness_lower_bound, spicedness_upper_bound, nuttyness_lower_bound, nuttyness_upper_bound)
+
 func _on_temp_slider_value_changed(value):
 	$VBox/TempSliderContainer/TempValue.text = str(value)
 	temperature = value

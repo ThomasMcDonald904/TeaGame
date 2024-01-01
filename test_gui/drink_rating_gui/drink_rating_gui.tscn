@@ -23,6 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ServedDrink" type="Panel" parent="Control/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_nrpm4")
@@ -169,6 +170,7 @@ theme_override_font_sizes/font_size = 40
 text = "0"
 
 [node name="TargetDrink" type="Panel" parent="Control/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_3dfsx")
@@ -410,10 +412,100 @@ theme_override_font_sizes/font_size = 85
 text = "Rating"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Control/HBoxContainer/Rating/VBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/Rating/VBox"]
+layout_mode = 2
+
+[node name="RatingTitle" type="Label" parent="Control/HBoxContainer/Rating/VBox/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "Rating : 0"
+text = "Rating: "
+
+[node name="RatingValue" type="Label" parent="Control/HBoxContainer/Rating/VBox/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="Button" type="Button" parent="Control/HBoxContainer/Rating/VBox"]
+layout_mode = 2
+text = "Get rating"
+
+[node name="TemperatureRating" type="HBoxContainer" parent="Control/HBoxContainer/Rating/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/HBoxContainer/Rating/VBox/TemperatureRating"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Temperature: "
+
+[node name="Value" type="Label" parent="Control/HBoxContainer/Rating/VBox/TemperatureRating"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="Astringency" type="HBoxContainer" parent="Control/HBoxContainer/Rating/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/HBoxContainer/Rating/VBox/Astringency"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Astringency: "
+
+[node name="Value" type="Label" parent="Control/HBoxContainer/Rating/VBox/Astringency"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="SweetnessRating" type="HBoxContainer" parent="Control/HBoxContainer/Rating/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/HBoxContainer/Rating/VBox/SweetnessRating"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Sweetness: "
+
+[node name="Value" type="Label" parent="Control/HBoxContainer/Rating/VBox/SweetnessRating"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="FloralityRating" type="HBoxContainer" parent="Control/HBoxContainer/Rating/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/HBoxContainer/Rating/VBox/FloralityRating"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Florality: "
+
+[node name="Value" type="Label" parent="Control/HBoxContainer/Rating/VBox/FloralityRating"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="SpicednessRating" type="HBoxContainer" parent="Control/HBoxContainer/Rating/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/HBoxContainer/Rating/VBox/SpicednessRating"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Spicedness: "
+
+[node name="Value" type="Label" parent="Control/HBoxContainer/Rating/VBox/SpicednessRating"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="NuttynessRating" type="HBoxContainer" parent="Control/HBoxContainer/Rating/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/HBoxContainer/Rating/VBox/NuttynessRating"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Nuttyness: "
+
+[node name="Value" type="Label" parent="Control/HBoxContainer/Rating/VBox/NuttynessRating"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "0"
 
 [connection signal="value_changed" from="Control/HBoxContainer/ServedDrink/VBox/TempSliderContainer/TempSlider" to="Control/HBoxContainer/ServedDrink" method="_on_temp_slider_value_changed"]
 [connection signal="value_changed" from="Control/HBoxContainer/ServedDrink/VBox/AstringencySliderContainer/AstringencySlider" to="Control/HBoxContainer/ServedDrink" method="_on_astringency_slider_value_changed"]
@@ -427,3 +519,4 @@ text = "Rating : 0"
 [connection signal="value_changed" from="Control/HBoxContainer/TargetDrink/VBox/FloralitySliderContainer/FloralitySlider" to="Control/HBoxContainer/TargetDrink" method="_on_florality_slider_value_changed"]
 [connection signal="value_changed" from="Control/HBoxContainer/TargetDrink/VBox/SpicednessSliderContainer/SpicednessSlider" to="Control/HBoxContainer/TargetDrink" method="_on_spicedness_slider_value_changed"]
 [connection signal="value_changed" from="Control/HBoxContainer/TargetDrink/VBox/NuttynessSliderContainer/NuttynessSlider" to="Control/HBoxContainer/TargetDrink" method="_on_nuttyness_slider_value_changed"]
+[connection signal="button_up" from="Control/HBoxContainer/Rating/VBox/Button" to="Control/HBoxContainer/Rating" method="_on_button_button_up"]
