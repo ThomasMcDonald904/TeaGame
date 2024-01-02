@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqj20i4jjlahs"]
+
+[ext_resource type="Script" path="res://scripts/item.gd" id="1_bgdmp"]
+[ext_resource type="Texture2D" uid="uid://cxfcgrtgvmb77" path="res://resources/textures/test_item_32.png" id="2_1tajy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05pvo"]
+size = Vector2(64, 64)
+
+[node name="SmallItem" type="RigidBody2D"]
+input_pickable = true
+can_sleep = false
+continuous_cd = 1
+script = ExtResource("1_bgdmp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.309804, 0.537255, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("2_1tajy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_05pvo")
