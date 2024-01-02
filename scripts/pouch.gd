@@ -1,21 +1,28 @@
 extends AnimatedSprite2D
 
 var inventory = []
-var test_item = preload("res://scenes/item.tscn")
+var big_item = preload("res://scenes/big_item_test.tscn")
+var small_item = preload("res://scenes/small_item_test.tscn")
 var is_opened = false
 var is_mouse_on_pouch = false
-var has_item = false
-var item_held: RigidBody2D
 @onready var initial_position = get_global_position()
 
 func _ready():
 	$"../PouchCollider/Area2D".connect("mouse_entered", mouse_enter_pouch)
 	$"../PouchCollider/Area2D".connect("mouse_exited", mouse_exit_pouch)
-	for i in range(4):
-		var inst = test_item.instantiate()
-		inventory.append(inst)
+	if name == "Pouch":
+		for i in range(2):
+			var inst = big_item.instantiate()
+			inventory.append(inst)
+		for i in range(6):
+			var inst = small_item.instantiate()
+			inventory.append(inst)
+	else:
+		for i in range(20):
+			var inst = small_item.instantiate()
+			inventory.append(inst)
 
-func _on_area_2d_input_event(viewport, event: InputEvent, shape_idx):
+func _on_area_2d_input_event(_viewport, event: InputEvent, _shape_idx):
 	if event.is_action_pressed("click") and not is_opened:
 		%Polygon2D.set_deferred("disabled", false)
 		spawn_items()
@@ -24,7 +31,7 @@ func _on_area_2d_input_event(viewport, event: InputEvent, shape_idx):
 		$AnimationPlayer.play("Opening")
 
 func spawn_items():
-	for item:RigidBody2D in inventory:
+	for item: RigidBody2D in inventory:
 		add_child(item)
 		item.global_position = get_tree().get_nodes_in_group("spawn_points").pick_random().global_position
 		item.apply_central_impulse(Vector2(randi_range(-200,200),0))
@@ -40,7 +47,7 @@ func set_items_visible():
 		for item in inventory:
 			item.visible = true
 
-func close_pouch(chosen_item):
+func close_pouch(chosen_item: RigidBody2D):
 	for child in get_children():
 		if child in inventory and child != chosen_item:
 			remove_child(child)
@@ -51,6 +58,7 @@ func close_pouch(chosen_item):
 	$AnimationPlayer.play("Closing")
 	if chosen_item != null:
 		chosen_item.call_deferred("reparent", get_tree().current_scene)
+		chosen_item.get_node("CollisionShape2D").set_deferred("disabled", false)
 	%Polygon2D.set_deferred("disabled", true)
 
 func mouse_enter_pouch():
@@ -58,13 +66,16 @@ func mouse_enter_pouch():
 
 func mouse_exit_pouch():
 	is_mouse_on_pouch = false
-	if has_item and is_opened:
-		close_pouch(item_held)
+	if Globals.has_item and is_opened:
+		close_pouch(Globals.item_held)
 
-func holding_item(chosen_item):
-	item_held = chosen_item
-	has_item = true
 
-func released_item():
-	has_item = false
-	item_held = null
+func _on_area_2d_body_entered(_body):
+	if not is_opened and Globals.has_item:
+		animation = "selected"
+		Globals.selected_inventory_object = self
+
+func _on_area_2d_body_exited(_body):
+	if not is_opened:
+		animation = "closed"
+		Globals.selected_inventory_object = null

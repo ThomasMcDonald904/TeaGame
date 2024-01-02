@@ -2,26 +2,35 @@ extends RigidBody2D
 
 var follow_mouse: bool = false
 
-signal holding_item(chosen_item)
-signal released_item
 var bag_exit_signal_sent = false
 
 func _ready():
-	holding_item.connect(get_parent().holding_item.bind())
-	released_item.connect(get_parent().released_item.bind())
+	input_event.connect(_on_input_event, 3)
 
-func _integrate_forces(state):
+func _integrate_forces(_state):
 	if follow_mouse:
 		global_position = get_global_mouse_position()
 	if Input.is_action_just_released("click"):
-		follow_mouse = false
-		released_item.emit()
-		linear_velocity = Vector2.ZERO
-		$CollisionShape2D.set_deferred("disabled", false)
+		if Globals.selected_inventory_object != null:
+			follow_mouse = false
+			Globals.has_item = false
+			Globals.item_held = null
+			Globals.selected_inventory_object.inventory.append(self)
+			get_parent().call_deferred("remove_child", self)
+		else:
+			follow_mouse = false
+			Globals.has_item = false
+			Globals.item_held = null
+			linear_velocity = Vector2.ZERO
+			$CollisionShape2D.set_deferred("disabled", false)
 
 
-func _on_input_event(viewport, event: InputEvent, shape_idx):
+func _on_input_event(_viewport, event: InputEvent, _shape_idx):
 	if event.is_action_pressed("click"):
-		$CollisionShape2D.disabled = true
+		if self.get_parent() != null:
+			$CollisionShape2D.set_deferred("disabled", true)
+		else:
+			$CollisionShape2D.set_deferred("disabled", false)
 		follow_mouse = true
-		holding_item.emit(self)
+		Globals.has_item = true
+		Globals.item_held = self
