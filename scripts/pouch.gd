@@ -23,7 +23,8 @@ func _ready():
 			inventory.append(inst)
 
 func _on_area_2d_input_event(_viewport, event: InputEvent, _shape_idx):
-	if event.is_action_pressed("click") and not is_opened:
+	if event.is_action_pressed("click") and not is_opened and Globals.can_open_pouch:
+		Globals.can_open_pouch = false
 		%Polygon2D.set_deferred("disabled", false)
 		spawn_items()
 		var _animation = $AnimationPlayer.get_animation("Opening")
@@ -39,7 +40,7 @@ func spawn_items():
 		await get_tree().create_timer(0.05).timeout
 
 func _unhandled_input(event):
-	if event.is_action_pressed("click") and not is_mouse_on_pouch and is_opened:
+	if event.is_action_pressed("click") and not is_mouse_on_pouch and is_opened and Globals.can_open_pouch:
 		close_pouch(null)
 
 func set_items_visible():
@@ -67,6 +68,7 @@ func mouse_enter_pouch():
 func mouse_exit_pouch():
 	is_mouse_on_pouch = false
 	if Globals.has_item and is_opened:
+		Globals.can_open_pouch = false
 		close_pouch(Globals.item_held)
 
 
@@ -79,3 +81,7 @@ func _on_area_2d_body_exited(_body):
 	if not is_opened:
 		animation = "closed"
 		Globals.selected_inventory_object = null
+
+
+func _on_animation_player_animation_finished(anim_name):
+	Globals.can_open_pouch = true
