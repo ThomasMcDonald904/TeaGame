@@ -1,10 +1,10 @@
 class_name DrinkProperty
-extends RefCounted
+extends Resource
 
 enum PropertyType {TEMPERATURE, ASTRINGENCY, SWEETNESS, FLORALITY, SPICEDNESS, NUTTYNESS, NONE}
 @export var type : PropertyType = PropertyType.NONE
 
-var value: float:  # 0 to 10
+@export var value: float:  # 0 to 10
 	set(v):
 		assert(0 <= v and v <= 10, "Drink property must be a within a range of 0 to 10")
 		value = v

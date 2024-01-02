@@ -1,0 +1,147 @@
+[gd_resource type="Resource" script_class="GuestTraitCollection" load_steps=29 format=3 uid="uid://cv4vp7f4e0vut"]
+
+[ext_resource type="Script" path="res://scripts/resources/guest_trait.gd" id="1_ra63x"]
+[ext_resource type="Script" path="res://scripts/resources/guest_trait_tag.gd" id="2_2tu26"]
+[ext_resource type="Script" path="res://scripts/resources/guest_trait_collection.gd" id="2_n0fnx"]
+
+[sub_resource type="Resource" id="Resource_37qsw"]
+script = ExtResource("2_2tu26")
+affected_property = 2
+is_negative = false
+
+[sub_resource type="Resource" id="Resource_g0u3v"]
+script = ExtResource("2_2tu26")
+affected_property = 3
+is_negative = false
+
+[sub_resource type="Resource" id="Resource_5c0vm"]
+script = ExtResource("2_2tu26")
+affected_property = 4
+is_negative = true
+
+[sub_resource type="Resource" id="Resource_vgou2"]
+script = ExtResource("1_ra63x")
+is_neutral = false
+trait_tags = Array[ExtResource("2_2tu26")]([SubResource("Resource_37qsw"), SubResource("Resource_g0u3v"), SubResource("Resource_5c0vm")])
+text = "Fruity flavors, we adore them. "
+
+[sub_resource type="Resource" id="Resource_t6vte"]
+script = ExtResource("2_2tu26")
+affected_property = 5
+is_negative = false
+
+[sub_resource type="Resource" id="Resource_a8ytj"]
+script = ExtResource("1_ra63x")
+is_neutral = false
+trait_tags = Array[ExtResource("2_2tu26")]([SubResource("Resource_t6vte")])
+text = "We have travelled to the far land of Macadamiussy. "
+
+[sub_resource type="Resource" id="Resource_i0pmo"]
+script = ExtResource("2_2tu26")
+affected_property = 5
+is_negative = true
+
+[sub_resource type="Resource" id="Resource_c5po2"]
+script = ExtResource("1_ra63x")
+is_neutral = false
+trait_tags = Array[ExtResource("2_2tu26")]([SubResource("Resource_i0pmo")])
+text = "Insanity has grasped us. We only see cashews. "
+
+[sub_resource type="Resource" id="Resource_du6xo"]
+script = ExtResource("2_2tu26")
+affected_property = 3
+is_negative = true
+
+[sub_resource type="Resource" id="Resource_vu3kh"]
+script = ExtResource("2_2tu26")
+affected_property = 1
+is_negative = false
+
+[sub_resource type="Resource" id="Resource_xcpcb"]
+script = ExtResource("1_ra63x")
+is_neutral = false
+trait_tags = Array[ExtResource("2_2tu26")]([SubResource("Resource_du6xo"), SubResource("Resource_vu3kh")])
+text = "Our leader was killed in a field of flowers. We have sombre thoughts. "
+
+[sub_resource type="Resource" id="Resource_twk77"]
+script = ExtResource("2_2tu26")
+affected_property = 1
+is_negative = true
+
+[sub_resource type="Resource" id="Resource_cxw2x"]
+script = ExtResource("2_2tu26")
+affected_property = 2
+is_negative = false
+
+[sub_resource type="Resource" id="Resource_wjry8"]
+script = ExtResource("1_ra63x")
+is_neutral = false
+trait_tags = Array[ExtResource("2_2tu26")]([SubResource("Resource_twk77"), SubResource("Resource_cxw2x")])
+text = "Please be careful not to overboil the leaves. We are not your local rable so it goes without saying that you musn't be witholding on the sugar. "
+
+[sub_resource type="Resource" id="Resource_17kcw"]
+script = ExtResource("2_2tu26")
+affected_property = 4
+is_negative = false
+
+[sub_resource type="Resource" id="Resource_5s51x"]
+script = ExtResource("2_2tu26")
+affected_property = 2
+is_negative = true
+
+[sub_resource type="Resource" id="Resource_6xskp"]
+script = ExtResource("1_ra63x")
+is_neutral = false
+trait_tags = Array[ExtResource("2_2tu26")]([SubResource("Resource_17kcw"), SubResource("Resource_5s51x")])
+text = "We will visit during a holy day so please avoid sweet flavours. We miss the spices of our homeland. "
+
+[sub_resource type="Resource" id="Resource_y7ind"]
+script = ExtResource("2_2tu26")
+affected_property = 2
+is_negative = true
+
+[sub_resource type="Resource" id="Resource_41rh7"]
+script = ExtResource("1_ra63x")
+is_neutral = false
+trait_tags = Array[ExtResource("2_2tu26")]([SubResource("Resource_y7ind")])
+text = "Life is hard and difficult. Don't make us a \"delicate\" tea. "
+
+[sub_resource type="Resource" id="Resource_dy13c"]
+script = ExtResource("2_2tu26")
+affected_property = 3
+is_negative = false
+
+[sub_resource type="Resource" id="Resource_qs4uj"]
+script = ExtResource("2_2tu26")
+affected_property = 4
+is_negative = true
+
+[sub_resource type="Resource" id="Resource_mlhtp"]
+script = ExtResource("2_2tu26")
+affected_property = 1
+is_negative = true
+
+[sub_resource type="Resource" id="Resource_48pmv"]
+script = ExtResource("1_ra63x")
+is_neutral = false
+trait_tags = Array[ExtResource("2_2tu26")]([SubResource("Resource_dy13c"), SubResource("Resource_qs4uj"), SubResource("Resource_mlhtp")])
+text = "Our hearts crave a tea that mirrors the gentle awakening of meadows in spring. It should steer away from strong flavors disturbing the harmonious dance of delicate notes. "
+
+[sub_resource type="Resource" id="Resource_2jtha"]
+script = ExtResource("1_ra63x")
+is_neutral = true
+trait_tags = Array[ExtResource("2_2tu26")]([])
+text = "We are merchants,
+"
+
+[sub_resource type="Resource" id="Resource_3400a"]
+script = ExtResource("1_ra63x")
+is_neutral = true
+trait_tags = Array[ExtResource("2_2tu26")]([])
+text = "We have travelled far and wide; seen great things and tasted strange and curious flavours. Tea has helped us through the journey. This is why we come to you. 
+"
+
+[resource]
+script = ExtResource("2_n0fnx")
+initial_descriptions = Array[ExtResource("1_ra63x")]([SubResource("Resource_2jtha"), SubResource("Resource_3400a")])
+descriptions = Array[ExtResource("1_ra63x")]([SubResource("Resource_vgou2"), SubResource("Resource_a8ytj"), SubResource("Resource_c5po2"), SubResource("Resource_xcpcb"), SubResource("Resource_wjry8"), SubResource("Resource_6xskp"), SubResource("Resource_41rh7"), SubResource("Resource_48pmv")])
