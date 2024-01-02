@@ -1,51 +1,48 @@
+class_name GuestPreferencesDebugPanel
 extends Panel
 
-var temperature = 0
-var astringency = 0
-var sweetness = 0
-var florality = 0
-var spicedness = 0
-var nuttyness = 0
+signal preferences_changed(guest_preferences : GuestPreferences)
 
-func get_guest_preferences():
-	var temp_lower_bound = $VBox/TemperatureTitleContainer/LowerBound.value
-	var temp_upper_bound = $VBox/TemperatureTitleContainer/UpperBound.value
-	var astringency_lower_bound = $VBox/AstringencyTitleContainer/LowerBound.value
-	var astringency_upper_bound = $VBox/AstringencyTitleContainer/UpperBound.value
-	var sweetness_lower_bound = $VBox/SweetnessTitleContainer/LowerBound.value
-	var sweetness_upper_bound = $VBox/SweetnessTitleContainer/UpperBound.value
-	var florality_lower_bound = $VBox/FloralityTitleContainer/LowerBound.value
-	var florality_upper_bound = $VBox/FloralityTitleContainer/UpperBound.value
-	var spicedness_lower_bound = $VBox/SpicednessTitleContainer/LowerBound.value
-	var spicedness_upper_bound = $VBox/SpicednessTitleContainer/UpperBound.value
-	var nuttyness_lower_bound = $VBox/NuttynessTitleContainer/LowerBound.value
-	var nuttyness_upper_bound = $VBox/NuttynessTitleContainer/UpperBound.value
+var drink_pref_debug_PS = preload("res://test_gui/drink_preference_debug.tscn")
+
+var guest_preferences : GuestPreferences
+
+func _ready():
+	guest_preferences = GuestPreferences.new()
+	var v_box = $VBox
 	
-	return GuestPreferences.new(temperature, astringency, sweetness, florality, spicedness, nuttyness,
-	temp_lower_bound, temp_upper_bound, astringency_lower_bound, astringency_upper_bound, 
-	sweetness_lower_bound, sweetness_upper_bound, florality_lower_bound, florality_upper_bound,
-	spicedness_lower_bound, spicedness_upper_bound, nuttyness_lower_bound, nuttyness_upper_bound)
+	var temp_debug: DrinkPreferenceDebug = drink_pref_debug_PS.instantiate()
+	temp_debug.set_drink_preference(guest_preferences.temperature_preference)
+	v_box.add_child(temp_debug)	
+	temp_debug.connect("changed",update_guest_preferences)
+	
+	var astri_debug: DrinkPreferenceDebug = drink_pref_debug_PS.instantiate()
+	astri_debug.set_drink_preference(guest_preferences.astringency_preference)
+	v_box.add_child(astri_debug)	
+	astri_debug.connect("changed",update_guest_preferences)
+	
+	var sweet_debug: DrinkPreferenceDebug = drink_pref_debug_PS.instantiate()
+	sweet_debug.set_drink_preference(guest_preferences.sweetness_preference)
+	v_box.add_child(sweet_debug)	
+	sweet_debug.connect("changed",update_guest_preferences)
+	
+	var flor_debug: DrinkPreferenceDebug = drink_pref_debug_PS.instantiate()
+	flor_debug.set_drink_preference(guest_preferences.florality_preference)
+	v_box.add_child(flor_debug)	
+	flor_debug.connect("changed",update_guest_preferences)
+	
+	var spice_debug: DrinkPreferenceDebug = drink_pref_debug_PS.instantiate()
+	spice_debug.set_drink_preference(guest_preferences.spicedness_preference)
+	v_box.add_child(spice_debug)	
+	spice_debug.connect("changed",update_guest_preferences)
+	
+	var nut_debug: DrinkPreferenceDebug = drink_pref_debug_PS.instantiate()
+	nut_debug.set_drink_preference(guest_preferences.nuttyness_preference)
+	v_box.add_child(nut_debug)	
+	nut_debug.connect("changed",update_guest_preferences)
 
-func _on_temp_slider_value_changed(value):
-	$VBox/TempSliderContainer/TempValue.text = str(value)
-	temperature = value
-
-func _on_astringency_slider_value_changed(value):
-	$VBox/AstringencySliderContainer/AstringencyValue.text = str(value)
-	astringency = value
-
-func _on_sweetness_slider_value_changed(value):
-	$VBox/SweetnessSliderContainer/SweetnessValue.text = str(value)
-	sweetness = value
-
-func _on_florality_slider_value_changed(value):
-	$VBox/FloralitySliderContainer/FloralityValue.text = str(value)
-	florality = value
-
-func _on_spicedness_slider_value_changed(value):
-	$VBox/SpicednessSliderContainer/SpicednessValue.text = str(value)
-	spicedness = value
-
-func _on_nuttyness_slider_value_changed(value):
-	$VBox/NuttynessSliderContainer/NuttynessValue.text = str(value)
-	nuttyness = value
+func update_guest_preferences():
+	preferences_changed.emit(guest_preferences)
+	
+func get_guest_preferences():
+	return guest_preferences

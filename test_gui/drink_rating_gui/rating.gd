@@ -2,7 +2,6 @@ extends Panel
 
 
 
-
 func _on_button_button_up():
 	var served_drink: DrinkProperties = %ServedDrink.get_drink_preferences()
 	var guest_preferences: GuestPreferences = %TargetDrink.get_guest_preferences()
@@ -14,4 +13,3 @@ func _on_button_button_up():
 	$VBox/FloralityRating/Value.text = str(snapped(rating[4], 0.01))
 	$VBox/SpicednessRating/Value.text = str(snapped(rating[5], 0.01))
 	$VBox/NuttynessRating/Value.text = str(snapped(rating[6], 0.01))
-	
