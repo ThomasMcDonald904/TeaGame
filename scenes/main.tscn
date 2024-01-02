@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_bmv4p"]
 [ext_resource type="PackedScene" path="res://scenes/main_menu.tscn" id="2_bejds"]
-[ext_resource type="PackedScene" path="res://scenes/brewdio.tscn" id="2_sdh1y"]
+[ext_resource type="PackedScene" uid="uid://dfj5qs1trsk3u" path="res://scenes/brewdio.tscn" id="2_sdh1y"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bmv4p")
