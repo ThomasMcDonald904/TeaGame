@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dekma8cr3soal"]
+
+[node name="PouchCollider" type="StaticBody2D"]
+position = Vector2(960, 540)
+scale = Vector2(8.5, 8.5)
+
+[node name="Collider" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(20.3034, -17.6552, 19.8621, -15.4483, 23.8345, -12.3586, 28.2483, -11.9172, 30.0138, -8.38621, 30.0138, 15.8897, 27.3655, 22.5103, 23.3931, 27.8069, 12.3586, 28.6897, 11.9172, 30.0138, -11.9172, 30.0138, -12.3586, 28.6897, -23.3931, 26.9241, -26.9241, 23.8345, -27.8069, 20.3034, -29.131, 16.331, -30.0138, 14.1241, -30.4552, -8.82759, -29.131, -8.38621, -27.8069, -11.9172, -23.8345, -11.9172, -19.8621, -14.5655, -19.8621, -19.4207, -22.069, -21.6276, -26.0414, -24.2759, -30.4552, -24.2759, -32.2207, -21.1862, -37.5172, 12.3586, -32.6621, 29.131, -11.4759, 36.6345, 25.1586, 33.1034, 34.869, 19.8621, 36.1931, -1.76552, 34.4276, -15.0069, 31.7793, -19.8621, 31.7793, -22.5103, 30.8966, -23.8345, 26.4828, -23.8345)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-31.0588, -24.8235, 30.3529, -24.1176, 35.7647, -14, 36.4706, 18.2353, 24.9412, 33.0588, -11.5294, 36.8235, -34.1176, 29.2941, -38.5882, 10.7059, -33.1765, -20.3529)
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="1" type="Node2D" parent="SpawnPoints"]
+position = Vector2(828, 596)
+scale = Vector2(8.5, 8.5)
+
+[node name="2" type="Node2D" parent="SpawnPoints"]
+position = Vector2(1084, 603)
+scale = Vector2(8.5, 8.5)
+
+[node name="3" type="Node2D" parent="SpawnPoints"]
+position = Vector2(957, 542)
+scale = Vector2(8.5, 8.5)
