@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bn6hec76x8wdf"]
+[gd_scene load_steps=12 format=3 uid="uid://bn6hec76x8wdf"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pmjos"]
 
@@ -36,10 +36,28 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_tunf7"]
+resource_name = "enter_office"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"enter_office"],
+"method": &"emit_signal"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ms4ju"]
 _data = {
 "enter_brewdio": SubResource("Animation_67vul"),
-"enter_main_menu": SubResource("Animation_gvsad")
+"enter_main_menu": SubResource("Animation_gvsad"),
+"enter_office": SubResource("Animation_tunf7")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ojt14"]
@@ -48,21 +66,26 @@ animation = &"enter_brewdio"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_raf3b"]
 animation = &"enter_main_menu"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uaigd"]
+animation = &"enter_office"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ncvqx"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6npel"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qf4t3"]
 advance_mode = 2
 advance_expression = "start"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bsbxa"]
 states/Start/position = Vector2(163, 68)
 states/enter_brewdio/node = SubResource("AnimationNodeAnimation_ojt14")
-states/enter_brewdio/position = Vector2(558, 68)
+states/enter_brewdio/position = Vector2(552, 29)
 states/enter_main_menu/node = SubResource("AnimationNodeAnimation_raf3b")
 states/enter_main_menu/position = Vector2(331, 68)
-transitions = ["Start", "enter_main_menu", SubResource("AnimationNodeStateMachineTransition_ncvqx"), "enter_main_menu", "enter_brewdio", SubResource("AnimationNodeStateMachineTransition_6npel")]
-graph_offset = Vector2(64, -48)
+states/enter_office/node = SubResource("AnimationNodeAnimation_uaigd")
+states/enter_office/position = Vector2(552, 100)
+transitions = ["Start", "enter_main_menu", SubResource("AnimationNodeStateMachineTransition_ncvqx"), "enter_main_menu", "enter_office", SubResource("AnimationNodeStateMachineTransition_qf4t3")]
+graph_offset = Vector2(56, -43)
 
 [node name="GameState" type="AnimationTree"]
 root_node = NodePath(".")
