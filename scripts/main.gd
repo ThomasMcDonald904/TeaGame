@@ -4,11 +4,13 @@ extends Node
 
 var main_menu_scene
 var brewdio_scene
+var office_scene
 
 # Cal$AnimationPlayerled when the node enters the scene tree for the first time.
 func _ready():
 	GameState.enter_main_menu.connect(show_main_menu)
 	GameState.enter_brewdio.connect(show_brewdio)
+	GameState.enter_office.connect(show_office)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -22,5 +24,17 @@ func show_main_menu():
 func show_brewdio():
 	var brewdio_packed_scene:PackedScene = resource_preloader.get_resource("brewdio")
 	brewdio_scene = brewdio_packed_scene.instantiate()
-	main_menu_scene.queue_free()
+	if main_menu_scene != null:
+		main_menu_scene.queue_free()
+	if office_scene != null:
+		office_scene.queue_free()
 	add_child(brewdio_scene)
+
+func show_office():
+	var office_packed_scene: PackedScene = resource_preloader.get_resource("office")
+	office_scene = office_packed_scene.instantiate()
+	if main_menu_scene != null:
+		main_menu_scene.queue_free()
+	if brewdio_scene != null:
+		brewdio_scene.queue_free()
+	add_child(office_scene)

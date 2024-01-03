@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://j1vnb2epll2j"]
+
+[ext_resource type="Script" path="res://scripts/office.gd" id="1_3jfvw"]
+[ext_resource type="PackedScene" uid="uid://m63deu32t7cm" path="res://scenes/door.tscn" id="1_vvbi1"]
+[ext_resource type="Texture2D" uid="uid://dnkv8lqq0fas3" path="res://resources/textures/table.png" id="2_ifi87"]
+[ext_resource type="PackedScene" uid="uid://dlvn1ymnurj7" path="res://scenes/letter.tscn" id="3_yofvk"]
+
+[sub_resource type="Animation" id="Animation_ekhom"]
+resource_name = "ReadLetter"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhcio"]
+_data = {
+"ReadLetter": SubResource("Animation_ekhom")
+}
+
+[node name="Office" type="Node2D"]
+script = ExtResource("1_3jfvw")
+
+[node name="Door" parent="." instance=ExtResource("1_vvbi1")]
+position = Vector2(1662, 532)
+
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(782, 634)
+scale = Vector2(16, 16)
+texture = ExtResource("2_ifi87")
+
+[node name="Letter" parent="." instance=ExtResource("3_yofvk")]
+position = Vector2(1038, 544)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vhcio")
+}
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.5
+offset_top = -433.5
+offset_right = 336.5
+offset_bottom = 433.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.917647, 0.839216, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 35
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque pulvinar mi nec ullamcorper. Donec vel sem tellus. Morbi a felis urna. Sed auctor orci lacus, auctor pretium mauris efficitur maximus. Aliquam pulvinar neque urna, nec congue urna fermentum non. Donec commodo eget lacus et lacinia. Vivamus bibendum sodales aliquet. Suspendisse tortor urna, sagittis in neque porta, ultrices elementum nibh. In in tincidunt dui. Fusce nunc neque, scelerisque nec tincidunt in, ultricies quis arcu. Sed volutpat tempor fermentum. Donec gravida mattis sapien id pharetra. Pellentesque cursus ultricies congue."

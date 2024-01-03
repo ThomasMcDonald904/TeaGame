@@ -19,6 +19,6 @@ func _on_target_drink_preferences_changed(guest_preferences):
 
 func _on_button_pressed():
 	var storyteller: Storyteller = Storyteller.new()
-	var guest_profile = GuestProfile.new()
+	var guest_profile:  = GuestProfile.new()
 	storyteller.generate_story(guest_profile)
 	rich_text_label.text = guest_profile.story
