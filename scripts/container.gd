@@ -84,6 +84,14 @@ func _on_area_2d_body_exited(_body):
 
 func _on_animation_player_animation_finished(_anim_name):
 	Globals.can_open_container = true
+	if _anim_name == "Opening":
+		is_opened = true
+		set_items_visible()
+	if _anim_name == "Closing":
+		is_opened = false
 
 func _on_animation_player_animation_started(_anim_name):
 	Globals.can_open_container = false
+	if _anim_name == "Opening":
+		is_opened = false
+
