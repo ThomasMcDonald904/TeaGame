@@ -215,6 +215,7 @@ animation_player = NodePath("AnimationPlayer")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
 polygon = PackedVector2Array(13, -25, 13, -8.5, 17.5, -0.5, 17, 9, 15.5, 14, 11, 17, -6, 17, -15, 15, -17, 11.5, -17, 7, -14, 0, -13, -10, -11, -15.5, -11, -24, 1, -25)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

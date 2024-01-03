@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bi8y3yd2yvrpd"]
+
+[node name="SteeperCollider" type="StaticBody2D"]
+
+[node name="Collider" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(0, -3)
+polygon = PackedVector2Array(710, 423, 729, 481, 732, 590, 811, 633, 1043, 634, 1127, 612, 1200, 582, 1221, 550, 1215, 452, 1235, 447, 1230, 407, 1213, 369, 1246, 403, 1250, 482, 1226, 601, 1103, 652, 883, 657, 703, 634, 694, 544, 680, 392)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PackedVector2Array(696, 394, 762, 370, 852, 352, 934, 342, 1037, 331, 1129, 328, 1229, 363, 1248, 404, 1248, 475, 1239, 513, 1224, 585, 1159, 615, 1108, 643, 1060, 647, 967, 659, 798, 659, 713, 589, 702, 442)
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="1" type="Node2D" parent="SpawnPoints"]
+position = Vector2(840, 498)
+
+[node name="2" type="Node2D" parent="SpawnPoints"]
+position = Vector2(1047, 492)
