@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://u8celftcneat"]
+
+[node name="SacCollider" type="StaticBody2D"]
+
+[node name="Collider" type="CollisionPolygon2D" parent="."]
+position = Vector2(-595, -319)
+scale = Vector2(1.61635, 1.5996)
+polygon = PackedVector2Array(877.284, 326.331, 877.284, 478.244, 865, 512, 856, 575, 830, 603, 829, 643, 874, 666, 939, 673, 943, 679, 1045, 682, 1042, 671, 1064, 671, 1064, 665, 1084, 647, 1095, 628, 1094, 569, 1085, 567, 1085, 511, 1075, 510, 1065, 472, 1065, 313, 1074, 312, 1104, 461, 1131, 609, 1072, 709, 941, 710, 822, 684, 786, 617, 813, 539, 841, 432, 849, 341, 854, 324)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(813, 198, 992, 181, 1137, 181, 1154, 437, 1198, 541, 1201, 656, 1168, 735, 1111, 781, 885, 781, 796, 766, 750, 752, 723, 707, 720, 661, 773, 554, 780, 407, 795, 358, 808, 329)
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="1" type="Node2D" parent="SpawnPoints"]
+position = Vector2(874, 427)
+
+[node name="2" type="Node2D" parent="SpawnPoints"]
+position = Vector2(1052, 424)
