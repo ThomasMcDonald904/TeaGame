@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://dq3amfyumi1qn"]
+
+[ext_resource type="Script" path="res://scripts/types/property_type_curve_pair.gd" id="1_hp3t8"]
+[ext_resource type="Script" path="res://scripts/resources/ingredient.gd" id="1_ibrh1"]
+
+[sub_resource type="Curve" id="Curve_4duut"]
+max_value = 10.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.6, 0), 0.0, 0.0, 0, 0, Vector2(0.7, 0.1), 0.0, 0.0, 0, 0, Vector2(0.9, 0.5), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Resource" id="Resource_swn50"]
+script = ExtResource("1_hp3t8")
+type = 5
+curve = SubResource("Curve_4duut")
+
+[resource]
+script = ExtResource("1_ibrh1")
+name = "Almond"
+property_curves = Array[ExtResource("1_hp3t8")]([SubResource("Resource_swn50")])

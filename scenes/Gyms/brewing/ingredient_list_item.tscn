@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpnnwb7friwlt"]
+
+[ext_resource type="Script" path="res://scenes/Gyms/ingredient_list_item.gd" id="1_yh8yr"]
+[ext_resource type="Texture2D" uid="uid://dl14mdlwr3728" path="res://resources/textures/ui/Iconset_16x16_01_standalone.png" id="2_o3ril"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f1man"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmliv"]
+atlas = ExtResource("2_o3ril")
+region = Rect2(73, 19, 15, 15)
+
+[node name="IngredientListItem" type="PanelContainer"]
+script = ExtResource("1_yh8yr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("PlaceholderTexture2D_f1man")
+
+[node name="ItemLabel" type="RichTextLabel" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ingredient"
+fit_content = true
+
+[node name="RemoveButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = SubResource("AtlasTexture_rmliv")
+
+[connection signal="pressed" from="HBoxContainer/RemoveButton" to="." method="_on_remove_button_pressed"]
