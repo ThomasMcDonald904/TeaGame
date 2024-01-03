@@ -1,68 +1,132 @@
-[gd_scene load_steps=3 format=3 uid="uid://j1vnb2epll2j"]
+[gd_scene load_steps=8 format=3 uid="uid://j1vnb2epll2j"]
 
-[ext_resource type="PackedScene" uid="uid://1e6q4wp51b0a" path="res://test_gui/target_drink_debug.tscn" id="1_jrbta"]
-[ext_resource type="Script" path="res://scripts/debug/storyteller_debug.gd" id="2_7tte4"]
+[ext_resource type="Script" path="res://scripts/office.gd" id="1_3jfvw"]
+[ext_resource type="PackedScene" uid="uid://m63deu32t7cm" path="res://scenes/door.tscn" id="1_vvbi1"]
+[ext_resource type="Texture2D" uid="uid://dnkv8lqq0fas3" path="res://resources/textures/table.png" id="2_ifi87"]
+[ext_resource type="PackedScene" uid="uid://dlvn1ymnurj7" path="res://scenes/letter.tscn" id="3_yofvk"]
+
+[sub_resource type="Animation" id="Animation_ekhom"]
+resource_name = "ReadLetter"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Door:letter_read")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uuivf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door:letter_read")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhcio"]
+_data = {
+"RESET": SubResource("Animation_uuivf"),
+"ReadLetter": SubResource("Animation_ekhom")
+}
 
 [node name="Office" type="Node2D"]
+script = ExtResource("1_3jfvw")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Door" parent="." instance=ExtResource("1_vvbi1")]
+position = Vector2(1662, 532)
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(782, 634)
+scale = Vector2(16, 16)
+texture = ExtResource("2_ifi87")
+
+[node name="Letter" parent="." instance=ExtResource("3_yofvk")]
+position = Vector2(1038, 544)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vhcio")
+}
+
+[node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_right = 854.0
-offset_bottom = 942.0
-metadata/_edit_use_anchors_ = true
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
 
-[node name="TargetDrink" parent="CanvasLayer/Control" instance=ExtResource("1_jrbta")]
+[node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.673
-anchor_bottom = 0.918
-offset_left = 3.0
-offset_top = -3.0
-offset_right = 0.257996
-offset_bottom = 0.243958
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.5
+offset_top = -433.5
+offset_right = 336.5
+offset_bottom = 433.5
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+color = Color(1, 0.917647, 0.839216, 1)
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ColorRect"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.97
-anchor_bottom = 0.917
-offset_left = 602.0
-offset_right = 363.62
-offset_bottom = 2.18597
-script = ExtResource("2_7tte4")
-metadata/_edit_use_anchors_ = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/Panel"]
-layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = -32.0
-offset_bottom = -32.0
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-metadata/_edit_use_anchors_ = true
-
-[node name="Button" type="Button" parent="CanvasLayer/Control/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.405
-anchor_top = 0.946
-anchor_right = 0.595
-anchor_bottom = 0.982
-offset_left = 0.0499878
-offset_top = 12.764
-offset_right = -0.0500183
-offset_bottom = -0.412048
 grow_horizontal = 2
-grow_vertical = 0
-text = "Regenerate"
-
-[connection signal="pressed" from="CanvasLayer/Control/Panel/Button" to="CanvasLayer/Control/Panel" method="_on_button_pressed"]
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 35
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque pulvinar mi nec ullamcorper. Donec vel sem tellus. Morbi a felis urna. Sed auctor orci lacus, auctor pretium mauris efficitur maximus. Aliquam pulvinar neque urna, nec congue urna fermentum non. Donec commodo eget lacus et lacinia. Vivamus bibendum sodales aliquet. Suspendisse tortor urna, sagittis in neque porta, ultrices elementum nibh. In in tincidunt dui. Fusce nunc neque, scelerisque nec tincidunt in, ultricies quis arcu. Sed volutpat tempor fermentum."

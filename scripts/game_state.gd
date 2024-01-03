@@ -2,6 +2,7 @@ extends AnimationTree
 
 signal enter_main_menu()
 signal enter_brewdio()
+signal enter_office()
 
 @export var start : bool = false
 
