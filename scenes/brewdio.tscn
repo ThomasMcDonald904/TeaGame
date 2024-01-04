@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfj5qs1trsk3u"]
+[gd_scene load_steps=14 format=3 uid="uid://dfj5qs1trsk3u"]
 
+[ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_h7n7d"]
 [ext_resource type="PackedScene" uid="uid://daxef2qwixq63" path="res://scenes/pouch.tscn" id="1_iglth"]
 [ext_resource type="PackedScene" uid="uid://cqj20i4jjlahs" path="res://scenes/small_item_test.tscn" id="2_a81ip"]
 [ext_resource type="PackedScene" uid="uid://dekma8cr3soal" path="res://scenes/pouch_collider.tscn" id="2_o5jyf"]
@@ -8,9 +9,50 @@
 [ext_resource type="PackedScene" uid="uid://u8celftcneat" path="res://scenes/sac_collider.tscn" id="6_1ggev"]
 [ext_resource type="PackedScene" uid="uid://chxldhtdacvuf" path="res://scenes/steeper.tscn" id="7_bwegx"]
 [ext_resource type="PackedScene" uid="uid://bi8y3yd2yvrpd" path="res://scenes/steeper_collider.tscn" id="8_ni6wm"]
+[ext_resource type="PackedScene" uid="uid://b8a4rc0qrcpob" path="res://scenes/window.tscn" id="9_glo33"]
+[ext_resource type="Texture2D" uid="uid://5emjdd1yhkiw" path="res://resources/textures/night.png" id="10_5wulb"]
+
+[sub_resource type="Animation" id="Animation_p8sbg"]
+resource_name = "fade_to_night"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3.1, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.3, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"increment_current_day"
+}, {
+"args": [],
+"method": &"set_nbr_days_text"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kxiww"]
+_data = {
+"fade_to_night": SubResource("Animation_p8sbg")
+}
 
 [node name="Brewdio" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_h7n7d")
 
 [node name="Pouch" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_iglth")]
 position = Vector2(1482, 151)
@@ -36,3 +78,66 @@ collider = NodePath("../SteeperCollider")
 [node name="SacCollider" parent="." instance=ExtResource("6_1ggev")]
 
 [node name="SteeperCollider" parent="." instance=ExtResource("8_ni6wm")]
+
+[node name="Window" parent="." instance=ExtResource("9_glo33")]
+position = Vector2(299, 358)
+
+[node name="Control" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_5wulb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_kxiww")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -662.0
+offset_top = -118.0
+offset_right = 662.0
+offset_bottom = -330.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Title" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 86
+text = "Nights before arrival of guests : "
+
+[node name="nbr_nights" type="RichTextLabel" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 86
+bbcode_enabled = true
+text = "[center]7"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer"]
+visible = false
+modulate = Color(0, 0, 0.752941, 1)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 81
+bbcode_enabled = true
+text = "[center][wave freq=12 amp=35]Guests arrive tomorrow"
+fit_content = true
