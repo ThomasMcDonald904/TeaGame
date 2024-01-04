@@ -8,5 +8,5 @@ var can_open_container: bool = true
 
 var current_guest_preferences: GuestProfile
 
-#func _process(delta):
-	#print(has_item, item_held, selected_inventory_object)
+var current_day: int = 0
+var preparation_days: int = 7
