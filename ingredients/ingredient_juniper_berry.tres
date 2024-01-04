@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://b8gekefvdq8gq"]
+
+[ext_resource type="Script" path="res://scripts/resources/ingredient.gd" id="1_a7h3b"]
+[ext_resource type="Script" path="res://scripts/types/property_type_curve_pair.gd" id="1_x6wpq"]
+
+[sub_resource type="Curve" id="Curve_rb075"]
+_data = [Vector2(0.65, 0), 0.0, 0.0, 0, 0, Vector2(0.7, 0.1), 0.0, 0.0, 0, 0, Vector2(1, 0.1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_2ycak"]
+script = ExtResource("1_x6wpq")
+type = 3
+curve = SubResource("Curve_rb075")
+
+[resource]
+script = ExtResource("1_a7h3b")
+name = "Juniper Berries"
+property_curves = Array[ExtResource("1_x6wpq")]([SubResource("Resource_2ycak")])

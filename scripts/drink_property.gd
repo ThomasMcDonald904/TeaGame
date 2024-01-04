@@ -6,8 +6,8 @@ enum PropertyType {TEMPERATURE, ASTRINGENCY, SWEETNESS, FLORALITY, SPICEDNESS, N
 
 @export var value: float:  # 0 to 10
 	set(v):
-		assert(0 <= v and v <= 10, "Drink property must be a within a range of 0 to 10")
 		value = v
+		value = clampf(value, 0.0, 10.0)
 	get:
 		return value
 
