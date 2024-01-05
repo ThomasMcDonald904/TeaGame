@@ -42,6 +42,7 @@ func _ready():
 	nut_debug.connect("changed",update_guest_preferences)
 
 func update_guest_preferences():
+	Globals.current_guest_preferences.preference = guest_preferences
 	preferences_changed.emit(guest_preferences)
 	
 func get_guest_preferences():

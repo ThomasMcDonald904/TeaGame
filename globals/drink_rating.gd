@@ -1,6 +1,6 @@
 extends Node
 
-func get_rating(guest_preferences: GuestPreferences, served_drink: DrinkProperties, get_raw_ratings: bool):
+func get_rating(guest_preferences: GuestPreferences, served_drink: DrinkProperties, get_raw_ratings: bool = false):
 	var score = 0
 	var temperature = get_property_rating(served_drink.temperature.value, guest_preferences.temperature_preference)
 	var astringency = get_property_rating(served_drink.astringency.value, guest_preferences.astringency_preference)
