@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfj5qs1trsk3u"]
+[gd_scene load_steps=17 format=3 uid="uid://dfj5qs1trsk3u"]
 
 [ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_h7n7d"]
 [ext_resource type="PackedScene" uid="uid://daxef2qwixq63" path="res://scenes/pouch.tscn" id="1_iglth"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b8a4rc0qrcpob" path="res://scenes/window.tscn" id="9_glo33"]
 [ext_resource type="Texture2D" uid="uid://5emjdd1yhkiw" path="res://resources/textures/night.png" id="10_5wulb"]
 [ext_resource type="PackedScene" uid="uid://dte2nn23yewb1" path="res://scenes/service_tassle.tscn" id="12_8ffxp"]
+[ext_resource type="PackedScene" uid="uid://m63deu32t7cm" path="res://scenes/door.tscn" id="13_7bdeo"]
 
 [sub_resource type="Animation" id="Animation_p8sbg"]
 resource_name = "fade_to_night"
@@ -121,7 +122,14 @@ collider = NodePath("../SteeperCollider")
 [node name="SteeperCollider" parent="." instance=ExtResource("8_ni6wm")]
 
 [node name="Window" parent="." instance=ExtResource("9_glo33")]
-position = Vector2(299, 358)
+position = Vector2(539, 227)
+
+[node name="Door" parent="." instance=ExtResource("13_7bdeo")]
+position = Vector2(190, 612)
+flip_h = false
+
+[node name="CollisionPolygon2D" parent="Door/Area2D" index="0"]
+polygon = PackedVector2Array(-18.7, -23.4, 9.5, -28.7, 9.7, 23.8, -14.5, 32.1, -19.3, 32.1)
 
 [node name="Control" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -194,3 +202,5 @@ fit_content = true
 
 [node name="ServiceTassle" parent="." instance=ExtResource("12_8ffxp")]
 position = Vector2(1789, -2)
+
+[editable path="Door"]
