@@ -1,31 +1,43 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfj5qs1trsk3u"]
+[gd_scene load_steps=13 format=3 uid="uid://dfj5qs1trsk3u"]
 
 [ext_resource type="PackedScene" uid="uid://daxef2qwixq63" path="res://scenes/pouch.tscn" id="1_iglth"]
-[ext_resource type="PackedScene" uid="uid://cqj20i4jjlahs" path="res://scenes/small_item_test.tscn" id="2_a81ip"]
-[ext_resource type="PackedScene" uid="uid://dekma8cr3soal" path="res://scenes/pouch_collider.tscn" id="2_o5jyf"]
-[ext_resource type="PackedScene" uid="uid://bxerj6aljo4e6" path="res://scenes/big_item_test.tscn" id="3_gpvku"]
-[ext_resource type="PackedScene" uid="uid://dhry6dqj0uowj" path="res://scenes/sac.tscn" id="5_787md"]
-[ext_resource type="PackedScene" uid="uid://u8celftcneat" path="res://scenes/sac_collider.tscn" id="6_1ggev"]
-[ext_resource type="PackedScene" uid="uid://chxldhtdacvuf" path="res://scenes/steeper.tscn" id="7_bwegx"]
-[ext_resource type="PackedScene" uid="uid://bi8y3yd2yvrpd" path="res://scenes/steeper_collider.tscn" id="8_ni6wm"]
+[ext_resource type="Script" path="res://scenes/brewdio.gd" id="1_jjlxy"]
+[ext_resource type="PackedScene" path="res://scenes/pouch_collider.tscn" id="2_o5jyf"]
+[ext_resource type="PackedScene" path="res://scenes/sac.tscn" id="5_787md"]
+[ext_resource type="PackedScene" uid="uid://biibmap05jc1u" path="res://ingredients/scenes/tea_leaves.tscn" id="5_p3xmn"]
+[ext_resource type="PackedScene" path="res://scenes/sac_collider.tscn" id="6_1ggev"]
+[ext_resource type="PackedScene" uid="uid://jonxfsnapi7a" path="res://scenes/steeper.tscn" id="7_bwegx"]
+[ext_resource type="PackedScene" path="res://scenes/steeper_collider.tscn" id="8_ni6wm"]
+[ext_resource type="Script" path="res://scripts/container_filler.gd" id="10_lkrdo"]
+[ext_resource type="PackedScene" uid="uid://bxujt5bxts4kk" path="res://scenes/brewing_station.tscn" id="10_vs02r"]
+[ext_resource type="Script" path="res://scripts/container_fill_request.gd" id="11_q866y"]
 
-[node name="Brewdio" type="Node2D"]
+[sub_resource type="Resource" id="Resource_6sdtl"]
+script = ExtResource("11_q866y")
+item_to_add = ExtResource("5_p3xmn")
+item_count = 6
+
+[node name="Brewdio" type="Node2D" node_paths=PackedStringArray("steeper")]
 texture_filter = 1
+script = ExtResource("1_jjlxy")
+steeper = NodePath("Steeper")
 
 [node name="Pouch" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_iglth")]
 position = Vector2(1482, 151)
 collider = NodePath("../PouchCollider")
-starting_items = Array[PackedScene]([ExtResource("2_a81ip"), ExtResource("3_gpvku")])
 
 [node name="Pouch2" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_iglth")]
 position = Vector2(1486, 357)
 collider = NodePath("../PouchCollider")
-starting_items = Array[PackedScene]([ExtResource("3_gpvku")])
 
 [node name="Sac" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("5_787md")]
 position = Vector2(1512, 646)
 collider = NodePath("../SacCollider")
-starting_items = Array[PackedScene]([ExtResource("2_a81ip")])
+
+[node name="ContainerFiller" type="Node" parent="Sac" node_paths=PackedStringArray("target_container")]
+script = ExtResource("10_lkrdo")
+container_fill_requests = Array[ExtResource("11_q866y")]([SubResource("Resource_6sdtl")])
+target_container = NodePath("..")
 
 [node name="Steeper" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("7_bwegx")]
 position = Vector2(953, 1001)
@@ -36,3 +48,21 @@ collider = NodePath("../SteeperCollider")
 [node name="SacCollider" parent="." instance=ExtResource("6_1ggev")]
 
 [node name="SteeperCollider" parent="." instance=ExtResource("8_ni6wm")]
+
+[node name="BrewingStation" parent="." instance=ExtResource("10_vs02r")]
+position = Vector2(252, 483)
+scale = Vector2(3, 3)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Transfer to global steeper"
+
+[connection signal="pressed" from="Control/Button" to="." method="populate_global_steeper_ingredients"]

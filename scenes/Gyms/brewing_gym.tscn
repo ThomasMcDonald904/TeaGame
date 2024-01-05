@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://clqojli31qg38"]
+[gd_scene load_steps=7 format=3 uid="uid://clqojli31qg38"]
 
 [ext_resource type="Script" path="res://scenes/Gyms/brewing_gym.gd" id="1_da8yh"]
 [ext_resource type="Texture2D" uid="uid://dl14mdlwr3728" path="res://resources/textures/ui/Iconset_16x16_01_standalone.png" id="2_bmqvl"]
 [ext_resource type="PackedScene" uid="uid://cnel3annmy5md" path="res://scenes/Gyms/brewing/drink_property_delta.tscn" id="2_fcciq"]
+[ext_resource type="PackedScene" uid="uid://dlnhjn2g43p4f" path="res://scenes/Gyms/brewing/current_drink_properties.tscn" id="3_mok5p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qd0vd"]
 font_size = 24
@@ -11,7 +12,7 @@ font_size = 24
 atlas = ExtResource("2_bmqvl")
 region = Rect2(73, 19, 15, 15)
 
-[node name="BrewingGym" type="Control" node_paths=PackedStringArray("AstringencyDelta", "SweetnessDelta", "FloralityDelta", "SpicednessDelta", "NuttynessDelta", "elapsed_time_label", "astringency_value", "sweetness_value", "florality_value", "spicedness_value", "nuttyness_value", "play_state")]
+[node name="BrewingGym" type="Control" node_paths=PackedStringArray("AstringencyDelta", "SweetnessDelta", "FloralityDelta", "SpicednessDelta", "NuttynessDelta", "elapsed_time_label", "drink_properties_display", "play_state")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,11 +26,7 @@ FloralityDelta = NodePath("PanelContainer/HBoxContainer/PanelContainer/VBoxConta
 SpicednessDelta = NodePath("PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/DrinkPropertyDeltas/SpicednessDelta")
 NuttynessDelta = NodePath("PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/DrinkPropertyDeltas/NuttynessDelta")
 elapsed_time_label = NodePath("PanelContainer/HBoxContainer/SimControls/VBoxContainer/ElapsedTimeLabel")
-astringency_value = NodePath("PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/CurrentDrinkProperties/AstringencyValue")
-sweetness_value = NodePath("PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/CurrentDrinkProperties/SweetnessValue")
-florality_value = NodePath("PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/CurrentDrinkProperties/FloralityValue")
-spicedness_value = NodePath("PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/CurrentDrinkProperties/SpicednessValue")
-nuttyness_value = NodePath("PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/CurrentDrinkProperties/NuttynessValue")
+drink_properties_display = NodePath("PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/CurrentDrinkProperties")
 play_state = NodePath("PanelContainer/HBoxContainer/SimControls/VBoxContainer/SimTimestep/PlayState")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -105,34 +102,8 @@ property_type = 4
 layout_mode = 2
 property_type = 5
 
-[node name="CurrentDrinkProperties" type="VBoxContainer" parent="PanelContainer/HBoxContainer/PanelContainer/VBoxContainer"]
+[node name="CurrentDrinkProperties" parent="PanelContainer/HBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource("3_mok5p")]
 layout_mode = 2
-
-[node name="Header" type="Label" parent="PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/CurrentDrinkProperties"]
-layout_mode = 2
-text = "Drink Properties"
-label_settings = SubResource("LabelSettings_qd0vd")
-horizontal_alignment = 1
-
-[node name="AstringencyValue" type="Label" parent="PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/CurrentDrinkProperties"]
-layout_mode = 2
-text = "ASTRINGENCY     10.0"
-
-[node name="SweetnessValue" type="Label" parent="PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/CurrentDrinkProperties"]
-layout_mode = 2
-text = "ASTRINGENCY     10.0"
-
-[node name="FloralityValue" type="Label" parent="PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/CurrentDrinkProperties"]
-layout_mode = 2
-text = "ASTRINGENCY     10.0"
-
-[node name="SpicednessValue" type="Label" parent="PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/CurrentDrinkProperties"]
-layout_mode = 2
-text = "ASTRINGENCY     10.0"
-
-[node name="NuttynessValue" type="Label" parent="PanelContainer/HBoxContainer/PanelContainer/VBoxContainer/CurrentDrinkProperties"]
-layout_mode = 2
-text = "ASTRINGENCY     10.0"
 
 [node name="SimControls" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2

@@ -7,7 +7,6 @@ var ingredient_dir = DirAccess.open("res://ingredients/")
 var available_ingredients: Array[Ingredient]
 var added_ingredients: Array[Ingredient]
 var brew_temperature: float = 0.0
-var drink_property: DrinkProperties = DrinkProperties.new()
 
 var brew: Brew = Brew.new()
 
@@ -26,16 +25,13 @@ var elapsed_time: float = 0.0
 @export_category("Time Labels")
 @export var elapsed_time_label: Label
 @export_category("Drink Labels")
-@export var astringency_value: Label
-@export var sweetness_value: Label
-@export var florality_value: Label
-@export var spicedness_value: Label
-@export var nuttyness_value: Label
+@export var drink_properties_display: DrinkPropertiesDisplay
 @export_category("Sim Labels")
 @export var play_state: Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	drink_properties_display.drink_properties = brew.drink_property
 	refresh_drink_value_display()
 	
 	if ingredient_dir:
@@ -100,11 +96,7 @@ func _on_step_sim_button_pressed():
 	refresh_drink_value_display()
 
 func refresh_drink_value_display():
-	astringency_value.text = 	"Astringency   %5.2f"%brew.drink_property.astringency.value
-	sweetness_value.text = 		"Sweetness     %5.2f"%brew.drink_property.sweetness.value
-	florality_value.text = 		"Florality     %5.2f"%brew.drink_property.florality.value
-	spicedness_value.text = 	"Spicedness    %5.2f"%brew.drink_property.spicedness.value
-	nuttyness_value.text = 		"Nuttyness     %5.2f"%brew.drink_property.nuttyness.value
+	drink_properties_display.refresh_values()
 
 func refresh_property_deltas():
 	AstringencyDelta.participating_ingredient_names.clear()
@@ -150,6 +142,7 @@ func refresh_property_deltas():
 
 func _on_temperature_spin_box_value_changed(value):
 	brew.drink_property.temperature.value = value
+	drink_properties_display.refresh_values()
 	refresh_property_deltas()
 
 
@@ -174,6 +167,7 @@ func _on_reset_brew_button_pressed():
 	set_sim_paused(true)
 	var temp = brew.drink_property.temperature.value
 	brew = Brew.new()
+	drink_properties_display.drink_properties = brew.drink_property
 	for ingredient in added_ingredients:
 		brew.ingredients.append(ingredient)
 	brew.drink_property.temperature.value = temp

@@ -1,0 +1,120 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxujt5bxts4kk"]
+
+[ext_resource type="Script" path="res://scripts/brewing_station.gd" id="1_8j72v"]
+[ext_resource type="Texture2D" uid="uid://yy5pn2ynm8pq" path="res://resources/textures/Brewer/brew_steeper.png" id="1_hih0o"]
+[ext_resource type="Texture2D" uid="uid://buua51nhw2koc" path="res://resources/textures/Brewer/pot_front.png" id="2_7b7dc"]
+[ext_resource type="Texture2D" uid="uid://b3t7ljcculao5" path="res://resources/textures/Brewer/pot_back.png" id="3_quahl"]
+[ext_resource type="Texture2D" uid="uid://40tasfw1epto" path="res://resources/textures/Brewer/burner_front.png" id="4_08287"]
+[ext_resource type="Texture2D" uid="uid://n1iyqbeqf7xf" path="res://resources/textures/Brewer/burner_back.png" id="5_akvnt"]
+[ext_resource type="PackedScene" uid="uid://dlnhjn2g43p4f" path="res://scenes/Gyms/brewing/current_drink_properties.tscn" id="7_7bda6"]
+[ext_resource type="Texture2D" uid="uid://dl14mdlwr3728" path="res://resources/textures/ui/Iconset_16x16_01_standalone.png" id="8_k5mml"]
+
+[sub_resource type="Curve2D" id="Curve2D_58lhx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -90, 0, 0, 0, 0, 0, -30)
+}
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x38mc"]
+radius = 31.0644
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_332vi"]
+size = Vector2(76, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ekv4"]
+atlas = ExtResource("8_k5mml")
+region = Rect2(1, 1, 16, 16)
+
+[node name="BrewingStation" type="Node2D" node_paths=PackedStringArray("steeper_path_follow", "debug_drink_properties_display")]
+texture_filter = 1
+script = ExtResource("1_8j72v")
+steeper_path_follow = NodePath("Path2D/PathFollow2D")
+debug_drink_properties_display = NodePath("Control/CurrentDrinkProperties")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_58lhx")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(0, -90)
+rotation = 1.5708
+rotates = false
+
+[node name="SteeperSprite" type="Sprite2D" parent="Path2D/PathFollow2D"]
+rotation = -1.5708
+texture = ExtResource("1_hih0o")
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/SteeperSprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/SteeperSprite/Area2D"]
+shape = SubResource("CircleShape2D_x38mc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Path2D/PathFollow2D/SteeperSprite/Area2D"]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_332vi")
+
+[node name="PotFront" type="Sprite2D" parent="."]
+texture = ExtResource("2_7b7dc")
+
+[node name="PotBack" type="Sprite2D" parent="PotFront"]
+z_index = -10
+position = Vector2(0, -44)
+texture = ExtResource("3_quahl")
+
+[node name="BurnerFront" type="Sprite2D" parent="."]
+position = Vector2(-1, 47)
+texture = ExtResource("4_08287")
+
+[node name="BurnerBack" type="Sprite2D" parent="BurnerFront"]
+z_index = -10
+position = Vector2(1.25, -7)
+scale = Vector2(1.02143, 1)
+texture = ExtResource("5_akvnt")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CurrentDrinkProperties" parent="Control" instance=ExtResource("7_7bda6")]
+visible = false
+layout_mode = 0
+offset_left = 64.0
+offset_top = -120.0
+offset_right = 255.0
+offset_bottom = 49.0
+
+[node name="TemperatureSlider" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = -73.0
+offset_top = 56.0
+offset_right = 86.0
+offset_bottom = 107.0
+max_value = 10.0
+step = 0.1
+
+[node name="BrewingStateLabel" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = -83.0
+offset_top = -161.0
+offset_right = -19.0
+offset_bottom = -138.0
+text = "Brewing
+"
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -115.0
+offset_right = 64.0
+offset_bottom = -91.0
+toggle_mode = true
+icon = SubResource("AtlasTexture_0ekv4")
+
+[connection signal="brew_changed" from="." to="Control/CurrentDrinkProperties" method="refresh_values"]
+[connection signal="steeper_lowered" from="." to="Control/BrewingStateLabel" method="set_visible" binds= [true]]
+[connection signal="steeper_raised" from="." to="Control/BrewingStateLabel" method="set_visible" binds= [false]]
+[connection signal="input_event" from="Path2D/PathFollow2D/SteeperSprite/Area2D" to="." method="_on_steeper_area_2d_input_event"]
+[connection signal="value_changed" from="Control/TemperatureSlider" to="." method="_on_burner_value_changed"]
+[connection signal="toggled" from="Control/Button" to="." method="_on_debug_display_toggled"]

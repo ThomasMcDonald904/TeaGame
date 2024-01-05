@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlnhjn2g43p4f"]
+
+[ext_resource type="Script" path="res://scenes/Gyms/current_drink_properties.gd" id="1_u7x0s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qd0vd"]
+font_size = 24
+
+[node name="CurrentDrinkProperties" type="VBoxContainer" node_paths=PackedStringArray("temperature_value", "astringency_value", "sweetness_value", "florality_value", "spicedness_value", "nuttyness_value")]
+script = ExtResource("1_u7x0s")
+temperature_value = NodePath("TemperatureValue")
+astringency_value = NodePath("AstringencyValue")
+sweetness_value = NodePath("SweetnessValue")
+florality_value = NodePath("FloralityValue")
+spicedness_value = NodePath("SpicednessValue")
+nuttyness_value = NodePath("NuttynessValue")
+
+[node name="Header" type="Label" parent="."]
+layout_mode = 2
+text = "Drink Properties"
+label_settings = SubResource("LabelSettings_qd0vd")
+horizontal_alignment = 1
+
+[node name="TemperatureValue" type="Label" parent="."]
+layout_mode = 2
+text = "ASTRINGENCY     10.0"
+
+[node name="AstringencyValue" type="Label" parent="."]
+layout_mode = 2
+text = "ASTRINGENCY     10.0"
+
+[node name="SweetnessValue" type="Label" parent="."]
+layout_mode = 2
+text = "ASTRINGENCY     10.0"
+
+[node name="FloralityValue" type="Label" parent="."]
+layout_mode = 2
+text = "ASTRINGENCY     10.0"
+
+[node name="SpicednessValue" type="Label" parent="."]
+layout_mode = 2
+text = "ASTRINGENCY     10.0"
+
+[node name="NuttynessValue" type="Label" parent="."]
+layout_mode = 2
+text = "ASTRINGENCY     10.0"
