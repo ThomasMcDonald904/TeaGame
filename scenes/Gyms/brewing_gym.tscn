@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://clqojli31qg38"]
+[gd_scene load_steps=8 format=3 uid="uid://clqojli31qg38"]
 
 [ext_resource type="Script" path="res://scenes/Gyms/brewing_gym.gd" id="1_da8yh"]
 [ext_resource type="Texture2D" uid="uid://dl14mdlwr3728" path="res://resources/textures/ui/Iconset_16x16_01_standalone.png" id="2_bmqvl"]
 [ext_resource type="PackedScene" uid="uid://cnel3annmy5md" path="res://scenes/Gyms/brewing/drink_property_delta.tscn" id="2_fcciq"]
-[ext_resource type="PackedScene" uid="uid://dlnhjn2g43p4f" path="res://scenes/Gyms/brewing/current_drink_properties.tscn" id="3_mok5p"]
+[ext_resource type="PackedScene" path="res://scenes/Gyms/brewing/current_drink_properties.tscn" id="3_mok5p"]
+[ext_resource type="PackedScene" uid="uid://1e6q4wp51b0a" path="res://test_gui/target_drink_debug.tscn" id="4_8j6oh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qd0vd"]
 font_size = 24
@@ -187,6 +188,16 @@ text = "Step 1s"
 layout_mode = 2
 text = "Elapsed time: 000s"
 
+[node name="GetRatingScroll" type="Button" parent="PanelContainer/HBoxContainer/SimControls/VBoxContainer"]
+layout_mode = 2
+text = "Get rating scroll"
+
+[node name="TargetDrink" parent="PanelContainer/HBoxContainer" instance=ExtResource("4_8j6oh")]
+layout_mode = 2
+
+[node name="Title" parent="PanelContainer/HBoxContainer/TargetDrink/VBox" index="0"]
+theme_override_font_sizes/font_size = 70
+
 [node name="PopupMenu" type="PopupMenu" parent="."]
 initial_position = 1
 hide_on_item_selection = false
@@ -204,4 +215,7 @@ item_0/id = 0
 [connection signal="pressed" from="PanelContainer/HBoxContainer/SimControls/VBoxContainer/SimTimestep/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/SimControls/VBoxContainer/SimTimestep/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/SimControls/VBoxContainer/SimTimestep/StepSimButton" to="." method="_on_step_sim_button_pressed"]
+[connection signal="button_up" from="PanelContainer/HBoxContainer/SimControls/VBoxContainer/GetRatingScroll" to="." method="_on_get_rating_scroll_button_up"]
 [connection signal="index_pressed" from="PopupMenu" to="." method="_on_popup_menu_index_pressed"]
+
+[editable path="PanelContainer/HBoxContainer/TargetDrink"]

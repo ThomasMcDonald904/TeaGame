@@ -11,6 +11,7 @@ var brew_temperature: float = 0.0
 var brew: Brew = Brew.new()
 
 var ingredient_list_item_PS: PackedScene = preload("res://scenes/Gyms/brewing/ingredient_list_item.tscn")
+var reaction_screen: PackedScene = preload("res://scenes/reaction_screen.tscn")
 
 var sim_timestep: float = 1.0
 var sim_paused: bool = true
@@ -31,6 +32,7 @@ var elapsed_time: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Globals.current_guest_preferences = GuestProfile.new()
 	drink_properties_display.drink_properties = brew.drink_property
 	refresh_drink_value_display()
 	
@@ -178,3 +180,9 @@ func _on_reset_brew_button_pressed():
 func set_sim_paused(paused: bool):
 	sim_paused = paused
 	play_state.text = "⏸" if sim_paused else "▶"
+
+
+func _on_get_rating_scroll_button_up():
+	var inst: Control = reaction_screen.instantiate()
+	add_child(inst)
+	inst.present_rating(brew)
