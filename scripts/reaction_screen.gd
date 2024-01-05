@@ -1,3 +1,4 @@
+class_name ReactionScreen
 extends Control
 
 # Rating 1 to 0.75
@@ -39,11 +40,14 @@ func _input(event: InputEvent):
 
 func present_rating(brew: Brew):
 	var message: String = ""
-	var reaction = DrinkRating.get_rating(Globals.current_guest_preferences.preference, brew.drink_property, true)
+	var guest_preference: GuestPreferences = Globals.current_guest_preferences.preference
+	var reaction = DrinkRating.get_rating(guest_preference, brew.drink_property, true)
 
 	for index in reaction.slice(1).size():
 		match index:
 			0:
+				if guest_preference.temperature_preference.ignored:
+					continue
 				if reaction.slice(1)[index] >= good_threshold:
 					message += good_temperature
 				elif reaction.slice(1)[index] > 0 and reaction.slice(1)[index] <= almost_bad_threshold:
@@ -51,6 +55,8 @@ func present_rating(brew: Brew):
 				elif reaction.slice(1)[index] == 0:
 					message += bad_temperature
 			1:
+				if guest_preference.astringency_preference.ignored:
+					continue
 				if reaction.slice(1)[index] >= good_threshold:
 					message += good_astringency
 				elif reaction.slice(1)[index] > 0 and reaction.slice(1)[index] <= almost_bad_threshold:
@@ -58,6 +64,8 @@ func present_rating(brew: Brew):
 				elif reaction.slice(1)[index] == 0:
 					message += bad_astringency
 			2:
+				if guest_preference.sweetness_preference.ignored:
+					continue
 				if reaction.slice(1)[index] >= good_threshold:
 					message += good_sweetness
 				elif reaction.slice(1)[index] > 0 and reaction.slice(1)[index] <= almost_bad_threshold:
@@ -65,6 +73,8 @@ func present_rating(brew: Brew):
 				elif reaction.slice(1)[index] == 0:
 					message += bad_sweetness
 			3:
+				if guest_preference.florality_preference.ignored:
+					continue
 				if reaction.slice(1)[index] >= good_threshold:
 					message += good_florality
 				elif reaction.slice(1)[index] > 0 and reaction.slice(1)[index] <= almost_bad_threshold:
@@ -72,6 +82,8 @@ func present_rating(brew: Brew):
 				elif reaction.slice(1)[index] == 0:
 					message += bad_florality
 			4:
+				if guest_preference.spicedness_preference.ignored:
+					continue
 				if reaction.slice(1)[index] >= good_threshold:
 					message += good_spicedness
 				elif reaction.slice(1)[index] > 0 and reaction.slice(1)[index] <= almost_bad_threshold:
@@ -79,6 +91,8 @@ func present_rating(brew: Brew):
 				elif reaction.slice(1)[index] == 0:
 					message += bad_spicedness
 			5:
+				if guest_preference.nuttyness_preference.ignored:
+					continue
 				if reaction.slice(1)[index] >= good_threshold:
 					message += good_nuttyness
 				elif reaction.slice(1)[index] > 0 and reaction.slice(1)[index] <= almost_bad_threshold:

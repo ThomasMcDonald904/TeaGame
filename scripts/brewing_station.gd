@@ -3,7 +3,7 @@ extends Node2D
 signal brew_changed()
 signal steeper_lowered()
 signal steeper_raised()
-signal serve_brew()
+signal serve_brew(brew: Brew)
 
 var is_dragging_steeper: bool = false
 var drag_start_y: int = 0
@@ -87,7 +87,7 @@ func _on_debug_display_toggled(toggled_on):
 func _on_confirm_button_pressed():
 	$Control/ServeBrewQuestionPanel.visible = false
 	is_brew_served = true
-	serve_brew.emit()
+	serve_brew.emit(brew)
 
 
 func _on_refuse_button_pressed():

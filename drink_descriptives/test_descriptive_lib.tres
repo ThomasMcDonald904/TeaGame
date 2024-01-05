@@ -21,7 +21,7 @@ is_negative = true
 
 [sub_resource type="Resource" id="Resource_vgou2"]
 script = ExtResource("1_ra63x")
-is_neutral = false
+is_neutral = true
 trait_tags = Array[ExtResource("2_2tu26")]([SubResource("Resource_37qsw"), SubResource("Resource_g0u3v"), SubResource("Resource_5c0vm")])
 text = "Fruity flavors, we adore them. "
 
@@ -32,7 +32,7 @@ is_negative = false
 
 [sub_resource type="Resource" id="Resource_a8ytj"]
 script = ExtResource("1_ra63x")
-is_neutral = false
+is_neutral = true
 trait_tags = Array[ExtResource("2_2tu26")]([SubResource("Resource_t6vte")])
 text = "We have travelled to the far land of Macadamiussy. "
 
@@ -43,7 +43,7 @@ is_negative = true
 
 [sub_resource type="Resource" id="Resource_c5po2"]
 script = ExtResource("1_ra63x")
-is_neutral = false
+is_neutral = true
 trait_tags = Array[ExtResource("2_2tu26")]([SubResource("Resource_i0pmo")])
 text = "Insanity has grasped us. We only see cashews. "
 
@@ -91,7 +91,7 @@ is_negative = true
 
 [sub_resource type="Resource" id="Resource_6xskp"]
 script = ExtResource("1_ra63x")
-is_neutral = false
+is_neutral = true
 trait_tags = Array[ExtResource("2_2tu26")]([SubResource("Resource_17kcw"), SubResource("Resource_5s51x")])
 text = "We will visit during a holy day so please avoid sweet flavours. We miss the spices of our homeland. "
 
@@ -102,7 +102,7 @@ is_negative = true
 
 [sub_resource type="Resource" id="Resource_41rh7"]
 script = ExtResource("1_ra63x")
-is_neutral = false
+is_neutral = true
 trait_tags = Array[ExtResource("2_2tu26")]([SubResource("Resource_y7ind")])
 text = "Life is hard and difficult. Don't make us a \"delicate\" tea. "
 
