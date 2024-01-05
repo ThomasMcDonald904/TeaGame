@@ -2,14 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_i58jh"]
 [ext_resource type="PackedScene" uid="uid://daxef2qwixq63" path="res://scenes/pouch.tscn" id="1_iglth"]
-
-[ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_jjlxy"]
 [ext_resource type="PackedScene" uid="uid://cqj20i4jjlahs" path="res://scenes/small_item_test.tscn" id="2_a81ip"]
 [ext_resource type="PackedScene" uid="uid://dekma8cr3soal" path="res://scenes/pouch_collider.tscn" id="2_o5jyf"]
 [ext_resource type="PackedScene" uid="uid://bxerj6aljo4e6" path="res://scenes/big_item_test.tscn" id="3_gpvku"]
 [ext_resource type="PackedScene" uid="uid://dhry6dqj0uowj" path="res://scenes/sac.tscn" id="5_787md"]
 [ext_resource type="PackedScene" uid="uid://u8celftcneat" path="res://scenes/sac_collider.tscn" id="6_1ggev"]
-[ext_resource type="PackedScene" uid="uid://chxldhtdacvuf" path="res://scenes/steeper.tscn" id="7_bwegx"]
+[ext_resource type="PackedScene" uid="uid://jonxfsnapi7a" path="res://scenes/steeper.tscn" id="7_bwegx"]
 [ext_resource type="PackedScene" uid="uid://bi8y3yd2yvrpd" path="res://scenes/steeper_collider.tscn" id="8_ni6wm"]
 [ext_resource type="PackedScene" uid="uid://b8a4rc0qrcpob" path="res://scenes/window.tscn" id="9_glo33"]
 [ext_resource type="Texture2D" uid="uid://5emjdd1yhkiw" path="res://resources/textures/night.png" id="10_5wulb"]
@@ -18,6 +16,11 @@
 [ext_resource type="Script" path="res://scripts/container_filler.gd" id="10_lkrdo"]
 [ext_resource type="PackedScene" uid="uid://biibmap05jc1u" path="res://ingredients/scenes/tea_leaves.tscn" id="5_p3xmn"]
 [ext_resource type="Script" path="res://scripts/container_fill_request.gd" id="11_q866y"]
+
+[sub_resource type="Resource" id="Resource_6sdtl"]
+script = ExtResource("11_q866y")
+item_to_add = ExtResource("5_p3xmn")
+item_count = 6
 
 [sub_resource type="Animation" id="Animation_p8sbg"]
 resource_name = "fade_to_night"
