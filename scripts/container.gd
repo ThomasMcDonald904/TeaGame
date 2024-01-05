@@ -61,6 +61,7 @@ func close_container(chosen_item: RigidBody2D):
 		chosen_item.call_deferred("reparent", get_tree().current_scene)
 		chosen_item.get_node("Collider").set_deferred("disabled", false)
 	collider.get_node("Collider").set_deferred("disabled", true)
+	
 func mouse_enter_container():
 	is_mouse_on_container = true
 

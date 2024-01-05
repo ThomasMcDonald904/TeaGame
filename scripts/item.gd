@@ -1,7 +1,10 @@
+class_name Item
 extends RigidBody2D
 
 var follow_mouse: bool = false
 @export var in_open_container: bool = false
+@export var ingredient: Ingredient
+
 
 func _ready():
 	input_event.connect(_on_input_event, 3)
@@ -18,6 +21,7 @@ func _integrate_forces(_state):
 			Globals.selected_inventory_object = null
 			get_parent().call_deferred("remove_child", self)
 		else:
+			
 			$Collider.set_deferred("disabled", false)
 			follow_mouse = false
 			Globals.selected_inventory_object = null

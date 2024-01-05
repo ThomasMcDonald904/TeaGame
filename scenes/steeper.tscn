@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://chxldhtdacvuf"]
+[gd_scene load_steps=13 format=3 uid="uid://jonxfsnapi7a"]
 
 [ext_resource type="Texture2D" uid="uid://rbibj8gamvkc" path="res://resources/textures/steeper_with_anim.png" id="1_1ottf"]
 [ext_resource type="Script" path="res://scripts/open_container.gd" id="2_4hofi"]
