@@ -212,7 +212,7 @@ states/enter_office/position = Vector2(552, 100)
 states/enter_tea_room/node = SubResource("AnimationNodeAnimation_k7hf0")
 states/enter_tea_room/position = Vector2(773, 9)
 transitions = ["Start", "enter_main_menu", SubResource("AnimationNodeStateMachineTransition_ncvqx"), "enter_main_menu", "enter_office", SubResource("AnimationNodeStateMachineTransition_qf4t3"), "enter_office", "enter_brewdio", SubResource("AnimationNodeStateMachineTransition_eoeao"), "enter_brewdio", "enter_tea_room", SubResource("AnimationNodeStateMachineTransition_kk3qk"), "enter_tea_room", "enter_brewdio", SubResource("AnimationNodeStateMachineTransition_wuk07"), "enter_brewdio", "enter_office", SubResource("AnimationNodeStateMachineTransition_34g2h")]
-graph_offset = Vector2(46, -85)
+graph_offset = Vector2(96, -92)
 
 [node name="GameState" type="AnimationTree"]
 root_node = NodePath(".")

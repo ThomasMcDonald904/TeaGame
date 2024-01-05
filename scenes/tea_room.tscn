@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3g2wo7nnjm7n"]
+[gd_scene load_steps=24 format=3 uid="uid://b3g2wo7nnjm7n"]
 
 [ext_resource type="Script" path="res://scripts/tea_room.gd" id="1_xet2x"]
 [ext_resource type="Texture2D" uid="uid://cg2wek6dqbapw" path="res://resources/textures/tea_room_closed.png" id="2_nm2lb"]
+[ext_resource type="Texture2D" uid="uid://ox6f2gecbmx1" path="res://resources/textures/tea_table.png" id="3_5xpuc"]
 [ext_resource type="PackedScene" uid="uid://bxujt5bxts4kk" path="res://scenes/brewing_station.tscn" id="3_mdybm"]
+[ext_resource type="PackedScene" uid="uid://bjgsxm3jpyqvj" path="res://scenes/guest.tscn" id="5_2k653"]
+[ext_resource type="Texture2D" uid="uid://yetsmvkd82ho" path="res://resources/textures/tea_cup.png" id="6_ylsrp"]
 
 [sub_resource type="Animation" id="Animation_y6e0c"]
 length = 0.001
@@ -16,7 +19,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -40,7 +43,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -64,7 +67,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -77,6 +80,126 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TeaCups/TeaCup:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TeaCups/TeaCup2:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TeaCups/TeaCup3:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TeaCups/TeaCup:region_rect")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(3, 4, 26, 27)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TeaCups/TeaCup2:region_rect")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(3, 4, 26, 27)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TeaCups/TeaCup3:region_rect")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(3, 4, 26, 27)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("DrinkingSounds/Guest1Sounds:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("DrinkingSounds/Guest2Sounds:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("DrinkingSounds/Guest3Sounds:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("DrinkingSounds/AllGuestsSounds:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_35gdj"]
@@ -154,14 +277,354 @@ tracks/5/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_adyb5"]
+resource_name = "show_teacups"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TeaCups/TeaCup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TeaCups/TeaCup2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TeaCups/TeaCup3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TeaCups/TeaCup:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TeaCups/TeaCup2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TeaCups/TeaCup3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3met0"]
+resource_name = "fill_teacups"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TeaCups/TeaCup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TeaCups/TeaCup2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TeaCups/TeaCup3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TeaCups/TeaCup:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(35, 4, 26, 27)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TeaCups/TeaCup2:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(3, 4, 26, 27), Rect2(35, 4, 26, 27)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TeaCups/TeaCup3:region_rect")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(3, 4, 26, 27), Rect2(35, 4, 26, 27)]
+}
+
+[sub_resource type="Animation" id="Animation_4cgsx"]
+resource_name = "drink_tea"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DrinkingSounds/Guest1Sounds:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 1.1, 1.3, 1.7, 2.2, 2.7, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DrinkingSounds/Guest2Sounds:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1, 1.6, 2, 2.3, 2.8, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DrinkingSounds/Guest3Sounds:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.4, 1.7, 1.9, 2.1, 2.5, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DrinkingSounds/AllGuestsSounds:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.7, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TeaCups/TeaCup:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(3, 4, 26, 27)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TeaCups/TeaCup2:region_rect")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(3, 4, 26, 27)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TeaCups/TeaCup3:region_rect")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(3, 4, 26, 27)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(5.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_tea_drunk"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TeaCups/TeaCup:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TeaCups/TeaCup2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TeaCups/TeaCup3:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n6ftq"]
 _data = {
 "RESET": SubResource("Animation_y6e0c"),
-"show_guests": SubResource("Animation_35gdj")
+"drink_tea": SubResource("Animation_4cgsx"),
+"fill_teacups": SubResource("Animation_3met0"),
+"show_guests": SubResource("Animation_35gdj"),
+"show_teacups": SubResource("Animation_adyb5")
 }
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bufm8"]
-size = Vector2(64, 64)
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ff3nx"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8g08o"]
+animation = &"drink_tea"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nn88n"]
+animation = &"fill_teacups"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k0ptu"]
+animation = &"show_guests"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hn3d6"]
+animation = &"show_teacups"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mk4p6"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ucl2p"]
+advance_mode = 2
+advance_expression = "show_guests"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b53wh"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k7lev"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "fill_cups"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dgk7b"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ydxek"]
+states/End/position = Vector2(1060, 109)
+states/RESET/node = SubResource("AnimationNodeAnimation_ff3nx")
+states/RESET/position = Vector2(220, 109)
+states/Start/position = Vector2(110, 109)
+states/drink_tea/node = SubResource("AnimationNodeAnimation_8g08o")
+states/drink_tea/position = Vector2(902, 109)
+states/fill_teacups/node = SubResource("AnimationNodeAnimation_nn88n")
+states/fill_teacups/position = Vector2(744, 109)
+states/show_guests/node = SubResource("AnimationNodeAnimation_k0ptu")
+states/show_guests/position = Vector2(393, 109)
+states/show_teacups/node = SubResource("AnimationNodeAnimation_hn3d6")
+states/show_teacups/position = Vector2(565, 109)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_mk4p6"), "RESET", "show_guests", SubResource("AnimationNodeStateMachineTransition_ucl2p"), "show_guests", "show_teacups", SubResource("AnimationNodeStateMachineTransition_b53wh"), "show_teacups", "fill_teacups", SubResource("AnimationNodeStateMachineTransition_k7lev"), "fill_teacups", "drink_tea", SubResource("AnimationNodeStateMachineTransition_dgk7b")]
+graph_offset = Vector2(45, 3)
 
 [node name="TeaRoom" type="Node2D"]
 script = ExtResource("1_xet2x")
@@ -225,33 +688,63 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 126
 text = " days"
 
+[node name="TeaTable" type="Sprite2D" parent="."]
+position = Vector2(918, 641)
+texture = ExtResource("3_5xpuc")
+
 [node name="BrewingStation" parent="." instance=ExtResource("3_mdybm")]
 z_index = 1
 position = Vector2(1410, 901)
 scale = Vector2(2, 2)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_n6ftq")
-}
-
 [node name="Guest1" type="Node2D" parent="."]
-position = Vector2(695, 664)
+visible = false
+position = Vector2(843, 412)
+scale = Vector2(0.5, 0.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="Guest1"]
-texture = SubResource("PlaceholderTexture2D_bufm8")
+[node name="Guest" parent="Guest1" instance=ExtResource("5_2k653")]
 
 [node name="Guest2" type="Node2D" parent="."]
-position = Vector2(400, 808)
+visible = false
+position = Vector2(514, 556)
+rotation = -1.13446
+scale = Vector2(0.5, 0.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="Guest2"]
-texture = SubResource("PlaceholderTexture2D_bufm8")
+[node name="Guest" parent="Guest2" instance=ExtResource("5_2k653")]
 
 [node name="Guest3" type="Node2D" parent="."]
-position = Vector2(1052, 792)
+visible = false
+position = Vector2(1274, 585)
+rotation = 1.0821
+scale = Vector2(0.5, 0.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="Guest3"]
-texture = SubResource("PlaceholderTexture2D_bufm8")
+[node name="Guest" parent="Guest3" instance=ExtResource("5_2k653")]
+
+[node name="TeaCups" type="Node2D" parent="."]
+
+[node name="TeaCup" type="Sprite2D" parent="TeaCups"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(678, 595)
+texture = ExtResource("6_ylsrp")
+region_enabled = true
+region_rect = Rect2(3, 4, 26, 27)
+
+[node name="TeaCup2" type="Sprite2D" parent="TeaCups"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(841, 514)
+texture = ExtResource("6_ylsrp")
+region_enabled = true
+region_rect = Rect2(3, 4, 26, 27)
+
+[node name="TeaCup3" type="Sprite2D" parent="TeaCups"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1115, 620)
+texture = ExtResource("6_ylsrp")
+region_enabled = true
+region_rect = Rect2(3, 4, 26, 27)
 
 [node name="DrinkingSounds" type="Control" parent="."]
 layout_mode = 3
@@ -268,16 +761,17 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Guest1Sounds" type="RichTextLabel" parent="DrinkingSounds"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -30.5
-offset_right = 144.0
-offset_bottom = 21.5
+offset_left = -79.0
+offset_top = -307.5
+offset_right = 209.0
+offset_bottom = -255.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 32
@@ -286,16 +780,17 @@ bbcode_enabled = true
 text = "[center][i]slurp[/i][/center]"
 
 [node name="Guest2Sounds" type="RichTextLabel" parent="DrinkingSounds"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 157.0
-offset_top = -174.5
-offset_right = 445.0
-offset_bottom = -122.5
+offset_left = 305.0
+offset_top = -483.5
+offset_right = 593.0
+offset_bottom = -431.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 32
@@ -304,16 +799,17 @@ bbcode_enabled = true
 text = "[center][i]slurp[/i][/center]"
 
 [node name="Guest3Sounds" type="RichTextLabel" parent="DrinkingSounds"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 520.0
-offset_top = -66.5
-offset_right = 808.0
-offset_bottom = -14.5
+offset_left = 773.0
+offset_top = -276.5
+offset_right = 1061.0
+offset_bottom = -224.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 32
@@ -322,19 +818,36 @@ bbcode_enabled = true
 text = "[center][i]slurp[/i][/center]"
 
 [node name="AllGuestsSounds" type="RichTextLabel" parent="DrinkingSounds"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 156.0
-offset_top = -4.5
-offset_right = 444.0
-offset_bottom = 47.5
+offset_left = 305.0
+offset_top = -553.5
+offset_right = 593.0
+offset_bottom = -501.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/italics_font_size = 32
 bbcode_enabled = true
 text = "[wave amp=64.0 freq=5.0 connected=1][shake rate=20.0 level=10 connected=1][center][i]SLLUURRRP[/i][/center][/shake][/wave]"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n6ftq")
+}
+tree_root = SubResource("AnimationNodeStateMachine_ydxek")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_n6ftq")
+}
+
+[connection signal="serve_brew" from="BrewingStation" to="." method="_on_brewing_station_serve_brew"]
