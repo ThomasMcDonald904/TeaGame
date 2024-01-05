@@ -1,5 +1,7 @@
 extends Node2D
 
+var brew: Brew
+
 func _ready():
 	if Globals.preparation_days - (Globals.current_day % (Globals.preparation_days + 1)) != 0:
 		$Control/VBoxContainer/HBoxContainer/nbr_days.text = str(Globals.preparation_days - (Globals.current_day % (Globals.preparation_days + 1)))
