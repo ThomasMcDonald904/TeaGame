@@ -1,5 +1,7 @@
 extends Node2D
 
+var brew: Brew
+
 func _ready():
 	#guests have not yet arived
 	if Globals.preparation_days - (Globals.current_day % (Globals.preparation_days + 1)) != 0:

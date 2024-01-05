@@ -1,0 +1,21 @@
+[gd_scene load_steps=9 format=3 uid="uid://bjgsxm3jpyqvj"]
+
+[ext_resource type="Script" path="res://scripts/guest.gd" id="1_fm6m1"]
+[ext_resource type="Texture2D" uid="uid://bmbdfp5kco8wd" path="res://resources/textures/guests/shiny_steven.png" id="2_n11db"]
+[ext_resource type="Texture2D" uid="uid://bbnims4437hu7" path="res://resources/textures/guests/accessories/hat_feather.png" id="3_gfu35"]
+[ext_resource type="Texture2D" uid="uid://dgi2uqns5e4sd" path="res://resources/textures/guests/accessories/hat_top.png" id="4_6vqrp"]
+[ext_resource type="Texture2D" uid="uid://dtfyrdk7cwpkb" path="res://resources/textures/guests/accessories/glasses_rocker.png" id="5_ehmks"]
+[ext_resource type="Texture2D" uid="uid://t2ovlad67kgl" path="res://resources/textures/guests/accessories/empty.png" id="5_yb6xy"]
+[ext_resource type="Texture2D" uid="uid://cqyh8yfewskdj" path="res://resources/textures/guests/accessories/glasses_classy_green.png" id="6_2idpn"]
+[ext_resource type="Texture2D" uid="uid://cwfqlno1mpg1d" path="res://resources/textures/guests/accessories/scarf.png" id="8_ejmw3"]
+
+[node name="Guest" type="Node2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_fm6m1")
+guest_profiles = Array[Texture2D]([ExtResource("2_n11db")])
+hat_accessories = Array[Texture2D]([ExtResource("3_gfu35"), ExtResource("4_6vqrp"), ExtResource("5_yb6xy")])
+glasses_accessories = Array[Texture2D]([ExtResource("5_ehmks"), ExtResource("6_2idpn"), ExtResource("5_yb6xy")])
+scarf_accessories = Array[Texture2D]([ExtResource("8_ejmw3"), ExtResource("5_yb6xy")])
+hat_offset = -53
+glasses_offset = -10
+scarf_offset = 31

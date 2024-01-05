@@ -167,6 +167,7 @@ size = Vector2(64, 64)
 script = ExtResource("1_xet2x")
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0

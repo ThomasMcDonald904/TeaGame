@@ -8,6 +8,7 @@ scale = Vector2(10, 10)
 texture = ExtResource("1_rhowj")
 flip_h = true
 script = ExtResource("2_7j5nh")
+metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
 

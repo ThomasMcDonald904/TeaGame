@@ -8,6 +8,7 @@ signal enter_tea_room()
 @export var start : bool = false
 @export var first_time_experience: bool = true
 @export var letter_read: bool = false
+@export var office_door_clicked: bool = false
 @export var brewdio_door_clicked: bool = false
 @export var tassle_tugged: bool = false
 @export var tea_session_done: bool = false
