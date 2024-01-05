@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://m3iiil7ellax"]
+
+[ext_resource type="Script" path="res://scripts/reaction_screen.gd" id="1_sil1p"]
+[ext_resource type="Texture2D" uid="uid://bxt2xacx26liy" path="res://resources/textures/GUI_set05_Books_Letters_Scrolls_Papers_Notes_v1_1/tiledElements/PlacedExamples_480x272/Example_Scroll3.png" id="2_76ied"]
+[ext_resource type="Texture2D" uid="uid://brpqnnkr7f32y" path="res://resources/textures/wax_seal_rating_progress.png" id="3_ag5sp"]
+
+[node name="ReactionScreen" type="Control"]
+layout_mode = 3
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.8
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sil1p")
+
+[node name="Scroll" type="Sprite2D" parent="."]
+position = Vector2(568, 438)
+scale = Vector2(5.25735, 5.25735)
+texture = ExtResource("2_76ied")
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.338
+anchor_top = 0.129
+anchor_right = 0.338
+anchor_bottom = 0.129
+offset_left = -122.0
+offset_right = 122.0
+offset_bottom = 36.0
+grow_horizontal = 2
+scale = Vector2(2.52, 2.52)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer"]
+layout_mode = 2
+max_value = 6.0
+step = 0.1
+value = 4.4
+texture_progress = ExtResource("3_ag5sp")
+
+[node name="numerical_value" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "null"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.227
+anchor_top = 0.326
+anchor_right = 0.745
+anchor_bottom = 0.91
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0.2, 1)
+theme_override_font_sizes/font_size = 43
+text = "The sweetness was atrocious"

@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_h7n7d"]
 [ext_resource type="PackedScene" uid="uid://daxef2qwixq63" path="res://scenes/pouch.tscn" id="1_iglth"]
-
-[ext_resource type="Script" path="res://scenes/brewdio.gd" id="1_jjlxy"]
+[ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_jjlxy"]
 [ext_resource type="PackedScene" uid="uid://cqj20i4jjlahs" path="res://scenes/small_item_test.tscn" id="2_a81ip"]
 [ext_resource type="PackedScene" uid="uid://dekma8cr3soal" path="res://scenes/pouch_collider.tscn" id="2_o5jyf"]
 [ext_resource type="PackedScene" uid="uid://bxerj6aljo4e6" path="res://scenes/big_item_test.tscn" id="3_gpvku"]
@@ -16,8 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://dte2nn23yewb1" path="res://scenes/service_tassle.tscn" id="12_8ffxp"]
 [ext_resource type="PackedScene" uid="uid://m63deu32t7cm" path="res://scenes/door.tscn" id="13_7bdeo"]
 [ext_resource type="Script" path="res://scripts/container_filler.gd" id="10_lkrdo"]
-[ext_resource type="PackedScene" uid="uid://bxujt5bxts4kk" path="res://scenes/brewing_station.tscn" id="10_vs02r"]
+[ext_resource type="PackedScene" path="res://scenes/brewing_station.tscn" id="10_vs02r"]
 [ext_resource type="PackedScene" uid="uid://biibmap05jc1u" path="res://ingredients/scenes/tea_leaves.tscn" id="5_p3xmn"]
+[ext_resource type="Script" path="res://scripts/container_fill_request.gd" id="11_q866y"]
 
 [sub_resource type="Animation" id="Animation_p8sbg"]
 resource_name = "fade_to_night"
@@ -165,6 +165,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("10_5wulb")
 
 [node name="Button" type="Button" parent="Control"]
@@ -193,6 +194,7 @@ offset_right = 795.5
 offset_bottom = -260.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Title" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -203,6 +205,7 @@ text = "Nights before arrival of guests : "
 [node name="nbr_nights" type="RichTextLabel" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 86
 bbcode_enabled = true
 text = "[center]7"
@@ -212,6 +215,7 @@ fit_content = true
 visible = false
 modulate = Color(0, 0.380392, 1, 1)
 layout_mode = 2
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 81
 bbcode_enabled = true
 text = "[center][wave freq=12 amp=35]Guests arrive tomorrow"
@@ -221,6 +225,7 @@ fit_content = true
 visible = false
 modulate = Color(0, 0.380392, 1, 1)
 layout_mode = 2
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 86
 bbcode_enabled = true
 text = " [center][wave freq=12 amp=35]New guest letter arriving tomorrow"
