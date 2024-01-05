@@ -1,23 +1,26 @@
 [gd_scene load_steps=17 format=3 uid="uid://dfj5qs1trsk3u"]
 
-[ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_h7n7d"]
+[ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_i58jh"]
 [ext_resource type="PackedScene" uid="uid://daxef2qwixq63" path="res://scenes/pouch.tscn" id="1_iglth"]
-[ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_jjlxy"]
 [ext_resource type="PackedScene" uid="uid://cqj20i4jjlahs" path="res://scenes/small_item_test.tscn" id="2_a81ip"]
 [ext_resource type="PackedScene" uid="uid://dekma8cr3soal" path="res://scenes/pouch_collider.tscn" id="2_o5jyf"]
 [ext_resource type="PackedScene" uid="uid://bxerj6aljo4e6" path="res://scenes/big_item_test.tscn" id="3_gpvku"]
 [ext_resource type="PackedScene" uid="uid://dhry6dqj0uowj" path="res://scenes/sac.tscn" id="5_787md"]
 [ext_resource type="PackedScene" uid="uid://u8celftcneat" path="res://scenes/sac_collider.tscn" id="6_1ggev"]
-[ext_resource type="PackedScene" uid="uid://chxldhtdacvuf" path="res://scenes/steeper.tscn" id="7_bwegx"]
+[ext_resource type="PackedScene" uid="uid://jonxfsnapi7a" path="res://scenes/steeper.tscn" id="7_bwegx"]
 [ext_resource type="PackedScene" uid="uid://bi8y3yd2yvrpd" path="res://scenes/steeper_collider.tscn" id="8_ni6wm"]
 [ext_resource type="PackedScene" uid="uid://b8a4rc0qrcpob" path="res://scenes/window.tscn" id="9_glo33"]
 [ext_resource type="Texture2D" uid="uid://5emjdd1yhkiw" path="res://resources/textures/night.png" id="10_5wulb"]
 [ext_resource type="PackedScene" uid="uid://dte2nn23yewb1" path="res://scenes/service_tassle.tscn" id="12_8ffxp"]
 [ext_resource type="PackedScene" uid="uid://m63deu32t7cm" path="res://scenes/door.tscn" id="13_7bdeo"]
 [ext_resource type="Script" path="res://scripts/container_filler.gd" id="10_lkrdo"]
-[ext_resource type="PackedScene" path="res://scenes/brewing_station.tscn" id="10_vs02r"]
 [ext_resource type="PackedScene" uid="uid://biibmap05jc1u" path="res://ingredients/scenes/tea_leaves.tscn" id="5_p3xmn"]
 [ext_resource type="Script" path="res://scripts/container_fill_request.gd" id="11_q866y"]
+
+[sub_resource type="Resource" id="Resource_6sdtl"]
+script = ExtResource("11_q866y")
+item_to_add = ExtResource("5_p3xmn")
+item_count = 6
 
 [sub_resource type="Animation" id="Animation_p8sbg"]
 resource_name = "fade_to_night"
@@ -97,15 +100,9 @@ _data = {
 "fade_to_night_new_week": SubResource("Animation_mkp1u")
 }
 
-[sub_resource type="Resource" id="Resource_6sdtl"]
-script = ExtResource("11_q866y")
-item_to_add = ExtResource("5_p3xmn")
-item_count = 6
-
 [node name="Brewdio" type="Node2D" node_paths=PackedStringArray("steeper")]
 texture_filter = 1
-
-script = ExtResource("1_jjlxy")
+script = ExtResource("1_i58jh")
 steeper = NodePath("Steeper")
 
 [node name="Pouch" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_iglth")]
@@ -145,10 +142,6 @@ flip_h = false
 [node name="CollisionPolygon2D" parent="Door/Area2D" index="0"]
 polygon = PackedVector2Array(-18.7, -23.4, 9.5, -28.7, 9.7, 23.8, -14.5, 32.1, -19.3, 32.1)
 
-[node name="BrewingStation" parent="." instance=ExtResource("10_vs02r")]
-position = Vector2(252, 483)
-scale = Vector2(3, 3)
-
 [node name="Control" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0)
 z_index = 3
@@ -167,14 +160,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("10_5wulb")
-
-[node name="Button" type="Button" parent="Control"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Transfer to global steeper"
-
-[connection signal="pressed" from="Control/Button" to="." method="populate_global_steeper_ingredients"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
 libraries = {
@@ -200,7 +185,7 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 86
-text = "Nights before arrival of guests : "
+text = "Nights before arrival of guests"
 
 [node name="nbr_nights" type="RichTextLabel" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -228,10 +213,11 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 86
 bbcode_enabled = true
-text = " [center][wave freq=12 amp=35]New guest letter arriving tomorrow"
+text = " [center][wave freq=12 amp=35]The guests are here!"
 fit_content = true
 
 [node name="ServiceTassle" parent="." instance=ExtResource("12_8ffxp")]
 position = Vector2(1789, -2)
 
+[connection signal="tassle_pulled" from="ServiceTassle" to="." method="_on_service_tassle_tassle_pulled"]
 [editable path="Door"]

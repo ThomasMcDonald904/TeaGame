@@ -1,4 +1,9 @@
-extends Node2D
+class_name Brewdio extends Node2D
+
+signal goto_tea_room()
+signal goto_office()
+
+@export var steeper: OpenContainer
 
 func _ready():
 	$Window.window_clicked.connect(next_day)
@@ -19,3 +24,13 @@ func increment_current_day():
 
 func set_nbr_days_text():
 	$Control/VBoxContainer/nbr_nights.text = "[wave amp=50][center]" + str(Globals.preparation_days - 1 - (Globals.current_day % (Globals.preparation_days + 1)))
+
+func populate_global_steeper_ingredients():
+	Globals.steeper_ingredients.clear()
+	for item in steeper.inventory:
+		if (item as Item).ingredient != null:
+			Globals.steeper_ingredients.append((item as Item).ingredient)
+	Globals.steeper_ingredients_changed.emit()
+
+func _on_service_tassle_tassle_pulled():
+	goto_tea_room.emit()
