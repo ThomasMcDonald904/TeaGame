@@ -3,6 +3,7 @@ extends Node2D
 signal brew_changed()
 signal steeper_lowered()
 signal steeper_raised()
+signal serve_brew()
 
 var is_dragging_steeper: bool = false
 var drag_start_y: int = 0
@@ -11,20 +12,24 @@ var drag_start_y: int = 0
 @export var ratio_when_ingredients_added: float = 0.9
 @export var debug_drink_properties_display: DrinkPropertiesDisplay
 
+var is_brew_served: bool = false
 var is_steeper_lowered: bool = false
 var burner_value: float = 0
 var ingredients_in_steeper: Array[Ingredient] = []
 var brew: Brew = Brew.new()
+
+var is_serve_brew_confirmation_shown: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	debug_drink_properties_display.drink_properties = brew.drink_property
 	debug_drink_properties_display.refresh_values()
 	Globals.steeper_ingredients_changed.connect(fill_ingredients_in_steeper)
-
+	fill_ingredients_in_steeper()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_steeper_lowered:
+	if is_steeper_lowered && !is_brew_served:
 		brew.tick(delta)
 		brew_changed.emit()
 
@@ -77,3 +82,20 @@ func _on_burner_value_changed(value):
 
 func _on_debug_display_toggled(toggled_on):
 	debug_drink_properties_display.visible = toggled_on
+
+
+func _on_confirm_button_pressed():
+	$Control/ServeBrewQuestionPanel.visible = false
+	is_brew_served = true
+	serve_brew.emit()
+
+
+func _on_refuse_button_pressed():
+	$Control/ServeBrewQuestionPanel.visible = false
+	$Control/PotButton.visible = true
+
+
+func _on_pot_button_pressed():
+	$Control/PotButton.visible = false
+	if !$Control/ServeBrewQuestionPanel.visible && !is_brew_served:
+		$Control/ServeBrewQuestionPanel.visible = true

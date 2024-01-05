@@ -1,7 +1,167 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3g2wo7nnjm7n"]
+[gd_scene load_steps=8 format=3 uid="uid://b3g2wo7nnjm7n"]
 
 [ext_resource type="Script" path="res://scripts/tea_room.gd" id="1_xet2x"]
 [ext_resource type="Texture2D" uid="uid://cg2wek6dqbapw" path="res://resources/textures/tea_room_closed.png" id="2_nm2lb"]
+[ext_resource type="PackedScene" uid="uid://bxujt5bxts4kk" path="res://scenes/brewing_station.tscn" id="3_mdybm"]
+
+[sub_resource type="Animation" id="Animation_y6e0c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guest1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Guest1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Guest2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Guest2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Guest3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Guest3:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_35gdj"]
+resource_name = "show_guests"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guest1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Guest1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Guest2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Guest2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Guest3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Guest3:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n6ftq"]
+_data = {
+"RESET": SubResource("Animation_y6e0c"),
+"show_guests": SubResource("Animation_35gdj")
+}
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bufm8"]
+size = Vector2(64, 64)
 
 [node name="TeaRoom" type="Node2D"]
 script = ExtResource("1_xet2x")
@@ -13,51 +173,167 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="RoomClosed" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/RoomClosed"]
+modulate = Color(0.270588, 0.270588, 0.270588, 1)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_nm2lb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/RoomClosed"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -787.5
-offset_top = -73.0
-offset_right = 787.5
-offset_bottom = 73.0
+offset_left = -35.5
+offset_top = 188.25
+offset_right = 1915.5
+offset_bottom = 536.25
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Control/VBoxContainer"]
-modulate = Color(0, 0, 0, 1)
+[node name="Label" type="Label" parent="Control/RoomClosed/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 126
 text = "The guests aren't here yet"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/RoomClosed/VBoxContainer"]
 layout_mode = 2
 
-[node name="GAAI" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
-modulate = Color(0, 0, 0, 1)
+[node name="GAAI" type="Label" parent="Control/RoomClosed/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 126
 text = "Guests are arriving in : "
 
-[node name="nbr_days" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
-modulate = Color(0, 0, 0, 1)
+[node name="nbr_days" type="Label" parent="Control/RoomClosed/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 126
 text = "null"
 
-[node name="days" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
-modulate = Color(0, 0, 0, 1)
+[node name="days" type="Label" parent="Control/RoomClosed/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 126
 text = " days"
+
+[node name="BrewingStation" parent="." instance=ExtResource("3_mdybm")]
+z_index = 1
+position = Vector2(1410, 901)
+scale = Vector2(2, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n6ftq")
+}
+
+[node name="Guest1" type="Node2D" parent="."]
+position = Vector2(695, 664)
+
+[node name="Sprite2D" type="Sprite2D" parent="Guest1"]
+texture = SubResource("PlaceholderTexture2D_bufm8")
+
+[node name="Guest2" type="Node2D" parent="."]
+position = Vector2(400, 808)
+
+[node name="Sprite2D" type="Sprite2D" parent="Guest2"]
+texture = SubResource("PlaceholderTexture2D_bufm8")
+
+[node name="Guest3" type="Node2D" parent="."]
+position = Vector2(1052, 792)
+
+[node name="Sprite2D" type="Sprite2D" parent="Guest3"]
+texture = SubResource("PlaceholderTexture2D_bufm8")
+
+[node name="DrinkingSounds" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 186.0
+offset_top = 641.0
+offset_right = 610.0
+offset_bottom = 822.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Guest1Sounds" type="RichTextLabel" parent="DrinkingSounds"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -30.5
+offset_right = 144.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+bbcode_enabled = true
+text = "[center][i]slurp[/i][/center]"
+
+[node name="Guest2Sounds" type="RichTextLabel" parent="DrinkingSounds"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 157.0
+offset_top = -174.5
+offset_right = 445.0
+offset_bottom = -122.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+bbcode_enabled = true
+text = "[center][i]slurp[/i][/center]"
+
+[node name="Guest3Sounds" type="RichTextLabel" parent="DrinkingSounds"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 520.0
+offset_top = -66.5
+offset_right = 808.0
+offset_bottom = -14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+bbcode_enabled = true
+text = "[center][i]slurp[/i][/center]"
+
+[node name="AllGuestsSounds" type="RichTextLabel" parent="DrinkingSounds"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 156.0
+offset_top = -4.5
+offset_right = 444.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+bbcode_enabled = true
+text = "[wave amp=64.0 freq=5.0 connected=1][shake rate=20.0 level=10 connected=1][center][i]SLLUURRRP[/i][/center][/shake][/wave]"

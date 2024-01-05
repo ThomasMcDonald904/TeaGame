@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxujt5bxts4kk"]
+[gd_scene load_steps=16 format=3 uid="uid://bxujt5bxts4kk"]
 
 [ext_resource type="Script" path="res://scripts/brewing_station.gd" id="1_8j72v"]
 [ext_resource type="Texture2D" uid="uid://yy5pn2ynm8pq" path="res://resources/textures/Brewer/brew_steeper.png" id="1_hih0o"]
@@ -24,6 +24,17 @@ size = Vector2(76, 35)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ekv4"]
 atlas = ExtResource("8_k5mml")
 region = Rect2(1, 1, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8b370"]
+load_path = "res://.godot/imported/Iconset_16x16_01_standalone.png-fa948d30e031c1cacb6ecee33dae6c91.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrbmk"]
+atlas = SubResource("CompressedTexture2D_8b370")
+region = Rect2(91, 20, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awid3"]
+atlas = SubResource("CompressedTexture2D_8b370")
+region = Rect2(73, 19, 15, 15)
 
 [node name="BrewingStation" type="Node2D" node_paths=PackedStringArray("steeper_path_follow", "debug_drink_properties_display")]
 texture_filter = 1
@@ -56,7 +67,7 @@ shape = SubResource("RectangleShape2D_332vi")
 texture = ExtResource("2_7b7dc")
 
 [node name="PotBack" type="Sprite2D" parent="PotFront"]
-z_index = -10
+z_index = -1
 position = Vector2(0, -44)
 texture = ExtResource("3_quahl")
 
@@ -112,9 +123,49 @@ offset_bottom = -91.0
 toggle_mode = true
 icon = SubResource("AtlasTexture_0ekv4")
 
+[node name="PotButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -45.0
+offset_top = -37.0
+offset_right = 46.0
+offset_bottom = 48.0
+flat = true
+
+[node name="ServeBrewQuestionPanel" type="PanelContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = -96.0
+offset_top = -30.0
+offset_right = 97.0
+offset_bottom = 43.0
+
+[node name="ServeBrewQuestionVbox" type="VBoxContainer" parent="Control/ServeBrewQuestionPanel"]
+layout_mode = 2
+
+[node name="QuestionText" type="RichTextLabel" parent="Control/ServeBrewQuestionPanel/ServeBrewQuestionVbox"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Do you want to serve this brew?[/center]"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ServeBrewQuestionPanel/ServeBrewQuestionVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ConfirmButton" type="Button" parent="Control/ServeBrewQuestionPanel/ServeBrewQuestionVbox/HBoxContainer"]
+layout_mode = 2
+icon = SubResource("AtlasTexture_lrbmk")
+
+[node name="RefuseButton" type="Button" parent="Control/ServeBrewQuestionPanel/ServeBrewQuestionVbox/HBoxContainer"]
+layout_mode = 2
+icon = SubResource("AtlasTexture_awid3")
+
 [connection signal="brew_changed" from="." to="Control/CurrentDrinkProperties" method="refresh_values"]
 [connection signal="steeper_lowered" from="." to="Control/BrewingStateLabel" method="set_visible" binds= [true]]
 [connection signal="steeper_raised" from="." to="Control/BrewingStateLabel" method="set_visible" binds= [false]]
 [connection signal="input_event" from="Path2D/PathFollow2D/SteeperSprite/Area2D" to="." method="_on_steeper_area_2d_input_event"]
 [connection signal="value_changed" from="Control/TemperatureSlider" to="." method="_on_burner_value_changed"]
 [connection signal="toggled" from="Control/Button" to="." method="_on_debug_display_toggled"]
+[connection signal="pressed" from="Control/PotButton" to="." method="_on_pot_button_pressed"]
+[connection signal="pressed" from="Control/ServeBrewQuestionPanel/ServeBrewQuestionVbox/HBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="Control/ServeBrewQuestionPanel/ServeBrewQuestionVbox/HBoxContainer/RefuseButton" to="." method="_on_refuse_button_pressed"]

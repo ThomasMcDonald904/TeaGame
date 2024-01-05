@@ -1,5 +1,7 @@
 extends Node2D
 
+signal tassle_pulled()
+
 @export var end_segment:RigidBody2D
 var segment_list: Array[RopeSegment] = []
 
@@ -34,9 +36,6 @@ class RopeSegment extends Node:
 		rigidbody.mass = 0.5
 		parent.add_child(rigidbody)
 		rigidbody.add_child(sprite)
-
-func tassle_pulled():
-	GameState.tassle_tugged = true
 
 func _on_area_2d_input_event(_viewport, event: InputEvent, _shape_idx):
 	if event.is_action_pressed("click"):
