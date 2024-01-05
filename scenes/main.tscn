@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://kvxavm21npxv"]
+[gd_scene load_steps=6 format=3 uid="uid://kvxavm21npxv"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_bmv4p"]
 [ext_resource type="PackedScene" uid="uid://b1mwhq3dnfckn" path="res://scenes/main_menu.tscn" id="2_bejds"]
 [ext_resource type="PackedScene" uid="uid://dfj5qs1trsk3u" path="res://scenes/brewdio.tscn" id="2_sdh1y"]
 [ext_resource type="PackedScene" uid="uid://j1vnb2epll2j" path="res://scenes/office.tscn" id="4_xodbs"]
+[ext_resource type="PackedScene" uid="uid://b3g2wo7nnjm7n" path="res://scenes/tea_room.tscn" id="5_afueu"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bmv4p")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [PackedStringArray("brewdio", "main_menu", "office"), [ExtResource("2_sdh1y"), ExtResource("2_bejds"), ExtResource("4_xodbs")]]
+resources = [PackedStringArray("brewdio", "main_menu", "office", "tea_room"), [ExtResource("2_sdh1y"), ExtResource("2_bejds"), ExtResource("4_xodbs"), ExtResource("5_afueu")]]
