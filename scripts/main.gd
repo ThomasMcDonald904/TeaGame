@@ -5,12 +5,14 @@ extends Node
 var main_menu_scene
 var brewdio_scene
 var office_scene
+var tea_room_scene
 
 # Cal$AnimationPlayerled when the node enters the scene tree for the first time.
 func _ready():
 	GameState.enter_main_menu.connect(show_main_menu)
 	GameState.enter_brewdio.connect(show_brewdio)
 	GameState.enter_office.connect(show_office)
+	GameState.enter_tea_room.connect(show_tea_room)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -28,6 +30,8 @@ func show_brewdio():
 		main_menu_scene.queue_free()
 	if office_scene != null:
 		office_scene.queue_free()
+	if tea_room_scene != null:
+		tea_room_scene.queue_free()
 	add_child(brewdio_scene)
 
 func show_office():
@@ -37,4 +41,17 @@ func show_office():
 		main_menu_scene.queue_free()
 	if brewdio_scene != null:
 		brewdio_scene.queue_free()
+	if tea_room_scene != null:
+		tea_room_scene.queue_free()
 	add_child(office_scene)
+
+func show_tea_room():
+	var tea_room_packed_scene: PackedScene = resource_preloader.get_resource("tea_room")
+	tea_room_scene = tea_room_packed_scene.instantiate()
+	if main_menu_scene != null:
+		main_menu_scene.queue_free()
+	if brewdio_scene != null:
+		brewdio_scene.queue_free()
+	if office_scene != null:
+		office_scene.queue_free()
+	add_child(tea_room_scene)

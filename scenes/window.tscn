@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8a4rc0qrcpob"]
+
+[ext_resource type="Texture2D" uid="uid://cg66v8pyow7xn" path="res://resources/textures/next_day_window.png" id="1_hrqke"]
+[ext_resource type="Script" path="res://scripts/window.gd" id="2_hdoj5"]
+
+[node name="Window" type="Sprite2D"]
+scale = Vector2(7, 7)
+texture = ExtResource("1_hrqke")
+script = ExtResource("2_hdoj5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PackedVector2Array(-26.5714, 11, -26.5714, 7.14286, -21.8571, -5.57143, -15.4286, -8, 16.2857, -8.14286, 21.5714, -2.14286, 28.7143, 7, 29.4286, 11.1429)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

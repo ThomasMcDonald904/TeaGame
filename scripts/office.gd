@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	$Letter.connect("read_letter", give_letter)
+	$AnimationPlayer.animation_finished.connect(func(_anim_name): GameState.letter_read = true)
 
 func give_letter():
 	var storyteller: Storyteller = Storyteller.new()
