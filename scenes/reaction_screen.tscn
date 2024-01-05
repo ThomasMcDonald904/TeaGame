@@ -1,8 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://m3iiil7ellax"]
+[gd_scene load_steps=6 format=3 uid="uid://m3iiil7ellax"]
 
 [ext_resource type="Script" path="res://scripts/reaction_screen.gd" id="1_sil1p"]
 [ext_resource type="Texture2D" uid="uid://bxt2xacx26liy" path="res://resources/textures/GUI_set05_Books_Letters_Scrolls_Papers_Notes_v1_1/tiledElements/PlacedExamples_480x272/Example_Scroll3.png" id="2_76ied"]
 [ext_resource type="Texture2D" uid="uid://brpqnnkr7f32y" path="res://resources/textures/wax_seal_rating_progress.png" id="3_ag5sp"]
+
+[sub_resource type="Animation" id="Animation_5n5ro"]
+resource_name = "set_rating"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/TextureProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 5.9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/numerical_value:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5n6kh"]
+_data = {
+"set_rating": SubResource("Animation_5n5ro")
+}
 
 [node name="ReactionScreen" type="Control"]
 layout_mode = 3
@@ -36,11 +69,11 @@ scale = Vector2(2.52, 2.52)
 [node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer"]
 layout_mode = 2
 max_value = 6.0
-step = 0.1
-value = 4.4
+step = 0.0
 texture_progress = ExtResource("3_ag5sp")
 
 [node name="numerical_value" type="Label" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -59,7 +92,12 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0.2, 1)
 theme_override_font_sizes/font_size = 43
-text = "The sweetness was atrocious"
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5n6kh")
+}
