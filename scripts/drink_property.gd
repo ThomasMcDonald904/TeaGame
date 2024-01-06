@@ -11,6 +11,6 @@ enum PropertyType {TEMPERATURE, ASTRINGENCY, SWEETNESS, FLORALITY, SPICEDNESS, N
 	get:
 		return value
 
-func _init(property_type: PropertyType, property_value: float = 5):
+func _init(property_type: PropertyType, property_value: float = 0):
 	type = property_type
 	value = property_value
