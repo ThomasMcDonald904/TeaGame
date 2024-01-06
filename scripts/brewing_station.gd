@@ -49,11 +49,9 @@ func _on_steeper_area_2d_input_event(_viewport, event: InputEvent, _shape_idx):
 func _input(event: InputEvent):
 	# Mouse in viewport coordinates.
 	if event is InputEventMouseButton:
-		print("Mouse Click/Unclick at: ", event.position)
 		if is_dragging_steeper && !(event as InputEventMouseButton).pressed:
 			is_dragging_steeper = false
 	elif event is InputEventMouseMotion:
-		print("Mouse Motion at: ", event.relative)
 		if is_dragging_steeper:
 			steeper_path_follow.progress_ratio = clamp(event.relative.y/100.0 + steeper_path_follow.progress_ratio, 0, 1)
 			if steeper_path_follow.progress_ratio >= ratio_when_ingredients_added:

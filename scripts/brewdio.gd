@@ -18,7 +18,9 @@ func next_day(nbr_days):
 
 func increment_current_day():
 	Globals.current_day += 1
+	# Anything that must called when there is a new day
 	GameState.letter_read = false
+	GameState.guests_already_served = false
 
 func set_nbr_days_text():
 	$Control/VBoxContainer/nbr_days.text = "[wave amp=50][center]" + str(Globals.days_to_prepare*Globals.current_day%(Globals.days_to_prepare+1))

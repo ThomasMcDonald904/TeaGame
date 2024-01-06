@@ -14,3 +14,4 @@ var current_day: int = 1
 var days_to_prepare: int = 2
 
 var steeper_ingredients: Array[Ingredient] = []
+var inventories: Array[ContainerInventory] = []

@@ -689,6 +689,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 126
 text = " days"
 
+[node name="GuestsAlreadyServed" type="Label" parent="Control/RoomClosed/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 121
+text = "The guests are already served"
+
 [node name="TeaTable" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(918, 641)

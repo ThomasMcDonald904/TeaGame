@@ -1,6 +1,6 @@
 class_name ItemContainer extends AnimatedSprite2D
 
-var inventory = []
+var inventory: Array[Item] = []
 @export var is_opened = false
 var is_mouse_on_container = false
 @onready var initial_position = get_global_position()
@@ -10,9 +10,6 @@ var is_mouse_on_container = false
 @export var animation_player: AnimationPlayer
 
 func _ready():
-	for item in starting_items:
-		var inst = item.instantiate()
-		inventory.append(inst)
 	collider.get_node("Area2D").connect("mouse_entered", mouse_enter_container)
 	collider.get_node("Area2D").connect("mouse_exited", mouse_exit_container)
 	collider.get_node("Collider").disabled = true
@@ -21,6 +18,12 @@ func _ready():
 	area2d.connect("body_exited", _on_area_2d_body_exited)
 	animation_player.connect("animation_finished", _on_animation_player_animation_finished)
 	animation_player.connect("animation_started", _on_animation_player_animation_started)
+	tree_exiting.connect(is_being_freed)
+	# When respawing after deletion, check if there is items to re-add and set it to that
+	# Automatically clears items added by ContainerFiller 
+	var check_index = Globals.inventories.map(func(x: ContainerInventory): return x.container_name).find(name)
+	if check_index != -1:
+		inventory = Globals.inventories[check_index].inventory
 
 func _on_area_2d_input_event(_viewport, event: InputEvent, _shape_idx):
 	if event.is_action_pressed("click") and not is_opened and Globals.can_open_container:
@@ -48,9 +51,9 @@ func set_items_visible():
 		for item in inventory:
 			item.visible = true
 
-func close_container(chosen_item: RigidBody2D):
+func close_container(chosen_item: Item):
 	for child in get_children():
-		if child in inventory and child != chosen_item:
+		if (child as Item) in inventory and child != chosen_item:
 			remove_child(child)
 		if child == chosen_item:
 			inventory.erase(child)
@@ -95,4 +98,7 @@ func _on_animation_player_animation_started(_anim_name):
 	Globals.can_open_container = false
 	if _anim_name == "Opening":
 		is_opened = false
+
+func is_being_freed():
+	Globals.inventories.append(ContainerInventory.new(name, inventory))
 
