@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_i58jh"]
 [ext_resource type="PackedScene" uid="uid://daxef2qwixq63" path="res://scenes/pouch.tscn" id="1_iglth"]
-[ext_resource type="PackedScene" path="res://scenes/pouch_collider.tscn" id="2_o5jyf"]
-[ext_resource type="PackedScene" path="res://scenes/sac.tscn" id="5_787md"]
+[ext_resource type="PackedScene" uid="uid://dekma8cr3soal" path="res://scenes/pouch_collider.tscn" id="2_o5jyf"]
+[ext_resource type="PackedScene" uid="uid://dhry6dqj0uowj" path="res://scenes/sac.tscn" id="5_787md"]
 [ext_resource type="PackedScene" uid="uid://biibmap05jc1u" path="res://ingredients/scenes/tea_leaves.tscn" id="5_p3xmn"]
-[ext_resource type="PackedScene" path="res://scenes/sac_collider.tscn" id="6_1ggev"]
+[ext_resource type="PackedScene" uid="uid://u8celftcneat" path="res://scenes/sac_collider.tscn" id="6_1ggev"]
 [ext_resource type="PackedScene" uid="uid://jonxfsnapi7a" path="res://scenes/steeper.tscn" id="7_bwegx"]
-[ext_resource type="PackedScene" path="res://scenes/steeper_collider.tscn" id="8_ni6wm"]
+[ext_resource type="PackedScene" uid="uid://bi8y3yd2yvrpd" path="res://scenes/steeper_collider.tscn" id="8_ni6wm"]
 [ext_resource type="PackedScene" uid="uid://b8a4rc0qrcpob" path="res://scenes/window.tscn" id="9_glo33"]
 [ext_resource type="Texture2D" uid="uid://5emjdd1yhkiw" path="res://resources/textures/night.png" id="10_5wulb"]
 [ext_resource type="Script" path="res://scripts/container_filler.gd" id="10_lkrdo"]
@@ -42,7 +42,7 @@ tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.3, 2),
+"times": PackedFloat32Array(1.5, 2.4),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -183,9 +183,9 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 86
-text = "Nights before arrival of guests"
+text = "Days before arrival of guests"
 
-[node name="nbr_nights" type="RichTextLabel" parent="Control/VBoxContainer"]
+[node name="nbr_days" type="RichTextLabel" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
@@ -201,17 +201,17 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 81
 bbcode_enabled = true
-text = "[center][wave freq=12 amp=35]Guests arrive tomorrow"
+text = "[center][wave freq=12 amp=35]Guests arriving this morning!"
 fit_content = true
 
-[node name="NewLetter" type="RichTextLabel" parent="Control/VBoxContainer"]
+[node name="GuestsAreHere" type="RichTextLabel" parent="Control/VBoxContainer"]
 visible = false
 modulate = Color(0, 0.380392, 1, 1)
 layout_mode = 2
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 86
 bbcode_enabled = true
-text = " [center][wave freq=12 amp=35]The guests are here!"
+text = " [center][wave freq=12 amp=35]New letter arriving this morning"
 fit_content = true
 
 [node name="ServiceTassle" parent="." instance=ExtResource("12_8ffxp")]

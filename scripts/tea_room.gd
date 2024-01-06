@@ -7,13 +7,15 @@ var fill_cups: bool = false
 
 func _ready():
 	#guests have not yet arived
-	if Globals.preparation_days - (Globals.current_day % (Globals.preparation_days + 1)) != 0:
-		$Control/RoomClosed/VBoxContainer/HBoxContainer/nbr_days.text = str(Globals.preparation_days - (Globals.current_day % (Globals.preparation_days + 1)))
+	if Globals.days_to_prepare*Globals.current_day%(Globals.days_to_prepare+1) != 0:
+		$Control/RoomClosed/VBoxContainer/HBoxContainer/nbr_days.text = str(Globals.days_to_prepare*Globals.current_day%(Globals.days_to_prepare+1))
 		$Control/RoomClosed.visible = true
+		$TeaTable.visible = false
 		await get_tree().create_timer(3).timeout.connect(func(): GameState.tea_session_done = true)
 	#guests are here
 	else:
 		$Control/RoomClosed.visible = false
+		$TeaTable.visible = true
 		$BrewingStation.visible = true
 		show_guests = true
 
