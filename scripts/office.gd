@@ -5,7 +5,7 @@ func _ready():
 	$AnimationPlayer.animation_finished.connect(func(_anim_name): GameState.letter_read = true)
 
 func give_letter():
-	if GameState.first_time_experience or Globals.preparation_days - (Globals.current_day % (Globals.preparation_days + 1)) == 0:
+	if not GameState.letter_read and Globals.days_to_prepare*Globals.current_day%(Globals.days_to_prepare+1) == Globals.days_to_prepare:
 		var storyteller: Storyteller = Storyteller.new()
 		var guest_profile: GuestProfile = GuestProfile.new()
 		storyteller.generate_story(guest_profile)

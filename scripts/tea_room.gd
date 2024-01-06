@@ -10,13 +10,15 @@ var reaction_screen: ReactionScreen = null
 
 func _ready():
 	#guests have not yet arived
-	if Globals.preparation_days - (Globals.current_day % (Globals.preparation_days + 1)) != 0:
-		$CanvasLayer/Control/RoomClosed/VBoxContainer/HBoxContainer/nbr_days.text = str(Globals.preparation_days - (Globals.current_day % (Globals.preparation_days + 1)))
-		$CanvasLayer/Control/RoomClosed.visible = true
+	if Globals.days_to_prepare*Globals.current_day%(Globals.days_to_prepare+1) != 0:
+		$Control/RoomClosed/VBoxContainer/HBoxContainer/nbr_days.text = str(Globals.days_to_prepare*Globals.current_day%(Globals.days_to_prepare+1))
+		$Control/RoomClosed.visible = true
+		$TeaTable.visible = false
 		await get_tree().create_timer(3).timeout.connect(func(): GameState.tea_session_done = true)
 	#guests are here
 	else:
-		$CanvasLayer/Control/RoomClosed.visible = false
+		$TeaTable.visible = true
+		$Control/RoomClosed.visible = false
 		$BrewingStation.visible = true
 		show_guests = true
 
@@ -27,7 +29,7 @@ func _on_brewing_station_serve_brew(brew: Brew):
 
 func _on_tea_drunk():
 	reaction_screen = reaction_screen_PS.instantiate()
-	$CanvasLayer/Control.add_child(reaction_screen)
+	$Control.add_child(reaction_screen)
 	reaction_screen.connect("closed_rating_scroll", _on_closed_rating_scroll)
 	reaction_screen.present_rating(served_brew)
 

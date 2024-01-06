@@ -11,19 +11,17 @@ func _ready():
 func next_day(nbr_days):
 	$Control/VBoxContainer/GuestsArrivingTomorrow.visible = true if nbr_days == 1 else false
 	$Control/VBoxContainer/Title.visible = false if nbr_days == 1 or nbr_days == 0 else true
-	$Control/VBoxContainer/nbr_nights.visible = false if nbr_days == 1 or nbr_days == 0 else true
-	$Control/VBoxContainer/NewLetter.visible = true if nbr_days == 0 else false
-	if nbr_days == -1:
-		$Control/AnimationPlayer.play("fade_to_night_new_week")
-	else:
-		$Control/AnimationPlayer.play("fade_to_night")
-	$Control/VBoxContainer/nbr_nights.text = "[center]" + str(nbr_days)
+	$Control/VBoxContainer/nbr_days.visible = false if nbr_days == 1 or nbr_days == 0 else true
+	$Control/VBoxContainer/GuestsAreHere.visible = true if nbr_days == 0 else false
+	$Control/AnimationPlayer.play("fade_to_night")
+	$Control/VBoxContainer/nbr_days.text = "[center]" + str(nbr_days)
 
 func increment_current_day():
 	Globals.current_day += 1
+	GameState.letter_read = false
 
 func set_nbr_days_text():
-	$Control/VBoxContainer/nbr_nights.text = "[wave amp=50][center]" + str(Globals.preparation_days - 1 - (Globals.current_day % (Globals.preparation_days + 1)))
+	$Control/VBoxContainer/nbr_days.text = "[wave amp=50][center]" + str(Globals.days_to_prepare*Globals.current_day%(Globals.days_to_prepare+1))
 
 func populate_global_steeper_ingredients():
 	Globals.steeper_ingredients.clear()
