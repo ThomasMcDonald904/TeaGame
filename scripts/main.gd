@@ -24,6 +24,7 @@ func show_main_menu():
 	add_child(main_menu_scene)
 
 func show_brewdio():
+	Globals.can_open_container = true
 	var brewdio_packed_scene:PackedScene = resource_preloader.get_resource("brewdio")
 	brewdio_scene = brewdio_packed_scene.instantiate()
 	if main_menu_scene != null:

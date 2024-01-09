@@ -8,6 +8,10 @@ signal goto_office()
 func _ready():
 	$Window.window_clicked.connect(next_day)
 
+func _exit_tree():
+	pass
+	#Globals.can_open_container = true
+
 func next_day(nbr_days):
 	$Control/VBoxContainer/GuestsArrivingTomorrow.visible = true if nbr_days == 1 else false
 	$Control/VBoxContainer/Title.visible = false if nbr_days == 1 or nbr_days == 0 else true

@@ -9,6 +9,8 @@ var is_mouse_on_container = false
 @export var area2d: Area2D
 @export var animation_player: AnimationPlayer
 
+var item_spawn_timer: Timer
+
 func _ready():
 	collider.get_node("Area2D").connect("mouse_entered", mouse_enter_container)
 	collider.get_node("Area2D").connect("mouse_exited", mouse_exit_container)
@@ -21,9 +23,17 @@ func _ready():
 	tree_exiting.connect(is_being_freed)
 	# When respawing after deletion, check if there is items to re-add and set it to that
 	# Automatically clears items added by ContainerFiller 
+	var ingredient_item_map: IngredientItemMap = load("res://ingredients/ingredient_item_map.tres")
 	var check_index = Globals.inventories.map(func(x: ContainerInventory): return x.container_name).find(name)
 	if check_index != -1:
-		inventory = Globals.inventories[check_index].inventory
+		for ingredient in Globals.inventories[check_index].inventory:
+			var pair: IngredientItemPair = ingredient_item_map.find_pair(ingredient)
+			if pair != null:
+				inventory.append(pair.item.instantiate())
+	else:
+		for item in starting_items:
+			inventory.append(item.instantiate())
+	item_spawn_timer = Timer.new()
 
 func _on_area_2d_input_event(_viewport, event: InputEvent, _shape_idx):
 	if event.is_action_pressed("click") and not is_opened and Globals.can_open_container:

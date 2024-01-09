@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dekma8cr3soal"]
+[gd_scene format=3 uid="uid://dyj2y3lirlbev"]
 
 [node name="PouchCollider" type="StaticBody2D"]
 position = Vector2(960, 540)
