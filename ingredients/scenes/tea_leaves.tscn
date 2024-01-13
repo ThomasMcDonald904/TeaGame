@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://biibmap05jc1u"]
+[gd_scene load_steps=6 format=3 uid="uid://biibmap05jc1u"]
 
 [ext_resource type="Script" path="res://scripts/item.gd" id="1_psb5j"]
 [ext_resource type="Texture2D" uid="uid://b1saein6sr4eg" path="res://resources/textures/ingredient_placeholders/tealeaves_placeholder.png" id="2_7r3wd"]
 [ext_resource type="Resource" uid="uid://r1nm54f41143" path="res://ingredients/ingredient_tea_leaf.tres" id="2_jh5ad"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2qx1l"]
+bounce = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f5sbh"]
 size = Vector2(64, 64)
 
 [node name="TeaLeaves" type="RigidBody2D"]
 input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_2qx1l")
 can_sleep = false
 continuous_cd = 1
 script = ExtResource("1_psb5j")

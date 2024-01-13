@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/types/property_type_curve_pair.gd" id="1_njumb"]
 
 [sub_resource type="Curve" id="Curve_llbfe"]
-max_value = 10.0
+max_value = 2.0
 _data = [Vector2(0, 0.01), 0.0, 0.0, 0, 0, Vector2(0.5, 0.25), 0.0, 0.0, 0, 0, Vector2(0.7, 0.5), 0.0, 0.0, 0, 0, Vector2(0.9, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 5
 

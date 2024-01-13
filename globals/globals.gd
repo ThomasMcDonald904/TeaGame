@@ -2,6 +2,8 @@ extends Node
 
 signal steeper_ingredients_changed()
 
+var money: int = 20
+
 var has_item: bool = false
 var item_held: RigidBody2D
 var selected_inventory_object

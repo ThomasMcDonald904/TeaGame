@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/Gyms/brewing_gym.gd" id="1_da8yh"]
 [ext_resource type="Texture2D" uid="uid://dl14mdlwr3728" path="res://resources/textures/ui/Iconset_16x16_01_standalone.png" id="2_bmqvl"]
 [ext_resource type="PackedScene" uid="uid://cnel3annmy5md" path="res://scenes/Gyms/brewing/drink_property_delta.tscn" id="2_fcciq"]
-[ext_resource type="PackedScene" path="res://scenes/Gyms/brewing/current_drink_properties.tscn" id="3_mok5p"]
+[ext_resource type="PackedScene" uid="uid://dlnhjn2g43p4f" path="res://scenes/Gyms/brewing/current_drink_properties.tscn" id="3_mok5p"]
 [ext_resource type="PackedScene" uid="uid://1e6q4wp51b0a" path="res://test_gui/target_drink_debug.tscn" id="4_8j6oh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qd0vd"]
