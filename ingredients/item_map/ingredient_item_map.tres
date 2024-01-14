@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="IngredientItemMap" load_steps=6 format=3 uid="uid://cit4hjuid88de"]
 
 [ext_resource type="Script" path="res://IngredientItemMap.gd" id="1_bodwg"]
-[ext_resource type="Resource" uid="uid://r1nm54f41143" path="res://ingredients/ingredient_tea_leaf.tres" id="1_r28ow"]
+[ext_resource type="Resource" uid="uid://r1nm54f41143" path="res://ingredients/ingredient_tea_leaves.tres" id="1_r28ow"]
 [ext_resource type="PackedScene" uid="uid://biibmap05jc1u" path="res://ingredients/scenes/tea_leaves.tscn" id="2_1i4jy"]
 [ext_resource type="Script" path="res://scripts/resources/ingredient_item_pair.gd" id="3_tkp41"]
 
@@ -13,6 +13,3 @@ item = ExtResource("2_1i4jy")
 [resource]
 script = ExtResource("1_bodwg")
 ingredient_item_pairs = Array[ExtResource("3_tkp41")]([SubResource("Resource_qj1ej")])
-tmp = {
-ExtResource("1_r28ow"): ExtResource("2_1i4jy")
-}

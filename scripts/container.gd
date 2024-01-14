@@ -23,7 +23,7 @@ func _ready():
 	tree_exiting.connect(is_being_freed)
 	# When respawing after deletion, check if there is items to re-add and set it to that
 	# Automatically clears items added by ContainerFiller 
-	var ingredient_item_map: IngredientItemMap = load("res://ingredients/ingredient_item_map.tres")
+	var ingredient_item_map: IngredientItemMap = load("res://ingredients/item_map/ingredient_item_map.tres")
 	var check_index = Globals.inventories.map(func(x: ContainerInventory): return x.container_name).find(name)
 	if check_index != -1:
 		for ingredient in Globals.inventories[check_index].inventory:

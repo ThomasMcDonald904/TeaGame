@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dg0pnk0yw3txv"]
+[gd_scene load_steps=9 format=3 uid="uid://dg0pnk0yw3txv"]
 
 [ext_resource type="Texture2D" uid="uid://dnc2ip0nhshug" path="res://resources/textures/fetchermann.png" id="1_ix2r4"]
 [ext_resource type="Script" path="res://scripts/fetchermann.gd" id="2_ouah6"]
@@ -56,59 +56,18 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="Animation" id="Animation_3jia5"]
-resource_name = "arriving"
-
-[sub_resource type="Animation" id="Animation_qyq6c"]
-resource_name = "leaving"
-
-[sub_resource type="Animation" id="Animation_82o8h"]
-resource_name = "RESET"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ebtsh"]
-_data = {
-"RESET": SubResource("Animation_82o8h"),
-"arriving": SubResource("Animation_3jia5"),
-"leaving": SubResource("Animation_qyq6c")
-}
-
 [node name="Fetchermann" type="AnimatedSprite2D"]
+position = Vector2(1668, 882)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_srhcq")
-animation = &"idle"
+animation = &"leaving"
+autoplay = "idle"
+frame_progress = 0.230272
 script = ExtResource("2_ouah6")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ebtsh")
-}
+polygon = PackedVector2Array(-13.2, 9.8, -11.8, 15.2, 6.4, 15.8, 6.2, 11, 10.8, 7.6, 8.4, 3.8, 4.6, 2.2, 5.6, 0, 7.8, -4.2, 7.6, -9.6, 7.8, -12.4, -1, -15.8, -4, -15.6, -7.2, -15.2, -8, -12.4, -8.2, -9.2, -7, 2, -8.6, 4.6)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

@@ -3,10 +3,13 @@ class_name Brewdio extends Node2D
 signal goto_tea_room()
 signal goto_office()
 
+var fetchermann_interface_PS: PackedScene = preload("res://scenes/GUI/fetchermann_interface.tscn")
+
 @export var steeper: OpenContainer
 
 func _ready():
 	$Window.window_clicked.connect(next_day)
+	$Fetchermann.fetchermann_clicked.connect(show_fetchermann_journal)
 
 func _exit_tree():
 	pass
@@ -38,3 +41,8 @@ func populate_global_steeper_ingredients():
 
 func _on_service_tassle_tassle_pulled():
 	goto_tea_room.emit()
+
+func show_fetchermann_journal():
+	var inst = fetchermann_interface_PS.instantiate()
+	add_child(inst)
+	inst.close_journal.connect($Fetchermann.leave)

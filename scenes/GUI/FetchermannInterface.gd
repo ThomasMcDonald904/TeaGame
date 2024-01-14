@@ -1,12 +1,11 @@
 extends Control
 
+signal close_journal(desired_items_text: String, budget: int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	set_size(get_viewport_rect().size)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+func _on_close_journal_button_up():
+	close_journal.emit($VBoxContainer/TextEdit.text, int($VBoxContainer/HBoxContainer/LineEdit.text))
+	queue_free()

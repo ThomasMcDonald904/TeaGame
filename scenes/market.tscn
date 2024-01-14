@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyyhg2fx6mi21"]
+
+[ext_resource type="Script" path="res://scripts/market.gd" id="1_qobxw"]
+
+[node name="Market" type="Node"]
+script = ExtResource("1_qobxw")
