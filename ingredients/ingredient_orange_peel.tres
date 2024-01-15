@@ -37,3 +37,5 @@ curve = SubResource("Curve_8piu4")
 script = ExtResource("1_eqe52")
 name = "Orange Peel"
 property_curves = Array[ExtResource("1_vscmg")]([SubResource("Resource_08b6t"), SubResource("Resource_dfuan"), SubResource("Resource_5mrxv")])
+rarity = 100.0
+market_quantity = 4

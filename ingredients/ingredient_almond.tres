@@ -18,4 +18,4 @@ script = ExtResource("1_ibrh1")
 name = "Almond"
 property_curves = Array[ExtResource("1_hp3t8")]([SubResource("Resource_swn50")])
 rarity = 70.0
-market_rarity = 4
+market_quantity = 4

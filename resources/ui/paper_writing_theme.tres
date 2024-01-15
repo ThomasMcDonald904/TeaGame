@@ -2,16 +2,59 @@
 
 [ext_resource type="FontFile" uid="uid://lbk2axjqo03o" path="res://resources/fonts/handwritingfont/Handwritingfont.ttf" id="1_df3sf"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_01gqy"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7oc1"]
+bg_color = Color(0.901961, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.294118, 0.141176, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wg58"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lspr5"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.294118, 0.141176, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p08pc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eida7"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.294118, 0.141176, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.121569, 0.121569, 0.121569, 0.698039)
 
 [resource]
 default_font = ExtResource("1_df3sf")
 Label/colors/font_color = Color(0.294118, 0.141176, 0, 1)
-Label/font_sizes/font_size = 68
+Label/constants/line_spacing = -4
+Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_df3sf")
 LineEdit/colors/caret_color = Color(0.223529, 0.101961, 0, 1)
 LineEdit/colors/font_color = Color(0.294118, 0.141176, 0, 1)
@@ -20,11 +63,13 @@ LineEdit/colors/font_placeholder_color = Color(0.294118, 0.141176, 0, 0.439216)
 LineEdit/constants/outline_size = 0
 LineEdit/font_sizes/font_size = 65
 LineEdit/fonts/font = ExtResource("1_df3sf")
-LineEdit/styles/focus = SubResource("StyleBoxEmpty_01gqy")
-LineEdit/styles/normal = SubResource("StyleBoxEmpty_4wg58")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_a7oc1")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_a7oc1")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_lspr5")
 TextEdit/colors/caret_color = Color(0.215686, 0.0980392, 0, 1)
 TextEdit/colors/font_color = Color(0.294118, 0.141176, 0, 1)
 TextEdit/colors/font_placeholder_color = Color(0.294118, 0.141176, 0, 0.411765)
-TextEdit/font_sizes/font_size = 39
+TextEdit/constants/line_spacing = -3
+TextEdit/font_sizes/font_size = 35
 TextEdit/fonts/font = ExtResource("1_df3sf")
-TextEdit/styles/normal = SubResource("StyleBoxEmpty_p08pc")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_eida7")

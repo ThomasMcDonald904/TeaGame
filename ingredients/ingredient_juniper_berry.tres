@@ -16,3 +16,5 @@ curve = SubResource("Curve_rb075")
 script = ExtResource("1_a7h3b")
 name = "Juniper Berries"
 property_curves = Array[ExtResource("1_x6wpq")]([SubResource("Resource_2ycak")])
+rarity = 70.0
+market_quantity = 4
