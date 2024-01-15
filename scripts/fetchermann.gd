@@ -16,6 +16,14 @@ func leave(desired_items_text: String, budget: int):
 	tween.tween_property(self, "position", Vector2(2000, position.y), 2).set_trans(Tween.TRANS_BACK)
 	tween.tween_callback(queue_free)
 
+func arrive():
+	var original_x = position.x
+	position.x = 2000
+	var tween = get_tree().create_tween()
+	play("arriving")
+	tween.tween_property(self, "position", Vector2(original_x, position.y), 2).set_trans(Tween.TRANS_QUART)
+	tween.tween_callback(play.bind("idle"))
+
 func extract_items_from_text(text: String):
 	text = text.to_lower()
 	var ingredients_dir: DirAccess = DirAccess.open("res://ingredients/")

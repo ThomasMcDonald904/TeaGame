@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dfj5qs1trsk3u"]
+[gd_scene load_steps=16 format=3 uid="uid://dfj5qs1trsk3u"]
 
 [ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_i58jh"]
 [ext_resource type="PackedScene" uid="uid://daxef2qwixq63" path="res://scenes/pouch.tscn" id="1_iglth"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://5emjdd1yhkiw" path="res://resources/textures/night.png" id="10_5wulb"]
 [ext_resource type="PackedScene" uid="uid://dte2nn23yewb1" path="res://scenes/service_tassle.tscn" id="12_8ffxp"]
 [ext_resource type="PackedScene" uid="uid://clsm6pait5i83" path="res://scenes/door.tscn" id="13_7bdeo"]
-[ext_resource type="PackedScene" uid="uid://dg0pnk0yw3txv" path="res://scenes/fetchermann.tscn" id="13_ibjg4"]
 
 [sub_resource type="Animation" id="Animation_p8sbg"]
 resource_name = "fade_to_night"
@@ -36,14 +35,17 @@ tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.5, 2.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1.5, 2.4, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
 "method": &"increment_current_day"
 }, {
 "args": [],
 "method": &"set_nbr_days_text"
+}, {
+"args": [],
+"method": &"arrive_fetchermann"
 }]
 }
 
@@ -206,9 +208,6 @@ fit_content = true
 
 [node name="ServiceTassle" parent="." instance=ExtResource("12_8ffxp")]
 position = Vector2(1789, -2)
-
-[node name="Fetchermann" parent="." instance=ExtResource("13_ibjg4")]
-position = Vector2(1644, 884)
 
 [connection signal="tassle_pulled" from="ServiceTassle" to="." method="_on_service_tassle_tassle_pulled"]
 

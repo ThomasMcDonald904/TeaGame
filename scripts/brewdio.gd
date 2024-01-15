@@ -4,12 +4,16 @@ signal goto_tea_room()
 signal goto_office()
 
 var fetchermann_interface_PS: PackedScene = preload("res://scenes/GUI/fetchermann_interface.tscn")
+var fetchermann_PS: PackedScene = preload("res://scenes/fetchermann.tscn")
 
 @export var steeper: OpenContainer
 
 func _ready():
+	if Market.fetchermann_day_sent == -1:
+		var inst =  fetchermann_PS.instantiate()
+		add_child(inst)
+		$Fetchermann.fetchermann_clicked.connect(show_fetchermann_journal)
 	$Window.window_clicked.connect(next_day)
-	$Fetchermann.fetchermann_clicked.connect(show_fetchermann_journal)
 
 func _exit_tree():
 	pass
@@ -46,3 +50,11 @@ func show_fetchermann_journal():
 	var inst = fetchermann_interface_PS.instantiate()
 	add_child(inst)
 	inst.close_journal.connect($Fetchermann.leave)
+
+func arrive_fetchermann():
+	if Market.fetchermann_day_sent != -1:
+		if Globals.current_day - Market.fetchermann_day_sent == Market.fetchermann_market_time:
+			var inst = fetchermann_PS.instantiate()
+			add_child(inst)
+			inst.arrive()
+			$Fetchermann.fetchermann_clicked.connect(show_fetchermann_journal)

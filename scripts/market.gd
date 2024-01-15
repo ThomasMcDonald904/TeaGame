@@ -5,10 +5,11 @@ var daily_market_stock = {}
 @export var fetchermann_market_time: int = 1
 
 # This is for the fetchermann to be persistent across scenes
-var fetchermann_day_sent: int
+var fetchermann_day_sent: int = -1
 var fetchermann_requested_items: Array[Ingredient]
 var fetchermann_budget: int = 0
 var fetchermann_daily_market_predictions = {}
+
 
 func get_current_market_stock() -> Array[Ingredient]:
 	if daily_market_stock.has(str(Globals.current_day)):
