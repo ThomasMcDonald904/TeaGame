@@ -58,3 +58,4 @@ func arrive_fetchermann():
 			add_child(inst)
 			inst.arrive()
 			$Fetchermann.fetchermann_clicked.connect(show_fetchermann_journal)
+			Market.fetchermann_day_sent = -1

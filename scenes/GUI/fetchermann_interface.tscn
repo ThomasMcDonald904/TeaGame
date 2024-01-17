@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bh4jkqfauys0n"]
+[gd_scene load_steps=14 format=3 uid="uid://bh4jkqfauys0n"]
 
 [ext_resource type="Script" path="res://scenes/GUI/FetchermannInterface.gd" id="1_fxrmw"]
 [ext_resource type="Texture2D" uid="uid://bs2ctlm28rm1r" path="res://resources/textures/fetchermann_book.png" id="2_fo6p4"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b4vw5hfosgw6u" path="res://resources/textures/give_request_normal.png" id="8_2goa5"]
 [ext_resource type="Texture2D" uid="uid://7bj3enei5jpu" path="res://resources/textures/give_request_clicked.png" id="9_wjaw1"]
 [ext_resource type="Texture2D" uid="uid://wlqc6c4553sb" path="res://resources/textures/give_request_hover.png" id="10_gpy7d"]
+[ext_resource type="Texture2D" uid="uid://ddfodbhg7dvxa" path="res://resources/textures/AlertFlag.png" id="13_ie6v4"]
 
 [node name="FetchermannInterface" type="Control"]
 layout_direction = 1
@@ -149,6 +150,7 @@ autowrap_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_j33kw")
+autowrap_mode = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2"]
 layout_mode = 2
@@ -189,6 +191,58 @@ offset_bottom = 142.0
 texture_normal = ExtResource("8_2goa5")
 texture_pressed = ExtResource("9_wjaw1")
 texture_hover = ExtResource("10_gpy7d")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 493.0
+offset_top = 93.0
+offset_right = -1202.0
+offset_bottom = 156.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_j33kw")
+theme_override_font_sizes/font_size = 66
+text = "Balance:"
+
+[node name="Money" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("3_j33kw")
+theme_override_font_sizes/font_size = 66
+text = "null$"
+metadata/_edit_use_anchors_ = true
+
+[node name="AlertFlag" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 897.0
+offset_top = 763.0
+offset_right = 1097.0
+offset_bottom = 873.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("13_ie6v4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="AlertFlag"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.66663
+offset_top = 8.66663
+offset_right = -14.3334
+offset_bottom = -6.33337
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_tjy3o")
+theme_override_font_sizes/font_size = 28
+text = "The budget should be above zero and at most your balance"
+autowrap_mode = 3
 
 [connection signal="button_up" from="CloseJournal" to="." method="_on_close_journal_button_up"]
 [connection signal="button_up" from="GiveRequest" to="." method="_on_give_request_button_up"]

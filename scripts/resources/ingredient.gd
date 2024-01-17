@@ -9,6 +9,7 @@ extends Resource
 @export var rarity: float = 70
 # Amount available if sold at the market
 @export var market_quantity: int = 4
+@export var sell_price: int = 5
 
 func get_drink_property_changes(temp: float) -> DrinkProperties:
 	var changes: DrinkProperties = DrinkProperties.new()

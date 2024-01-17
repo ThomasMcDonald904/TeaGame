@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfj5qs1trsk3u"]
+[gd_scene load_steps=17 format=3 uid="uid://dfj5qs1trsk3u"]
 
 [ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_i58jh"]
 [ext_resource type="PackedScene" uid="uid://daxef2qwixq63" path="res://scenes/pouch.tscn" id="1_iglth"]
 [ext_resource type="PackedScene" uid="uid://dyj2y3lirlbev" path="res://scenes/pouch_collider.tscn" id="2_o5jyf"]
+[ext_resource type="PackedScene" uid="uid://dxbm3e6rvup5u" path="res://ingredients/scenes/almond.tscn" id="3_dk56d"]
 [ext_resource type="PackedScene" uid="uid://dhry6dqj0uowj" path="res://scenes/sac.tscn" id="5_787md"]
 [ext_resource type="PackedScene" uid="uid://biibmap05jc1u" path="res://ingredients/scenes/tea_leaves.tscn" id="5_p3xmn"]
 [ext_resource type="PackedScene" uid="uid://u8celftcneat" path="res://scenes/sac_collider.tscn" id="6_1ggev"]
@@ -110,7 +111,7 @@ collider = NodePath("../PouchCollider")
 [node name="Sac" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("5_787md")]
 position = Vector2(1512, 646)
 collider = NodePath("../SacCollider")
-starting_items = Array[PackedScene]([ExtResource("5_p3xmn"), ExtResource("5_p3xmn"), ExtResource("5_p3xmn"), ExtResource("5_p3xmn"), ExtResource("5_p3xmn"), ExtResource("5_p3xmn")])
+starting_items = Array[PackedScene]([ExtResource("5_p3xmn"), ExtResource("5_p3xmn"), ExtResource("5_p3xmn"), ExtResource("5_p3xmn"), ExtResource("5_p3xmn"), ExtResource("5_p3xmn"), ExtResource("3_dk56d"), ExtResource("3_dk56d")])
 
 [node name="Steeper" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("7_bwegx")]
 position = Vector2(953, 1001)

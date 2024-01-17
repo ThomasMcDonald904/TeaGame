@@ -2,10 +2,18 @@ extends AnimatedSprite2D
 
 signal fetchermann_clicked
 
+@onready var original_x = position.x
+
+var collected_items: Array[Ingredient] = []
 
 func _on_area_2d_input_event(viewport, event: InputEvent, shape_idx):
 	if event.is_action_pressed("click"):
 		emit_signal("fetchermann_clicked")
+
+func _ready():
+	if Market.fetchermann_day_sent != -1:
+		if Globals.current_day - Market.fetchermann_day_sent == Market.fetchermann_market_time:
+			arrive()
 
 func leave(desired_items_text: String, budget: int):
 	Market.fetchermann_budget = budget
@@ -17,12 +25,20 @@ func leave(desired_items_text: String, budget: int):
 	tween.tween_callback(queue_free)
 
 func arrive():
-	var original_x = position.x
+	collected_items = get_items_collected_at_market()
 	position.x = 2000
 	var tween = get_tree().create_tween()
 	play("arriving")
 	tween.tween_property(self, "position", Vector2(original_x, position.y), 2).set_trans(Tween.TRANS_QUART)
 	tween.tween_callback(play.bind("idle"))
+
+func get_items_collected_at_market() -> Array[Ingredient]:
+	var bought_items: Array[Ingredient] = []
+	Market.fetchermann_requested_items.sort_custom(func(a: Ingredient, b: Ingredient): return a.sell_price > b.sell_price)
+	for item in Market.fetchermann_requested_items:
+		if not Market.fetchermann_budget - item.sell_price < 0:
+			bought_items.append(item)
+	return bought_items
 
 func extract_items_from_text(text: String):
 	text = text.to_lower()

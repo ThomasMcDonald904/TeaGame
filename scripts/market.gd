@@ -10,6 +10,8 @@ var fetchermann_requested_items: Array[Ingredient]
 var fetchermann_budget: int = 0
 var fetchermann_daily_market_predictions = {}
 
+func _ready():
+	get_current_market_stock()
 
 func get_current_market_stock() -> Array[Ingredient]:
 	if daily_market_stock.has(str(Globals.current_day)):
