@@ -19,3 +19,4 @@ name = "Almond"
 property_curves = Array[ExtResource("1_hp3t8")]([SubResource("Resource_swn50")])
 rarity = 70.0
 market_quantity = 4
+sell_price = 5

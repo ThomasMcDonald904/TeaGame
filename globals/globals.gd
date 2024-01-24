@@ -7,6 +7,7 @@ var money: int = 200
 
 var has_item: bool = false
 var item_held: RigidBody2D
+var held_fetchermann_items: Array[Item] = []
 var selected_inventory_object
 
 var can_open_container: bool = true

@@ -4,9 +4,11 @@ signal goto_tea_room()
 signal goto_office()
 
 var fetchermann_interface_PS: PackedScene = preload("res://scenes/GUI/fetchermann_interface.tscn")
+var fetchermann_yield_interface_PS: PackedScene = preload("res://scenes/GUI/fetchermann_yield_interface.tscn")
 var fetchermann_PS: PackedScene = preload("res://scenes/fetchermann.tscn")
 
 @export var steeper: OpenContainer
+
 
 func _ready():
 	if Market.fetchermann_day_sent == -1:
@@ -51,11 +53,30 @@ func show_fetchermann_journal():
 	add_child(inst)
 	inst.close_journal.connect($Fetchermann.leave)
 
+func show_fetchermann_yield(collected_items: Array[Ingredient], total_cost: int):
+	var inst = fetchermann_yield_interface_PS.instantiate()
+	add_child(inst)
+	inst.interface_dismissed.connect(set_held_items.bind(collected_items))
+	inst.set_interface_text(collected_items, total_cost, Market.fetchermann_budget)
+
+func set_held_items(collected_items: Array[Ingredient]):
+	# TODO make collected items get ingredient, not like it currently is
+	# held_fetchermann_items not functioning
+	var item_dir: DirAccess = DirAccess.open("res://ingredients/scenes/")
+	for scene_filename in item_dir.get_files():
+		var filename: String = item_dir.get_current_dir() + "/" + scene_filename
+		var item_PS: PackedScene = load(filename)
+		var item: Item = item_PS.instantiate()
+		if item.ingredient in collected_items:
+			Globals.held_fetchermann_items.append(item)
+	breakpoint
+
+
 func arrive_fetchermann():
 	if Market.fetchermann_day_sent != -1:
 		if Globals.current_day - Market.fetchermann_day_sent == Market.fetchermann_market_time:
 			var inst = fetchermann_PS.instantiate()
 			add_child(inst)
-			inst.arrive()
 			$Fetchermann.fetchermann_clicked.connect(show_fetchermann_journal)
+			$Fetchermann.fetchermann_arrived.connect(show_fetchermann_yield)
 			Market.fetchermann_day_sent = -1

@@ -56,7 +56,7 @@ func get_market_predictions(market_stock: Array[Ingredient]):
 
 
 func _on_give_request_button_up():
-	if int($VBoxContainer/HBoxContainer/LineEdit.text) > Globals.money:
+	if int($VBoxContainer/HBoxContainer/LineEdit.text) > Globals.money or int($VBoxContainer/HBoxContainer/LineEdit.text) <= 0:
 		var tween = get_tree().create_tween()
 		$AlertFlag.visible = true
 		for i in range(4):

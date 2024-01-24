@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ddfodbhg7dvxa" path="res://resources/textures/AlertFlag.png" id="13_ie6v4"]
 
 [node name="FetchermannInterface" type="Control"]
+z_index = 4
 layout_direction = 1
 layout_mode = 3
 anchors_preset = 15

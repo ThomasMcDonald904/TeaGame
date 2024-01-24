@@ -36,7 +36,11 @@ func _ready():
 	item_spawn_timer = Timer.new()
 
 func _on_area_2d_input_event(_viewport, event: InputEvent, _shape_idx):
-	if event.is_action_pressed("click") and not is_opened and Globals.can_open_container:
+	if event.is_action_released("click") and not Globals.held_fetchermann_items.is_empty() and is_mouse_on_container:
+		inventory += Globals.held_fetchermann_items
+		Globals.held_fetchermann_items = []
+		set_animation("closed")
+	elif event.is_action_pressed("click") and not is_opened and Globals.can_open_container:
 		Globals.can_open_container = false
 		collider.get_node("Collider").set_deferred("disabled", false)
 		spawn_items()
@@ -77,6 +81,8 @@ func close_container(chosen_item: Item):
 	
 func mouse_enter_container():
 	is_mouse_on_container = true
+	if not Globals.held_fetchermann_items.is_empty():
+		set_animation("selected")
 
 func mouse_exit_container():
 	is_mouse_on_container = false

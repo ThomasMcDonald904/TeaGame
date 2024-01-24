@@ -192,9 +192,8 @@ visible = false
 polygon = PackedVector2Array(-25.8333, -15.5, -11.6667, -18.6667, 6.83333, -21.1667, 17, -21.1667, 26.8333, -17.6667, 29, -10.6667, 28.1667, -3.16667, 26, 4.5, 19.8333, 7.66667, 14.8333, 9.83333, 10.1667, 10.8333, 0.666667, 12, -15.8333, 12, -24.8333, 5.16667, -26.3333, -9.16667)
 
 [node name="FrontFace" type="Sprite2D" parent="."]
-visible = false
 z_index = 1
-position = Vector2(0.5, -4)
+position = Vector2(0, -4)
 texture = ExtResource("3_lxd5b")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

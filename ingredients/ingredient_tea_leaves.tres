@@ -29,3 +29,4 @@ name = "Tea Leaves"
 property_curves = Array[ExtResource("1_nc1bb")]([SubResource("Resource_nluxi"), SubResource("Resource_c1gni")])
 rarity = 100.0
 market_quantity = 4
+sell_price = 5
