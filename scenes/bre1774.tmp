@@ -1,0 +1,215 @@
+[gd_scene load_steps=17 format=3 uid="uid://dfj5qs1trsk3u"]
+
+[ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_i58jh"]
+[ext_resource type="PackedScene" uid="uid://daxef2qwixq63" path="res://scenes/pouch.tscn" id="1_iglth"]
+[ext_resource type="PackedScene" uid="uid://dyj2y3lirlbev" path="res://scenes/pouch_collider.tscn" id="2_o5jyf"]
+[ext_resource type="PackedScene" uid="uid://dhry6dqj0uowj" path="res://scenes/sac.tscn" id="5_787md"]
+[ext_resource type="PackedScene" uid="uid://biibmap05jc1u" path="res://ingredients/scenes/tea_leaves.tscn" id="5_p3xmn"]
+[ext_resource type="PackedScene" uid="uid://u8celftcneat" path="res://scenes/sac_collider.tscn" id="6_1ggev"]
+[ext_resource type="PackedScene" uid="uid://jonxfsnapi7a" path="res://scenes/steeper.tscn" id="7_bwegx"]
+[ext_resource type="PackedScene" uid="uid://bi8y3yd2yvrpd" path="res://scenes/steeper_collider.tscn" id="8_ni6wm"]
+[ext_resource type="PackedScene" uid="uid://b8a4rc0qrcpob" path="res://scenes/window.tscn" id="9_glo33"]
+[ext_resource type="Texture2D" uid="uid://5emjdd1yhkiw" path="res://resources/textures/night.png" id="10_5wulb"]
+[ext_resource type="PackedScene" uid="uid://dte2nn23yewb1" path="res://scenes/service_tassle.tscn" id="12_8ffxp"]
+[ext_resource type="PackedScene" uid="uid://clsm6pait5i83" path="res://scenes/door.tscn" id="13_7bdeo"]
+[ext_resource type="PackedScene" uid="uid://dg0pnk0yw3txv" path="res://scenes/fetchermann.tscn" id="13_ibjg4"]
+
+[sub_resource type="Animation" id="Animation_p8sbg"]
+resource_name = "fade_to_night"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3.1, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"increment_current_day"
+}, {
+"args": [],
+"method": &"set_nbr_days_text"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mkp1u"]
+resource_name = "fade_to_night_new_week"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3.1, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.3, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"increment_current_day"
+}, {
+"args": [],
+"method": &"set_nbr_days_text"
+}, {
+"args": [],
+"method": &"increment_current_day"
+}, {
+"args": [],
+"method": &"set_nbr_days_text"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kxiww"]
+_data = {
+"fade_to_night": SubResource("Animation_p8sbg"),
+"fade_to_night_new_week": SubResource("Animation_mkp1u")
+}
+
+[node name="Brewdio" type="Node2D" node_paths=PackedStringArray("steeper")]
+texture_filter = 1
+script = ExtResource("1_i58jh")
+steeper = NodePath("Steeper")
+
+[node name="Pouch" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_iglth")]
+position = Vector2(1482, 151)
+collider = NodePath("../PouchCollider")
+
+[node name="Pouch2" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_iglth")]
+position = Vector2(1486, 357)
+collider = NodePath("../PouchCollider")
+
+[node name="Sac" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("5_787md")]
+position = Vector2(1512, 646)
+collider = NodePath("../SacCollider")
+starting_items = Array[PackedScene]([ExtResource("5_p3xmn"), ExtResource("5_p3xmn"), ExtResource("5_p3xmn"), ExtResource("5_p3xmn"), ExtResource("5_p3xmn"), ExtResource("5_p3xmn")])
+
+[node name="Steeper" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("7_bwegx")]
+position = Vector2(953, 1001)
+collider = NodePath("../SteeperCollider")
+
+[node name="PouchCollider" parent="." instance=ExtResource("2_o5jyf")]
+
+[node name="SacCollider" parent="." instance=ExtResource("6_1ggev")]
+
+[node name="SteeperCollider" parent="." instance=ExtResource("8_ni6wm")]
+
+[node name="Window" parent="." instance=ExtResource("9_glo33")]
+position = Vector2(539, 227)
+
+[node name="Door" parent="." instance=ExtResource("13_7bdeo")]
+position = Vector2(190, 612)
+flip_h = false
+
+[node name="CollisionPolygon2D" parent="Door/Area2D" index="0"]
+polygon = PackedVector2Array(-18.7, -23.4, 9.5, -28.7, 9.7, 23.8, -14.5, 32.1, -19.3, 32.1)
+
+[node name="Control" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_5wulb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_kxiww")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -795.5
+offset_top = -362.0
+offset_right = 795.5
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 86
+text = "Days before arrival of guests"
+
+[node name="nbr_days" type="RichTextLabel" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 86
+bbcode_enabled = true
+text = "[center]7"
+fit_content = true
+
+[node name="GuestsArrivingTomorrow" type="RichTextLabel" parent="Control/VBoxContainer"]
+visible = false
+modulate = Color(0, 0.380392, 1, 1)
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 81
+bbcode_enabled = true
+text = "[center][wave freq=12 amp=35]Guests arriving this morning!"
+fit_content = true
+
+[node name="GuestsAreHere" type="RichTextLabel" parent="Control/VBoxContainer"]
+visible = false
+modulate = Color(0, 0.380392, 1, 1)
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 86
+bbcode_enabled = true
+text = " [center][wave freq=12 amp=35]New letter arriving this morning"
+fit_content = true
+
+[node name="ServiceTassle" parent="." instance=ExtResource("12_8ffxp")]
+position = Vector2(1789, -2)
+
+[node name="Fetchermann" parent="." instance=ExtResource("13_ibjg4")]
+position = Vector2(1644, 884)
+
+[connection signal="tassle_pulled" from="ServiceTassle" to="." method="_on_service_tassle_tassle_pulled"]
+
+[editable path="Door"]

@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=7 format=3 uid="uid://r1nm54f41143"]
 
-[ext_resource type="Script" path="res://scripts/resources/ingredient.gd" id="1_cbiox"]
-[ext_resource type="Script" path="res://scripts/types/property_type_curve_pair.gd" id="1_njumb"]
+[ext_resource type="Script" path="res://scripts/types/property_type_curve_pair.gd" id="1_nc1bb"]
+[ext_resource type="Script" path="res://scripts/resources/ingredient.gd" id="2_s6a2r"]
 
 [sub_resource type="Curve" id="Curve_llbfe"]
-max_value = 10.0
+max_value = 2.0
 _data = [Vector2(0, 0.01), 0.0, 0.0, 0, 0, Vector2(0.5, 0.25), 0.0, 0.0, 0, 0, Vector2(0.7, 0.5), 0.0, 0.0, 0, 0, Vector2(0.9, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 5
 
 [sub_resource type="Resource" id="Resource_nluxi"]
-script = ExtResource("1_njumb")
+script = ExtResource("1_nc1bb")
 type = 1
 curve = SubResource("Curve_llbfe")
 
@@ -19,11 +19,14 @@ _data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.1), 0.0, 0.0, 0, 0, Vec
 point_count = 3
 
 [sub_resource type="Resource" id="Resource_c1gni"]
-script = ExtResource("1_njumb")
+script = ExtResource("1_nc1bb")
 type = 5
 curve = SubResource("Curve_idqtu")
 
 [resource]
-script = ExtResource("1_cbiox")
-name = "Tea Leaf"
-property_curves = Array[ExtResource("1_njumb")]([SubResource("Resource_nluxi"), SubResource("Resource_c1gni")])
+script = ExtResource("2_s6a2r")
+name = "Tea Leaves"
+property_curves = Array[ExtResource("1_nc1bb")]([SubResource("Resource_nluxi"), SubResource("Resource_c1gni")])
+rarity = 100.0
+market_quantity = 4
+sell_price = 5

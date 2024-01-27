@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://da1rqlbur067m"]
+
+[ext_resource type="Texture2D" uid="uid://4500cjhg6l11" path="res://resources/textures/GUI_set05_Books_Letters_Scrolls_Papers_Notes_v1_1/uniqueElements_480x272/basic/tornpaper_03.png" id="1_mpuwp"]
+[ext_resource type="Script" path="res://scripts/fetchermann_yield_interface.gd" id="1_p7gj5"]
+[ext_resource type="Theme" uid="uid://bh8p75lia6d46" path="res://resources/ui/paper_writing_theme.tres" id="2_8iixh"]
+
+[node name="FetchermannYieldInterface" type="Control"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_p7gj5")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mpuwp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.417
+anchor_top = 0.076
+anchor_right = 0.604
+anchor_bottom = 0.076
+offset_left = -116.5
+offset_right = 116.5
+offset_bottom = 208.0
+grow_horizontal = 2
+
+[node name="Yield" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_8iixh")
+theme_override_font_sizes/font_size = 66
+text = "- Orange Peel
+- Lemon grass
+- Tea Leaves"
+
+[node name="Cost" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_8iixh")
+theme_override_font_sizes/font_size = 66
+text = "Total spending: 23$"
+
+[node name="Change" type="Label" parent="VBoxContainer"]
+z_index = 4
+layout_mode = 2
+theme = ExtResource("2_8iixh")
+theme_override_font_sizes/font_size = 66
+text = "Leftover change: 3$"
+
+[node name="HelpText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.328646
+anchor_top = 0.759259
+anchor_right = 0.676562
+anchor_bottom = 0.981481
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+theme = ExtResource("2_8iixh")
+theme_override_colors/font_color = Color(0.294118, 0.141176, 0, 0.603922)
+theme_override_font_sizes/font_size = 61
+text = "Click to dismiss the fetchermann's note. Then, click on a container to add the items to it"
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -3,7 +3,7 @@ extends Control
 @onready var popup_menu: PopupMenu = $PopupMenu
 @onready var added_ingredient_v_box = $PanelContainer/HBoxContainer/IngredientsInBrewPanel/VBoxContainer/ScrollContainer/AddedIngredientVBox
 
-var ingredient_dir = DirAccess.open("res://ingredients/")
+var ingredient_dir = DirAccess.open("res://ingredients")
 var available_ingredients: Array[Ingredient]
 var added_ingredients: Array[Ingredient]
 var brew_temperature: float = 0.0

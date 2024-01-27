@@ -7,6 +7,7 @@ var follow_mouse: bool = false
 
 
 func _ready():
+	input_pickable = true
 	input_event.connect(_on_input_event, 3)
 
 func _integrate_forces(_state):

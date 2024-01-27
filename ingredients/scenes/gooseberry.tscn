@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqpb2l5pc3nbp"]
+
+[ext_resource type="Script" path="res://scripts/item.gd" id="1_1ea3i"]
+[ext_resource type="Resource" uid="uid://bx6io3rrmaie7" path="res://ingredients/ingredient_gooseberry.tres" id="2_a5euu"]
+[ext_resource type="Texture2D" uid="uid://cbwpar67yg86u" path="res://resources/textures/ingredients/Gooseberry.png" id="3_qea03"]
+
+[node name="Gooseberry" type="RigidBody2D"]
+input_pickable = true
+can_sleep = false
+continuous_cd = 1
+script = ExtResource("1_1ea3i")
+ingredient = ExtResource("2_a5euu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("3_qea03")
+
+[node name="Collider" type="CollisionPolygon2D" parent="."]
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(-16, 11, -18, 8, -18, -1, -14, -8, -7, -12, -4, -14, 4, -14, 9, -11, 12, -8, 14, -4, 14, 6, 11, 10, 9, 13, 5, 17, 1, 18, -8, 18, -11, 16, -14, 14)

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameState="*res://scenes/game_state.tscn"
 DrinkRating="*res://globals/drink_rating.gd"
 Globals="*res://globals/globals.gd"
+Market="*res://scenes/market.tscn"
 
 [display]
 

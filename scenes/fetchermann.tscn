@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://dg0pnk0yw3txv"]
+
+[ext_resource type="Texture2D" uid="uid://dnc2ip0nhshug" path="res://resources/textures/fetchermann.png" id="1_ix2r4"]
+[ext_resource type="Script" path="res://scripts/fetchermann.gd" id="2_ouah6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rujgg"]
+atlas = ExtResource("1_ix2r4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx3c6"]
+atlas = ExtResource("1_ix2r4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsmpn"]
+atlas = ExtResource("1_ix2r4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qii51"]
+atlas = ExtResource("1_ix2r4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0c8g"]
+atlas = ExtResource("1_ix2r4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_srhcq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rujgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sx3c6")
+}],
+"loop": true,
+"name": &"arriving",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsmpn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qii51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0c8g")
+}],
+"loop": true,
+"name": &"leaving",
+"speed": 8.0
+}]
+
+[node name="Fetchermann" type="AnimatedSprite2D"]
+position = Vector2(1668, 882)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_srhcq")
+animation = &"arriving"
+autoplay = "idle"
+script = ExtResource("2_ouah6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-13.2, 9.8, -11.8, 15.2, 6.4, 15.8, 6.2, 11, 10.8, 7.6, 8.4, 3.8, 4.6, 2.2, 5.6, 0, 7.8, -4.2, 7.6, -9.6, 7.8, -12.4, -1, -15.8, -4, -15.6, -7.2, -15.2, -8, -12.4, -8.2, -9.2, -7, 2, -8.6, 4.6)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

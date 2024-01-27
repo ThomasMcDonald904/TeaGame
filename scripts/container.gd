@@ -12,18 +12,20 @@ var is_mouse_on_container = false
 var item_spawn_timer: Timer
 
 func _ready():
-	collider.get_node("Area2D").connect("mouse_entered", mouse_enter_container)
-	collider.get_node("Area2D").connect("mouse_exited", mouse_exit_container)
+	collider.get_node("Area2D").connect("mouse_entered", mouse_enter_container_collider)
+	collider.get_node("Area2D").connect("mouse_exited", mouse_exit_container_collider)
 	collider.get_node("Collider").disabled = true
 	area2d.connect("input_event", _on_area_2d_input_event)
 	area2d.connect("body_entered", _on_area_2d_body_entered)
 	area2d.connect("body_exited", _on_area_2d_body_exited)
+	area2d.connect("mouse_entered", mouse_enter_container)
+	area2d.connect("mouse_exited", mouse_exit_container)
 	animation_player.connect("animation_finished", _on_animation_player_animation_finished)
 	animation_player.connect("animation_started", _on_animation_player_animation_started)
 	tree_exiting.connect(is_being_freed)
 	# When respawing after deletion, check if there is items to re-add and set it to that
 	# Automatically clears items added by ContainerFiller 
-	var ingredient_item_map: IngredientItemMap = load("res://ingredients/ingredient_item_map.tres")
+	var ingredient_item_map: IngredientItemMap = load("res://ingredients/item_map/ingredient_item_map.tres")
 	var check_index = Globals.inventories.map(func(x: ContainerInventory): return x.container_name).find(name)
 	if check_index != -1:
 		for ingredient in Globals.inventories[check_index].inventory:
@@ -36,7 +38,11 @@ func _ready():
 	item_spawn_timer = Timer.new()
 
 func _on_area_2d_input_event(_viewport, event: InputEvent, _shape_idx):
-	if event.is_action_pressed("click") and not is_opened and Globals.can_open_container:
+	if event.is_action_pressed("click") and not Globals.held_fetchermann_items.is_empty():
+		inventory += Globals.held_fetchermann_items
+		Globals.held_fetchermann_items = []
+		set_animation("closed")
+	elif event.is_action_pressed("click") and not is_opened and Globals.can_open_container:
 		Globals.can_open_container = false
 		collider.get_node("Collider").set_deferred("disabled", false)
 		spawn_items()
@@ -75,15 +81,23 @@ func close_container(chosen_item: Item):
 		chosen_item.get_node("Collider").set_deferred("disabled", false)
 	collider.get_node("Collider").set_deferred("disabled", true)
 	
-func mouse_enter_container():
+func mouse_enter_container_collider():
 	is_mouse_on_container = true
 
-func mouse_exit_container():
+
+func mouse_exit_container_collider():
 	is_mouse_on_container = false
 	if Globals.has_item and is_opened:
 		Globals.can_open_container = false
 		close_container(Globals.item_held)
 
+func mouse_enter_container():
+	if not Globals.held_fetchermann_items.is_empty() and not is_opened:
+		set_animation("selected")
+
+func mouse_exit_container():
+	if not Globals.held_fetchermann_items.is_empty() and not is_opened:
+		set_animation("closed")
 
 func _on_area_2d_body_entered(_body):
 	if not is_opened and Globals.has_item:

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="IngredientItemMap" load_steps=15 format=3 uid="uid://cit4hjuid88de"]
+
+[ext_resource type="Script" path="res://IngredientItemMap.gd" id="1_bodwg"]
+[ext_resource type="Resource" uid="uid://r1nm54f41143" path="res://ingredients/ingredient_tea_leaves.tres" id="1_r28ow"]
+[ext_resource type="PackedScene" uid="uid://biibmap05jc1u" path="res://ingredients/scenes/tea_leaves.tscn" id="2_1i4jy"]
+[ext_resource type="Script" path="res://scripts/resources/ingredient_item_pair.gd" id="3_tkp41"]
+[ext_resource type="Resource" uid="uid://dq3amfyumi1qn" path="res://ingredients/ingredient_almond.tres" id="4_0v03m"]
+[ext_resource type="PackedScene" uid="uid://dxbm3e6rvup5u" path="res://ingredients/scenes/almond.tscn" id="5_ho6xn"]
+[ext_resource type="Resource" uid="uid://xiopixt8b831" path="res://ingredients/ingredient_orange_peel.tres" id="6_iefcl"]
+[ext_resource type="PackedScene" uid="uid://dkd7obs26pjd0" path="res://ingredients/scenes/orange_peel.tscn" id="7_jvrwl"]
+[ext_resource type="Resource" uid="uid://bx6io3rrmaie7" path="res://ingredients/ingredient_gooseberry.tres" id="8_f4je5"]
+[ext_resource type="PackedScene" uid="uid://cqpb2l5pc3nbp" path="res://ingredients/scenes/gooseberry.tscn" id="9_qcids"]
+
+[sub_resource type="Resource" id="Resource_qj1ej"]
+script = ExtResource("3_tkp41")
+ingredient = ExtResource("1_r28ow")
+item = ExtResource("2_1i4jy")
+
+[sub_resource type="Resource" id="Resource_mmxsj"]
+script = ExtResource("3_tkp41")
+ingredient = ExtResource("4_0v03m")
+item = ExtResource("5_ho6xn")
+
+[sub_resource type="Resource" id="Resource_i1kr3"]
+script = ExtResource("3_tkp41")
+ingredient = ExtResource("6_iefcl")
+item = ExtResource("7_jvrwl")
+
+[sub_resource type="Resource" id="Resource_cdkd2"]
+script = ExtResource("3_tkp41")
+ingredient = ExtResource("8_f4je5")
+item = ExtResource("9_qcids")
+
+[resource]
+script = ExtResource("1_bodwg")
+ingredient_item_pairs = Array[ExtResource("3_tkp41")]([SubResource("Resource_qj1ej"), SubResource("Resource_mmxsj"), SubResource("Resource_i1kr3"), SubResource("Resource_cdkd2")])
