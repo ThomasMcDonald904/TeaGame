@@ -22,8 +22,8 @@ func get_specific_day_stock(day: int):
 func get_current_market_stock() -> Array[Ingredient]:
 	if daily_market_stock.has(Globals.current_day):
 		return daily_market_stock[Globals.current_day]
-	var items: Array[Ingredient]
-	var current_stock: Array[Ingredient]
+	var items: Array[Ingredient] = []
+	var current_stock: Array[Ingredient] = []
 	var ingredients_dir: DirAccess = DirAccess.open("res://ingredients/")
 	for item_name in ingredients_dir.get_files():
 		var filename: String = ingredients_dir.get_current_dir() + "/" + item_name

@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bh4jkqfauys0n"]
 
-[ext_resource type="Script" path="res://scenes/GUI/FetchermannInterface.gd" id="1_fxrmw"]
+[ext_resource type="Script" path="res://scenes/GUI/fetchermann_interface.gd" id="1_77bqt"]
 [ext_resource type="Texture2D" uid="uid://bs2ctlm28rm1r" path="res://resources/textures/fetchermann_book.png" id="2_fo6p4"]
 [ext_resource type="FontFile" uid="uid://lbk2axjqo03o" path="res://resources/fonts/handwritingfont/Handwritingfont.ttf" id="2_tjy3o"]
 [ext_resource type="Theme" uid="uid://bh8p75lia6d46" path="res://resources/ui/paper_writing_theme.tres" id="3_j33kw"]
@@ -25,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_fxrmw")
+script = ExtResource("1_77bqt")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]

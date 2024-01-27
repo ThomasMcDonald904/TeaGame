@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://biibmap05jc1u"]
+[gd_scene load_steps=4 format=3 uid="uid://biibmap05jc1u"]
 
 [ext_resource type="Script" path="res://scripts/item.gd" id="1_psb5j"]
-[ext_resource type="Texture2D" uid="uid://b1saein6sr4eg" path="res://resources/textures/ingredient_placeholders/tealeaves_placeholder.png" id="2_7r3wd"]
 [ext_resource type="Resource" uid="uid://r1nm54f41143" path="res://ingredients/ingredient_tea_leaves.tres" id="2_x7v81"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5sbh"]
-size = Vector2(64, 64)
+[ext_resource type="Texture2D" uid="uid://cu7ghv0wym1ey" path="res://resources/textures/ingredients/BasicLeaf.png" id="3_1lb5r"]
 
 [node name="TeaLeaves" type="RigidBody2D"]
 input_pickable = true
@@ -15,7 +12,8 @@ script = ExtResource("1_psb5j")
 ingredient = ExtResource("2_x7v81")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_7r3wd")
+scale = Vector2(2, 2)
+texture = ExtResource("3_1lb5r")
 
-[node name="Collider" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_f5sbh")
+[node name="Collider" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-22, 16, -24, 16, -28, 9, -28, 6, -20, 0, -20, -3, -13, -10, -4, -16, 2, -18, 16, -20, 26, -22, 32, -22, 32, -16, 14, 2, 14, 6, 25, 14, 32, 16, 32, 19, 30, 22, 24, 23, 19, 26, 11, 26, 0, 24, -7, 18, -14, 16, -17, 12, -20, 12, -20, 14)

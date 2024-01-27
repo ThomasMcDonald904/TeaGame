@@ -2,7 +2,7 @@ extends Control
 
 signal close_journal(desired_items_text: String, budget: int)
 
-@export var number_of_predictions: int = 2
+@export var number_of_predictions: int = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

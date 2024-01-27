@@ -7,14 +7,15 @@ signal fetchermann_arrived(collected_items: Array[Ingredient], total_cost: int)
 
 var collected_items: Array[Ingredient] = []
 
-func _on_area_2d_input_event(viewport, event: InputEvent, shape_idx):
+func _on_area_2d_input_event(_viewport, event: InputEvent, _shape_idx):
 	if event.is_action_pressed("click"):
 		emit_signal("fetchermann_clicked")
 
 func _ready():
-	if Market.fetchermann_day_sent != -1:
-		if Globals.current_day - Market.fetchermann_day_sent == Market.fetchermann_market_time:
-			arrive()
+	#if Market.fetchermann_day_sent != -1:
+		#if Globals.current_day - Market.fetchermann_day_sent == Market.fetchermann_market_time:
+			#arrive()
+	pass
 
 func leave(desired_items_text: String, budget: int):
 	Market.fetchermann_budget = budget
@@ -29,8 +30,8 @@ func arrive():
 	var initial_budget = Market.fetchermann_budget
 	collected_items = get_items_collected_at_market()
 	position.x = 2000
-	var tween = get_tree().create_tween()
 	play("arriving")
+	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(original_x, position.y), 2).set_trans(Tween.TRANS_QUART)
 	tween.tween_callback(emit_signal.bind("fetchermann_arrived", collected_items, initial_budget - Market.fetchermann_budget))
 	tween.tween_callback(play.bind("idle"))

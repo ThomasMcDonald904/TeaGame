@@ -60,9 +60,8 @@ animations = [{
 position = Vector2(1668, 882)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_srhcq")
-animation = &"leaving"
+animation = &"arriving"
 autoplay = "idle"
-frame_progress = 0.230272
 script = ExtResource("2_ouah6")
 
 [node name="Area2D" type="Area2D" parent="."]
