@@ -65,5 +65,9 @@ func _on_give_request_button_up():
 		tween.tween_callback(func(): $AlertFlag.visible = false).set_delay(3)
 		await tween.finished
 		return
+	await get_tree().create_timer(1).timeout
+	$HBoxContainer/Money.text = str(int($HBoxContainer/Money.text) - int($VBoxContainer/HBoxContainer/LineEdit.text)) + "$"
+	Globals.money -= int($VBoxContainer/HBoxContainer/LineEdit.text)
+	await get_tree().create_timer(1).timeout
 	close_journal.emit($VBoxContainer/TextEdit.text, int($VBoxContainer/HBoxContainer/LineEdit.text))
 	queue_free()

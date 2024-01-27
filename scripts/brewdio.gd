@@ -59,6 +59,7 @@ func show_fetchermann_yield(collected_items: Array[Ingredient], total_cost: int)
 	var inst = fetchermann_yield_interface_PS.instantiate()
 	add_child(inst)
 	inst.interface_dismissed.connect(set_held_items.bind(collected_items))
+	Globals.money += Market.fetchermann_budget
 	inst.set_interface_text(collected_items, total_cost, Market.fetchermann_budget)
 
 func set_held_items(collected_items: Array[Ingredient]):
@@ -76,10 +77,3 @@ func arrive_fetchermann():
 			$Fetchermann.fetchermann_clicked.connect(show_fetchermann_journal)
 			$Fetchermann.fetchermann_arrived.connect(show_fetchermann_yield)
 			Market.fetchermann_day_sent = -1
-
-func debug_array_diffence(arr1, arr2):
-	var only_in_arr1 = []
-	for v in arr1:
-		if not (v in arr2):
-			only_in_arr1.append(v)
-	return only_in_arr1
