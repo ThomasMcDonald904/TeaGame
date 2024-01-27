@@ -11,11 +11,6 @@ func _on_area_2d_input_event(_viewport, event: InputEvent, _shape_idx):
 	if event.is_action_pressed("click"):
 		emit_signal("fetchermann_clicked")
 
-func _ready():
-	#if Market.fetchermann_day_sent != -1:
-		#if Globals.current_day - Market.fetchermann_day_sent == Market.fetchermann_market_time:
-			#arrive()
-	pass
 
 func leave(desired_items_text: String, budget: int):
 	Market.fetchermann_budget = budget

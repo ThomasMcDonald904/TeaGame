@@ -22,5 +22,5 @@ func _on_gui_input(event: InputEvent):
 		var tween = get_tree().create_tween()
 		set_mouse_filter(Control.MOUSE_FILTER_IGNORE)
 		interface_dismissed.emit()
-		tween.tween_property(self, "position:x", -1350, 2)
+		tween.tween_property(self, "position:x", -1350, 1)
 		tween.tween_callback(queue_free)
