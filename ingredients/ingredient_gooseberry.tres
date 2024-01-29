@@ -24,6 +24,7 @@ curve = SubResource("Curve_matg7")
 [resource]
 script = ExtResource("1_ag2be")
 name = "Gooseberry"
+name_regex = "(?i)gooseberr(y|ies)"
 property_curves = Array[ExtResource("1_1wbxw")]([SubResource("Resource_tfctd"), SubResource("Resource_t22sp")])
 rarity = 85.0
 market_quantity = 2

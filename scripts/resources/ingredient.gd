@@ -2,6 +2,11 @@ class_name Ingredient
 extends Resource
 
 @export var name: String
+@export var name_regex: String:
+	get:
+		if name_regex == "":
+			return "(?i)" + name
+		return name_regex
 @export var property_curves: Array[PropertyTypeCurvePair]
 # Percent change of being sold at the market
 # If rarity is set to 100%, it will always be sold and be displayed on the fetchermann's

@@ -26,7 +26,8 @@ curve = SubResource("Curve_idqtu")
 [resource]
 script = ExtResource("2_s6a2r")
 name = "Tea Leaves"
+name_regex = "(?i)tea lea(f|ves)"
 property_curves = Array[ExtResource("1_nc1bb")]([SubResource("Resource_nluxi"), SubResource("Resource_c1gni")])
 rarity = 100.0
-market_quantity = 4
-sell_price = 5
+market_quantity = null
+sell_price = null

@@ -56,13 +56,22 @@ func get_market_predictions(market_stock: Array[Ingredient]):
 
 
 func _on_give_request_button_up():
+	if $VBoxContainer/TextEdit.text == "":
+		var tween = get_tree().create_tween()
+		$TextAlertFlag.visible = true
+		for i in range(4):
+			tween.tween_property($VBoxContainer/TextEdit, "position:x", $VBoxContainer/TextEdit.position.x + 2, 0.05)
+			tween.tween_property($VBoxContainer/TextEdit, "position:x", $VBoxContainer/TextEdit.position.x - 2, 0.05)
+		tween.tween_callback(func(): $TextAlertFlag.visible = false).set_delay(3)
+		await tween.finished
+		return
 	if int($VBoxContainer/HBoxContainer/LineEdit.text) > Globals.money or int($VBoxContainer/HBoxContainer/LineEdit.text) <= 0:
 		var tween = get_tree().create_tween()
-		$AlertFlag.visible = true
+		$BudgetAlertFlag.visible = true
 		for i in range(4):
 			tween.tween_property($VBoxContainer/HBoxContainer/LineEdit, "position:x", $VBoxContainer/HBoxContainer/LineEdit.position.x + 3, 0.05)
 			tween.tween_property($VBoxContainer/HBoxContainer/LineEdit, "position:x", $VBoxContainer/HBoxContainer/LineEdit.position.x - 3, 0.05)
-		tween.tween_callback(func(): $AlertFlag.visible = false).set_delay(3)
+		tween.tween_callback(func(): $BudgetAlertFlag.visible = false).set_delay(3)
 		await tween.finished
 		return
 	await get_tree().create_timer(1).timeout

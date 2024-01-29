@@ -16,6 +16,7 @@ curve = SubResource("Curve_4duut")
 [resource]
 script = ExtResource("1_ibrh1")
 name = "Almond"
+name_regex = ""
 property_curves = Array[ExtResource("1_hp3t8")]([SubResource("Resource_swn50")])
 rarity = 70.0
 market_quantity = 4

@@ -70,7 +70,6 @@ size_flags_vertical = 3
 theme = ExtResource("3_j33kw")
 placeholder_text = "Ex: I seeketh tea leaves and mayhaps a hint of orange peel to concocteth a harmonious blend."
 context_menu_enabled = false
-selecting_enabled = false
 wrap_mode = 1
 caret_blink = true
 
@@ -218,7 +217,7 @@ theme_override_font_sizes/font_size = 66
 text = "null$"
 metadata/_edit_use_anchors_ = true
 
-[node name="AlertFlag" type="TextureRect" parent="."]
+[node name="BudgetAlertFlag" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
 offset_left = 897.0
@@ -229,7 +228,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("13_ie6v4")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="AlertFlag"]
+[node name="Label" type="Label" parent="BudgetAlertFlag"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -243,6 +242,38 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_tjy3o")
 theme_override_font_sizes/font_size = 28
 text = "The budget should be above zero and at most your balance"
+autowrap_mode = 3
+
+[node name="TextAlertFlag" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.000520865
+anchor_top = -0.183333
+anchor_right = 0.000520833
+anchor_bottom = -0.183333
+offset_left = 897.0
+offset_top = 763.0
+offset_right = 1097.0
+offset_bottom = 873.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("13_ie6v4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="TextAlertFlag"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.66663
+offset_top = 8.66663
+offset_right = -14.3334
+offset_bottom = -6.33337
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_tjy3o")
+theme_override_font_sizes/font_size = 28
+text = "The fetchermann can't try to hangle for nothingness"
 autowrap_mode = 3
 
 [connection signal="button_up" from="CloseJournal" to="." method="_on_close_journal_button_up"]
