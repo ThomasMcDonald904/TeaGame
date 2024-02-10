@@ -52,5 +52,6 @@ func extract_items_from_text(text: String):
 		var filename: String = ingredients_dir.get_current_dir() + "/" + item_name
 		var item = load(filename) as Ingredient
 		var item_name_regex = RegEx.new()
+		item_name_regex.compile(item.name_regex)
 		if item_name_regex.search(text) != null:
 			Market.fetchermann_requested_items.append(item)
