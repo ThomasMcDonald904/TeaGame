@@ -1,33 +1,30 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=7 format=3 uid="uid://r1nm54f41143"]
 
-[ext_resource type="Script" path="res://scripts/types/property_type_curve_pair.gd" id="1_nc1bb"]
+[ext_resource type="Script" path="res://scripts/drink_property.gd" id="1_4nrjw"]
+[ext_resource type="Script" path="res://scripts/types/flavor_structure.gd" id="1_yku7j"]
 [ext_resource type="Script" path="res://scripts/resources/ingredient.gd" id="2_s6a2r"]
 
-[sub_resource type="Curve" id="Curve_llbfe"]
-max_value = 2.0
-_data = [Vector2(0, 0.01), 0.0, 0.0, 0, 0, Vector2(0.5, 0.25), 0.0, 0.0, 0, 0, Vector2(0.7, 0.5), 0.0, 0.0, 0, 0, Vector2(0.9, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 5
+[sub_resource type="Resource" id="Resource_cbofl"]
+script = ExtResource("1_4nrjw")
+type = 0
+value = 6
 
-[sub_resource type="Resource" id="Resource_nluxi"]
-script = ExtResource("1_nc1bb")
-type = 1
-curve = SubResource("Curve_llbfe")
+[sub_resource type="Resource" id="Resource_xpdpo"]
+script = ExtResource("1_4nrjw")
+type = 2
+value = 5
 
-[sub_resource type="Curve" id="Curve_idqtu"]
-max_value = 10.0
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.3), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Resource" id="Resource_c1gni"]
-script = ExtResource("1_nc1bb")
-type = 5
-curve = SubResource("Curve_idqtu")
+[sub_resource type="Resource" id="Resource_mo5fo"]
+script = ExtResource("1_yku7j")
+normal_flavor = SubResource("Resource_xpdpo")
+is_changed_by_heat = true
+changed_flavor = SubResource("Resource_cbofl")
 
 [resource]
 script = ExtResource("2_s6a2r")
 name = "Tea Leaves"
 name_regex = "(?i)tea lea(f|ves)"
-property_curves = Array[ExtResource("1_nc1bb")]([SubResource("Resource_nluxi"), SubResource("Resource_c1gni")])
 rarity = 100.0
-market_quantity = null
-sell_price = null
+market_quantity = 4
+sell_price = 5
+flavor_queue = Array[ExtResource("1_yku7j")]([SubResource("Resource_mo5fo")])
