@@ -27,4 +27,4 @@ name_regex = "(?i)tea lea(f|ves)"
 rarity = 100.0
 market_quantity = 4
 sell_price = 5
-flavor_queue = Array[ExtResource("1_yku7j")]([SubResource("Resource_mo5fo")])
+flavor_queue = Array[ExtResource("1_yku7j")]([SubResource("Resource_mo5fo"), null, null, null, null])

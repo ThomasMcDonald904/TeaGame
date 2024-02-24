@@ -2,15 +2,13 @@ class_name DrinkProperties
 extends RefCounted
 
 # Range drink properties
-var temperature: DrinkProperty = DrinkProperty.new(DrinkProperty.PropertyType.TEMPERATURE, 0)
 var astringency: DrinkProperty = DrinkProperty.new(DrinkProperty.PropertyType.ASTRINGENCY, 0)
 var sweetness: DrinkProperty = DrinkProperty.new(DrinkProperty.PropertyType.SWEETNESS, 0)
 var florality: DrinkProperty = DrinkProperty.new(DrinkProperty.PropertyType.FLORALITY, 0)
 var spicedness: DrinkProperty = DrinkProperty.new(DrinkProperty.PropertyType.SPICEDNESS, 0)
 var nuttyness: DrinkProperty = DrinkProperty.new(DrinkProperty.PropertyType.NUTTYNESS, 0)
 
-func _init(_temperature: int = 0, _astringency: int = 0, _sweetness: int = 0, _florality: int = 0, _spicedness: int = 0, _nuttyness: int = 0):
-	temperature.value = _temperature
+func _init(_astringency: int = 0, _sweetness: int = 0, _florality: int = 0, _spicedness: int = 0, _nuttyness: int = 0):
 	astringency.value = _astringency
 	sweetness.value = _sweetness
 	florality.value = _florality
@@ -18,8 +16,6 @@ func _init(_temperature: int = 0, _astringency: int = 0, _sweetness: int = 0, _f
 	nuttyness.value = _nuttyness
 
 func combine(other: DrinkProperties):
-	temperature.value += other.temperature.value
-	temperature.value = clampf(temperature.value, 0, 3)
 	astringency.value += other.astringency.value
 	astringency.value = clampf(astringency.value, 0, 10)
 	sweetness.value += other.sweetness.value
@@ -32,8 +28,6 @@ func combine(other: DrinkProperties):
 	nuttyness.value = clampf(nuttyness.value, 0, 10)
 
 func multiply(value: float):
-	temperature.value *= value
-	temperature.value = clampi(temperature.value, 0, 3)
 	astringency.value *= value
 	astringency.value = clampi(astringency.value, 0, 10)
 	sweetness.value *= value
