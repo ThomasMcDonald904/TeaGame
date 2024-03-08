@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c377brl2k5bra"]
+
+[ext_resource type="Script" path="res://scripts/flavour_particle_debug.gd" id="1_2jy82"]
+[ext_resource type="PackedScene" uid="uid://cllhv3hfk3s1x" path="res://scenes/particle_manager.tscn" id="2_flkju"]
+[ext_resource type="PackedScene" uid="uid://biibmap05jc1u" path="res://ingredients/scenes/tea_leaves.tscn" id="3_bkohq"]
+
+[node name="FlavourParticleDebug" type="Node2D"]
+script = ExtResource("1_2jy82")
+
+[node name="ParticleManager" parent="." instance=ExtResource("2_flkju")]
+
+[node name="SpawnParticles" type="Button" parent="."]
+offset_left = 75.0
+offset_top = 86.0
+offset_right = 381.0
+offset_bottom = 142.0
+theme_override_font_sizes/font_size = 33
+text = "Spawn Particles"
+
+[node name="Items" type="Node" parent="."]
+
+[node name="TeaLeaves" parent="Items" instance=ExtResource("3_bkohq")]
+position = Vector2(1204, 434)
+gravity_scale = 0.0
+
+[connection signal="button_up" from="SpawnParticles" to="." method="_on_spawn_particles_button_up"]

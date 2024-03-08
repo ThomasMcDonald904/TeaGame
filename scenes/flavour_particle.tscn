@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg6pn4pg7w6uw"]
+
+[ext_resource type="Script" path="res://scripts/flavour_particle.gd" id="1_flets"]
+[ext_resource type="Texture2D" uid="uid://bpw3vusf5aohj" path="res://resources/textures/flavour_particle.png" id="2_b31oa"]
+
+[node name="FlavourParticle" type="Area2D"]
+gravity_space_override = 1
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 180.0
+script = ExtResource("1_flets")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_b31oa")

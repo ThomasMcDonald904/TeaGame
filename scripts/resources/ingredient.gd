@@ -17,5 +17,10 @@ extends Resource
 
 @export var flavor_queue: Array[FlavorStructure]
 
-func _init():
-	assert(flavor_queue.size() > 0 and flavor_queue.size() <= 8)
+func get_flavour_from_queue(index: int) -> FlavorStructure:
+	if index > flavor_queue.size() - 1:
+		var none_flavor = FlavorStructure.new()
+		none_flavor.normal_flavor = DrinkProperty.new(DrinkProperty.PropertyType.NONE, 0)
+		return none_flavor
+	return flavor_queue[index]
+

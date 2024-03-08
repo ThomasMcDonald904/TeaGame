@@ -5,6 +5,7 @@ var follow_mouse: bool = false
 @export var in_open_container: bool = false
 @export var ingredient: Ingredient
 
+signal emit_particles(position: Vector2, number_of_particles_to_emit: int, flavor: DrinkProperty)
 
 func _ready():
 	input_pickable = true

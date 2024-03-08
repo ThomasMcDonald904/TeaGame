@@ -7,7 +7,7 @@ enum PropertyType {ASTRINGENCY, SWEETNESS, FLORALITY, SPICEDNESS, NUTTYNESS, NON
 @export_range(0, 10) var value: int:  # 0 to 10
 	set(v):
 		value = v
-		value = clampf(value, 0, 10)
+		value = clampi(value, 0, 10)
 	get:
 		return value
 
