@@ -10,5 +10,7 @@ func _on_spawn_particles_button_up():
 	for item: Item in $Items.get_children():
 		# Normally the manager shouldn't call the particle's signal, 
 		# it should call itself, ensuring decoupling
-		item.emit_particles.emit(item.global_position, item.ingredient.flavor_queue[queue_counter].normal_flavor.value, item.ingredient.flavor_queue[queue_counter].normal_flavor.type)
-		queue_counter += 1
+		var test = item.ingredient.flavor_queue
+		if queue_counter <= item.ingredient.flavor_queue.size() - 1:
+			item.emit_particles.emit(item.global_position, item.ingredient.flavor_queue[queue_counter].normal_flavor_intensity_value, item.ingredient.flavor_queue[queue_counter].normal_flavor)
+	queue_counter += 1

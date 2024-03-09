@@ -1,6 +1,127 @@
-[gd_scene load_steps=2 format=3 uid="uid://cllhv3hfk3s1x"]
+[gd_scene load_steps=9 format=3 uid="uid://cllhv3hfk3s1x"]
 
 [ext_resource type="Script" path="res://scripts/particle_manager.gd" id="1_8ibno"]
+[ext_resource type="Texture2D" uid="uid://knt42j31bdxk" path="res://resources/textures/flavour_content_graph/flavour_content_graph_nothing.png" id="2_dquit"]
+[ext_resource type="Texture2D" uid="uid://pap6kj7vo6s2" path="res://resources/textures/flavour_content_graph/flavour_content_graph_astringency.png" id="3_c2cx2"]
+[ext_resource type="Texture2D" uid="uid://b0h3d7dlch7tq" path="res://resources/textures/flavour_content_graph/flavour_content_graph_florality.png" id="4_rn1ys"]
+[ext_resource type="Texture2D" uid="uid://ykjiuhk4ygb0" path="res://resources/textures/flavour_content_graph/flavour_content_graph_nuttyness.png" id="5_qusof"]
+[ext_resource type="Texture2D" uid="uid://b2cvn1l3h3dhw" path="res://resources/textures/flavour_content_graph/flavour_content_graph_spicedness.png" id="6_brs1i"]
+[ext_resource type="Texture2D" uid="uid://cvjc22xcxg0oc" path="res://resources/textures/flavour_content_graph/flavour_content_graph_sweetness.png" id="7_umgcc"]
 
-[node name="ParticleManager" type="Node"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bguel"]
+radius = 161.012
+
+[node name="ParticleManager" type="Node2D"]
 script = ExtResource("1_8ibno")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dquit")
+
+[node name="GraphAstringency" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.001
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("3_c2cx2")
+radial_fill_degrees = 0.0
+
+[node name="GraphFlorality" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.001
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("4_rn1ys")
+radial_fill_degrees = 0.0
+
+[node name="GraphNuttyness" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.001
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("5_qusof")
+radial_initial_angle = 240.0
+radial_fill_degrees = 0.0
+
+[node name="GraphSpicedness" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.001
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("6_brs1i")
+radial_fill_degrees = 0.0
+
+[node name="GraphSweetness" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.001
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("7_umgcc")
+radial_fill_degrees = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_bguel")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,38 +1,6 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=10 format=3 uid="uid://bx6io3rrmaie7"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://bx6io3rrmaie7"]
 
 [ext_resource type="Script" path="res://scripts/resources/ingredient.gd" id="1_ag2be"]
-[ext_resource type="Script" path="res://scripts/drink_property.gd" id="1_qx4mj"]
-[ext_resource type="Script" path="res://scripts/types/flavor_structure.gd" id="2_j8is3"]
-
-[sub_resource type="Resource" id="Resource_nsb5n"]
-script = ExtResource("1_qx4mj")
-type = 1
-value = 1
-
-[sub_resource type="Resource" id="Resource_7dpt6"]
-script = ExtResource("2_j8is3")
-normal_flavor = SubResource("Resource_nsb5n")
-is_changed_by_heat = false
-
-[sub_resource type="Resource" id="Resource_lncog"]
-script = ExtResource("1_qx4mj")
-type = 1
-value = 1
-
-[sub_resource type="Resource" id="Resource_7tv08"]
-script = ExtResource("2_j8is3")
-normal_flavor = SubResource("Resource_lncog")
-is_changed_by_heat = false
-
-[sub_resource type="Resource" id="Resource_mnb0h"]
-script = ExtResource("1_qx4mj")
-type = 2
-value = 1
-
-[sub_resource type="Resource" id="Resource_dtuoi"]
-script = ExtResource("2_j8is3")
-normal_flavor = SubResource("Resource_mnb0h")
-is_changed_by_heat = false
 
 [resource]
 script = ExtResource("1_ag2be")
@@ -41,4 +9,4 @@ name_regex = "(?i)gooseberr(y|ies)"
 rarity = 85.0
 market_quantity = 2
 sell_price = 10
-_flavor_queue = Array[ExtResource("2_j8is3")]([SubResource("Resource_7dpt6"), SubResource("Resource_7tv08"), SubResource("Resource_dtuoi")])
+flavor_queue = Array[Resource("res://scripts/types/flavor_structure.gd")]([])

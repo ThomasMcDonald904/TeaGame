@@ -1,54 +1,31 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=13 format=3 uid="uid://xiopixt8b831"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=6 format=3 uid="uid://xiopixt8b831"]
 
 [ext_resource type="Script" path="res://scripts/resources/ingredient.gd" id="1_eqe52"]
-[ext_resource type="Script" path="res://scripts/drink_property.gd" id="1_gb4qh"]
 [ext_resource type="Script" path="res://scripts/types/flavor_structure.gd" id="2_hkev3"]
 
-[sub_resource type="Resource" id="Resource_c1w3b"]
-script = ExtResource("1_gb4qh")
-type = 5
-value = 0
-
-[sub_resource type="Resource" id="Resource_761cf"]
-script = ExtResource("1_gb4qh")
-type = 5
-value = 1
-
-[sub_resource type="Resource" id="Resource_x31kn"]
+[sub_resource type="Resource" id="Resource_5jga5"]
 script = ExtResource("2_hkev3")
-normal_flavor = SubResource("Resource_761cf")
+normal_flavor = 2
+normal_flavor_intensity_value = 1
 is_changed_by_heat = false
-changed_flavor = SubResource("Resource_c1w3b")
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
-[sub_resource type="Resource" id="Resource_esofy"]
-script = ExtResource("1_gb4qh")
-type = 2
-value = 1
-
-[sub_resource type="Resource" id="Resource_ly7vr"]
+[sub_resource type="Resource" id="Resource_6p3dh"]
 script = ExtResource("2_hkev3")
-normal_flavor = SubResource("Resource_esofy")
+normal_flavor = 1
+normal_flavor_intensity_value = 1
 is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
-[sub_resource type="Resource" id="Resource_8wbp3"]
-script = ExtResource("1_gb4qh")
-type = 4
-value = 1
-
-[sub_resource type="Resource" id="Resource_vs1cj"]
+[sub_resource type="Resource" id="Resource_lbkcc"]
 script = ExtResource("2_hkev3")
-normal_flavor = SubResource("Resource_8wbp3")
+normal_flavor = 0
+normal_flavor_intensity_value = 1
 is_changed_by_heat = false
-
-[sub_resource type="Resource" id="Resource_qcbyx"]
-script = ExtResource("1_gb4qh")
-type = 3
-value = 1
-
-[sub_resource type="Resource" id="Resource_4r3jf"]
-script = ExtResource("2_hkev3")
-normal_flavor = SubResource("Resource_qcbyx")
-is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
 [resource]
 script = ExtResource("1_eqe52")
@@ -57,4 +34,4 @@ name_regex = ""
 rarity = 100.0
 market_quantity = 5
 sell_price = 5
-_flavor_queue = Array[ExtResource("2_hkev3")]([SubResource("Resource_x31kn"), SubResource("Resource_ly7vr"), SubResource("Resource_vs1cj"), SubResource("Resource_4r3jf")])
+flavor_queue = Array[ExtResource("2_hkev3")]([SubResource("Resource_5jga5"), SubResource("Resource_6p3dh"), SubResource("Resource_lbkcc")])

@@ -1,44 +1,31 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=11 format=3 uid="uid://r1nm54f41143"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=6 format=3 uid="uid://r1nm54f41143"]
 
-[ext_resource type="Script" path="res://scripts/drink_property.gd" id="1_4nrjw"]
 [ext_resource type="Script" path="res://scripts/types/flavor_structure.gd" id="1_yku7j"]
 [ext_resource type="Script" path="res://scripts/resources/ingredient.gd" id="2_s6a2r"]
 
-[sub_resource type="Resource" id="Resource_d8y8p"]
-script = ExtResource("1_4nrjw")
-type = 5
-value = 0
-
-[sub_resource type="Resource" id="Resource_ate18"]
+[sub_resource type="Resource" id="Resource_nbw2j"]
 script = ExtResource("1_yku7j")
-normal_flavor = SubResource("Resource_d8y8p")
+normal_flavor = 5
+normal_flavor_intensity_value = 0
 is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
-[sub_resource type="Resource" id="Resource_aojj5"]
-script = ExtResource("1_4nrjw")
-type = 5
-value = 0
-
-[sub_resource type="Resource" id="Resource_8bblw"]
+[sub_resource type="Resource" id="Resource_dw1nu"]
 script = ExtResource("1_yku7j")
-normal_flavor = SubResource("Resource_aojj5")
+normal_flavor = 2
+normal_flavor_intensity_value = 1
 is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
-[sub_resource type="Resource" id="Resource_a0a70"]
-script = ExtResource("1_4nrjw")
-type = 2
-value = 1
-
-[sub_resource type="Resource" id="Resource_wmwu8"]
-script = ExtResource("1_4nrjw")
-type = 1
-value = 2
-
-[sub_resource type="Resource" id="Resource_ruxjc"]
+[sub_resource type="Resource" id="Resource_28fcg"]
 script = ExtResource("1_yku7j")
-normal_flavor = SubResource("Resource_wmwu8")
+normal_flavor = 1
+normal_flavor_intensity_value = 2
 is_changed_by_heat = false
-changed_flavor = SubResource("Resource_a0a70")
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
 [resource]
 script = ExtResource("2_s6a2r")
@@ -47,4 +34,4 @@ name_regex = "(?i)tea lea(f|ves)"
 rarity = 100.0
 market_quantity = 4
 sell_price = 5
-flavor_queue = Array[ExtResource("1_yku7j")]([SubResource("Resource_ate18"), SubResource("Resource_8bblw"), SubResource("Resource_ruxjc"), null])
+flavor_queue = Array[ExtResource("1_yku7j")]([SubResource("Resource_nbw2j"), SubResource("Resource_dw1nu"), SubResource("Resource_28fcg")])
