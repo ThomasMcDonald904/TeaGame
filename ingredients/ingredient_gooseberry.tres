@@ -1,6 +1,23 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://bx6io3rrmaie7"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://bx6io3rrmaie7"]
 
 [ext_resource type="Script" path="res://scripts/resources/ingredient.gd" id="1_ag2be"]
+[ext_resource type="Script" path="res://scripts/types/flavor_structure.gd" id="2_j8is3"]
+
+[sub_resource type="Resource" id="Resource_7n840"]
+script = ExtResource("2_j8is3")
+normal_flavor = 1
+normal_flavor_intensity_value = 1
+is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
+
+[sub_resource type="Resource" id="Resource_pamvc"]
+script = ExtResource("2_j8is3")
+normal_flavor = 1
+normal_flavor_intensity_value = 1
+is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
 [resource]
 script = ExtResource("1_ag2be")
@@ -9,4 +26,4 @@ name_regex = "(?i)gooseberr(y|ies)"
 rarity = 85.0
 market_quantity = 2
 sell_price = 10
-flavor_queue = Array[Resource("res://scripts/types/flavor_structure.gd")]([])
+flavor_queue = Array[ExtResource("2_j8is3")]([SubResource("Resource_7n840"), SubResource("Resource_pamvc")])

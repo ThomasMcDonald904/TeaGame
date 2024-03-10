@@ -12,6 +12,8 @@ var FLAVOUR_PARTICLE_PS: PackedScene = preload("res://scenes/flavour_particle.ts
 	DrinkProperty.PropertyType.NUTTYNESS: $GraphNuttyness
 }
 
+var spawn_radius = 20
+
 func spawn_particles(wanted_global_position: Vector2, number_of_particles_to_emit: int, flavour: DrinkProperty.PropertyType):
 	for i in range(number_of_particles_to_emit):
 		var instance: RigidBody2D = FLAVOUR_PARTICLE_PS.instantiate()
@@ -19,7 +21,8 @@ func spawn_particles(wanted_global_position: Vector2, number_of_particles_to_emi
 		instance.modulate = instance.flavour_colours[flavour]
 		instance.name = DrinkProperty.PropertyType.keys()[flavour] + "FlavorParticle" + str(randi() % 500)
 		add_child(instance)
-		instance.global_position = wanted_global_position
+		instance.global_position.x = wanted_global_position.x + spawn_radius * cos(deg_to_rad(randi() % 360))
+		instance.global_position.y = wanted_global_position.y + spawn_radius * sin(deg_to_rad(randi() % 360))
 
 func divide_flavour_graph():
 	var previous_angle: float = 0.0
@@ -28,8 +31,6 @@ func divide_flavour_graph():
 			var fill_angle = 360 * drink_contents.flavour_particle_quantity[flavour]
 			flavour_graphs[flavour].radial_initial_angle = 0
 			flavour_graphs[flavour].radial_fill_degrees = fill_angle
-			
-			
 	else: 
 		var angle_per_particle: float = 360.0 / drink_contents.get_total_number_of_particles()
 		for flavour in drink_contents.flavour_particle_quantity.keys():

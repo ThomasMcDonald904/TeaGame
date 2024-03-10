@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c377brl2k5bra"]
+[gd_scene load_steps=8 format=3 uid="uid://c377brl2k5bra"]
 
 [ext_resource type="Script" path="res://scripts/flavour_particle_debug.gd" id="1_2jy82"]
 [ext_resource type="PackedScene" uid="uid://cllhv3hfk3s1x" path="res://scenes/particle_manager.tscn" id="2_flkju"]
 [ext_resource type="PackedScene" uid="uid://biibmap05jc1u" path="res://ingredients/scenes/tea_leaves.tscn" id="3_bkohq"]
 [ext_resource type="PackedScene" uid="uid://dkd7obs26pjd0" path="res://ingredients/scenes/orange_peel.tscn" id="4_yx1k7"]
+[ext_resource type="PackedScene" uid="uid://dxbm3e6rvup5u" path="res://ingredients/scenes/almond.tscn" id="5_ibesf"]
+[ext_resource type="PackedScene" uid="uid://cqpb2l5pc3nbp" path="res://ingredients/scenes/gooseberry.tscn" id="6_elaxw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_stgnu"]
 radius = 552.44
@@ -28,8 +30,8 @@ text = "Spawn Particles"
 position = Vector2(963, 451)
 gravity_scale = 0.0
 
-[node name="TeaLeaves2" parent="Items" instance=ExtResource("3_bkohq")]
-position = Vector2(1167, 256)
+[node name="TeaLeaves4" parent="Items" instance=ExtResource("3_bkohq")]
+position = Vector2(1385, 320)
 gravity_scale = 0.0
 
 [node name="TeaLeaves3" parent="Items" instance=ExtResource("3_bkohq")]
@@ -40,8 +42,24 @@ gravity_scale = 0.0
 position = Vector2(950, 280)
 gravity_scale = 0.0
 
-[node name="OrangePeel2" parent="Items" instance=ExtResource("4_yx1k7")]
-position = Vector2(1489, 226)
+[node name="OrangePeel4" parent="Items" instance=ExtResource("4_yx1k7")]
+position = Vector2(1778, 472)
+gravity_scale = 0.0
+
+[node name="Almond" parent="Items" instance=ExtResource("5_ibesf")]
+position = Vector2(797, 613)
+gravity_scale = 0.0
+
+[node name="Almond2" parent="Items" instance=ExtResource("5_ibesf")]
+position = Vector2(1219, 133)
+gravity_scale = 0.0
+
+[node name="Gooseberry" parent="Items" instance=ExtResource("6_elaxw")]
+position = Vector2(1232, 254)
+gravity_scale = 0.0
+
+[node name="Gooseberry2" parent="Items" instance=ExtResource("6_elaxw")]
+position = Vector2(1203, 410)
 gravity_scale = 0.0
 
 [node name="GravityEffector" type="Area2D" parent="."]

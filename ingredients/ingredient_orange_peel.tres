@@ -19,9 +19,9 @@ is_changed_by_heat = false
 heated_flavor = 5
 heated_flavor_intensity_value = 0
 
-[sub_resource type="Resource" id="Resource_lbkcc"]
+[sub_resource type="Resource" id="Resource_cpfqo"]
 script = ExtResource("2_hkev3")
-normal_flavor = 0
+normal_flavor = 2
 normal_flavor_intensity_value = 1
 is_changed_by_heat = false
 heated_flavor = 5
@@ -34,4 +34,4 @@ name_regex = ""
 rarity = 100.0
 market_quantity = 5
 sell_price = 5
-flavor_queue = Array[ExtResource("2_hkev3")]([SubResource("Resource_5jga5"), SubResource("Resource_6p3dh"), SubResource("Resource_lbkcc")])
+flavor_queue = Array[ExtResource("2_hkev3")]([SubResource("Resource_5jga5"), SubResource("Resource_6p3dh"), SubResource("Resource_cpfqo")])
