@@ -57,13 +57,16 @@ func _on_area_2d_mouse_entered():
 	var angle_degrees = 360 - (rad_to_deg(angle_rad) + 360 if angle_rad < 0 else rad_to_deg(angle_rad))
 	for graph in flavour_graphs.values():
 		if angle_degrees >= graph[1].x and angle_degrees < graph[1].y:
-			graph[0].scale = Vector2(1.1, 1.1)
-			graph[0].position = Vector2(graph[0].position.x * graph[0].scale.x, graph[0].position.y * graph[0].scale.y)
-			graph[0].set_anchors_preset(Control.PRESET_CENTER)
+			var tweener1 = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+			#var tweener2 = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+			tweener1.tween_property(graph[0], "scale", Vector2(1.1, 1.1), 0.2)
+			#tweener2.tween_property(graph[0], "position", Vector2(graph[0].position.x * 1.1, graph[0].position.y * 1.1), 0.2)
 
 
 func _on_area_2d_mouse_exited():
 	for graph in flavour_graphs.values():
-		graph[0].position = Vector2(graph[0].position.x / graph[0].scale.x, graph[0].position.y / graph[0].scale.y)
-		graph[0].scale = Vector2(1, 1)
-		graph[0].set_anchors_preset(Control.PRESET_CENTER)
+			var tweener1 = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+			#var tweener2 = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+			#tweener2.tween_property(graph[0], "position", Vector2(-160, -160), 0.2)
+			tweener1.tween_property(graph[0], "scale", Vector2(1, 1), 0.2)
+
