@@ -1,43 +1,37 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=9 format=3 uid="uid://xiopixt8b831"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=6 format=3 uid="uid://xiopixt8b831"]
 
 [ext_resource type="Script" path="res://scripts/resources/ingredient.gd" id="1_eqe52"]
-[ext_resource type="Script" path="res://scripts/types/property_type_curve_pair.gd" id="1_vscmg"]
+[ext_resource type="Script" path="res://scripts/types/flavor_structure.gd" id="2_hkev3"]
 
-[sub_resource type="Curve" id="Curve_1ext5"]
-max_value = 10.0
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0]
-point_count = 1
+[sub_resource type="Resource" id="Resource_5jga5"]
+script = ExtResource("2_hkev3")
+normal_flavor = 2
+normal_flavor_intensity_value = 1
+is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
-[sub_resource type="Resource" id="Resource_08b6t"]
-script = ExtResource("1_vscmg")
-type = 2
-curve = SubResource("Curve_1ext5")
+[sub_resource type="Resource" id="Resource_6p3dh"]
+script = ExtResource("2_hkev3")
+normal_flavor = 1
+normal_flavor_intensity_value = 1
+is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
-[sub_resource type="Curve" id="Curve_x6dwr"]
-max_value = 10.0
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0.2), 0.0, 0.0, 0, 0, Vector2(0.8, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="Resource" id="Resource_dfuan"]
-script = ExtResource("1_vscmg")
-type = 3
-curve = SubResource("Curve_x6dwr")
-
-[sub_resource type="Curve" id="Curve_8piu4"]
-max_value = 10.0
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(0.8, 0.1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="Resource" id="Resource_5mrxv"]
-script = ExtResource("1_vscmg")
-type = 1
-curve = SubResource("Curve_8piu4")
+[sub_resource type="Resource" id="Resource_cpfqo"]
+script = ExtResource("2_hkev3")
+normal_flavor = 2
+normal_flavor_intensity_value = 1
+is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
 [resource]
 script = ExtResource("1_eqe52")
 name = "Orange Peel"
 name_regex = ""
-property_curves = Array[ExtResource("1_vscmg")]([SubResource("Resource_08b6t"), SubResource("Resource_dfuan"), SubResource("Resource_5mrxv")])
 rarity = 100.0
 market_quantity = 5
 sell_price = 5
+flavor_queue = Array[ExtResource("2_hkev3")]([SubResource("Resource_5jga5"), SubResource("Resource_6p3dh"), SubResource("Resource_cpfqo")])

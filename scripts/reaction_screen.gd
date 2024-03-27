@@ -25,13 +25,13 @@ var good_florality: String = "We quite like the florality. "
 var almost_bad_florality: String = "The florality is barely bareable. "
 var bad_florality: String = "We dislike the florality. "
 
-var good_spicedness: String = "We quite like the spices. "
-var almost_bad_spicedness: String = "The amount of spices is barely bareable. "
-var bad_spicedness: String = "We dislike the quantity of spices. "
+var good_spice: String = "We quite like the spices. "
+var almost_bad_spice: String = "The amount of spices is barely bareable. "
+var bad_spice: String = "We dislike the quantity of spices. "
 
-var good_nuttyness: String = "We quite like the nuttyness. "
-var almost_bad_nuttyness: String = "The nuttyness is barely bareable. "
-var bad_nuttyness: String = "We dislike the nuttyness. "
+var good_nuttiness: String = "We quite like the nuttiness. "
+var almost_bad_nuttiness: String = "The nuttiness is barely bareable. "
+var bad_nuttiness: String = "We dislike the nuttiness. "
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("click"):
@@ -82,23 +82,23 @@ func present_rating(brew: Brew):
 				elif reaction.slice(1)[index] == 0:
 					message += bad_florality
 			4:
-				if guest_preference.spicedness_preference.ignored:
+				if guest_preference.spice_preference.ignored:
 					continue
 				if reaction.slice(1)[index] >= good_threshold:
-					message += good_spicedness
+					message += good_spice
 				elif reaction.slice(1)[index] > 0 and reaction.slice(1)[index] <= almost_bad_threshold:
-					message += almost_bad_spicedness
+					message += almost_bad_spice
 				elif reaction.slice(1)[index] == 0:
-					message += bad_spicedness
+					message += bad_spice
 			5:
-				if guest_preference.nuttyness_preference.ignored:
+				if guest_preference.nuttiness_preference.ignored:
 					continue
 				if reaction.slice(1)[index] >= good_threshold:
-					message += good_nuttyness
+					message += good_nuttiness
 				elif reaction.slice(1)[index] > 0 and reaction.slice(1)[index] <= almost_bad_threshold:
-					message += almost_bad_nuttyness
+					message += almost_bad_nuttiness
 				elif reaction.slice(1)[index] == 0:
-					message += bad_nuttyness
+					message += bad_nuttiness
 	$VBoxContainer/Label.text = message
 	var _animation: Animation = $AnimationPlayer.get_animation("set_rating")
 	$HBoxContainer/numerical_value.text = "%2.2f"%reaction[0]

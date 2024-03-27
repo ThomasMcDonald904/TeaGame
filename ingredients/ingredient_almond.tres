@@ -1,23 +1,37 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://dq3amfyumi1qn"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=6 format=3 uid="uid://dq3amfyumi1qn"]
 
-[ext_resource type="Script" path="res://scripts/types/property_type_curve_pair.gd" id="1_hp3t8"]
 [ext_resource type="Script" path="res://scripts/resources/ingredient.gd" id="1_ibrh1"]
+[ext_resource type="Script" path="res://scripts/types/flavor_structure.gd" id="2_eejks"]
 
-[sub_resource type="Curve" id="Curve_4duut"]
-max_value = 10.0
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.6, 0), 0.0, 0.0, 0, 0, Vector2(0.7, 0.1), 0.0, 0.0, 0, 0, Vector2(0.9, 0.5), 0.0, 0.0, 0, 0]
-point_count = 5
+[sub_resource type="Resource" id="Resource_8wtw0"]
+script = ExtResource("2_eejks")
+normal_flavor = 4
+normal_flavor_intensity_value = 1
+is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
-[sub_resource type="Resource" id="Resource_swn50"]
-script = ExtResource("1_hp3t8")
-type = 5
-curve = SubResource("Curve_4duut")
+[sub_resource type="Resource" id="Resource_2qkv1"]
+script = ExtResource("2_eejks")
+normal_flavor = 4
+normal_flavor_intensity_value = 1
+is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
+
+[sub_resource type="Resource" id="Resource_3l14s"]
+script = ExtResource("2_eejks")
+normal_flavor = 1
+normal_flavor_intensity_value = 1
+is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
 [resource]
 script = ExtResource("1_ibrh1")
 name = "Almond"
 name_regex = ""
-property_curves = Array[ExtResource("1_hp3t8")]([SubResource("Resource_swn50")])
 rarity = 70.0
 market_quantity = 4
 sell_price = 5
+flavor_queue = Array[ExtResource("2_eejks")]([SubResource("Resource_8wtw0"), SubResource("Resource_2qkv1"), SubResource("Resource_3l14s")])

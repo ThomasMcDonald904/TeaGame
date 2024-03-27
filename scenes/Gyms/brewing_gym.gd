@@ -127,13 +127,13 @@ func refresh_property_deltas():
 			FloralityDelta.participating_ingredient_names.append(ingredient.name)
 			FloralityDelta.participating_ingredient_prop_changes.append(propertyDeltas.florality.value)
 		
-		if propertyDeltas.spicedness.value > 0.0:
+		if propertyDeltas.spice.value > 0.0:
 			SpicednessDelta.participating_ingredient_names.append(ingredient.name)
-			SpicednessDelta.participating_ingredient_prop_changes.append(propertyDeltas.spicedness.value)
+			SpicednessDelta.participating_ingredient_prop_changes.append(propertyDeltas.spice.value)
 			
-		if propertyDeltas.nuttyness.value > 0.0:
+		if propertyDeltas.nuttiness.value > 0.0:
 			NuttynessDelta.participating_ingredient_names.append(ingredient.name)
-			NuttynessDelta.participating_ingredient_prop_changes.append(propertyDeltas.nuttyness.value)
+			NuttynessDelta.participating_ingredient_prop_changes.append(propertyDeltas.nuttiness.value)
 	
 	AstringencyDelta.refresh()
 	SweetnessDelta.refresh()

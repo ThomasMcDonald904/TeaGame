@@ -32,12 +32,12 @@ func _ready():
 	flor_debug.connect("changed",update_guest_preferences)
 	
 	var spice_debug: DrinkPreferenceDebug = drink_pref_debug_PS.instantiate()
-	spice_debug.set_drink_preference(guest_preferences.spicedness_preference)
+	spice_debug.set_drink_preference(guest_preferences.spice_preference)
 	v_box.add_child(spice_debug)	
 	spice_debug.connect("changed",update_guest_preferences)
 	
 	var nut_debug: DrinkPreferenceDebug = drink_pref_debug_PS.instantiate()
-	nut_debug.set_drink_preference(guest_preferences.nuttyness_preference)
+	nut_debug.set_drink_preference(guest_preferences.nuttiness_preference)
 	v_box.add_child(nut_debug)	
 	nut_debug.connect("changed",update_guest_preferences)
 

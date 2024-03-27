@@ -6,16 +6,16 @@ func get_rating(guest_preferences: GuestPreferences, served_drink: DrinkProperti
 	var astringency = get_property_rating(served_drink.astringency.value, guest_preferences.astringency_preference)
 	var sweetness = get_property_rating(served_drink.sweetness.value, guest_preferences.sweetness_preference)
 	var florality = get_property_rating(served_drink.florality.value, guest_preferences.florality_preference)
-	var spicedness = get_property_rating(served_drink.spicedness.value, guest_preferences.spicedness_preference)
-	var nuttyness = get_property_rating(served_drink.nuttyness.value, guest_preferences.nuttyness_preference)
+	var spice = get_property_rating(served_drink.spice.value, guest_preferences.spice_preference)
+	var nuttiness = get_property_rating(served_drink.nuttiness.value, guest_preferences.nuttiness_preference)
 	score += 1 if guest_preferences.temperature_preference.ignored else temperature 
 	score += 1 if guest_preferences.astringency_preference.ignored else astringency
 	score += 1 if guest_preferences.sweetness_preference.ignored else sweetness
 	score += 1 if guest_preferences.florality_preference.ignored else florality
-	score += 1 if guest_preferences.spicedness_preference.ignored else spicedness
-	score += 1 if guest_preferences.nuttyness_preference.ignored else nuttyness
+	score += 1 if guest_preferences.spice_preference.ignored else spice
+	score += 1 if guest_preferences.nuttiness_preference.ignored else nuttiness
 	if get_raw_ratings:
-		return [score, temperature, astringency, sweetness, florality, spicedness, nuttyness]
+		return [score, temperature, astringency, sweetness, florality, spice, nuttiness]
 	return score
 	
 func get_property_rating(served: float, preference: DrinkPropertyPreference):

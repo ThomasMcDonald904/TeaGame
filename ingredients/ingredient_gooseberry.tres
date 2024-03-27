@@ -1,31 +1,29 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=7 format=3 uid="uid://bx6io3rrmaie7"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://bx6io3rrmaie7"]
 
-[ext_resource type="Script" path="res://scripts/types/property_type_curve_pair.gd" id="1_1wbxw"]
 [ext_resource type="Script" path="res://scripts/resources/ingredient.gd" id="1_ag2be"]
+[ext_resource type="Script" path="res://scripts/types/flavor_structure.gd" id="2_j8is3"]
 
-[sub_resource type="Curve" id="Curve_fhju5"]
-_data = [Vector2(0.498871, 0), 0.0, 0.0, 0, 0, Vector2(0.620768, 0.264255), 0.0, 0.0, 0, 0, Vector2(0.783296, 0.236596), 0.0, 0.0, 0, 0, Vector2(0.857788, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+[sub_resource type="Resource" id="Resource_7n840"]
+script = ExtResource("2_j8is3")
+normal_flavor = 1
+normal_flavor_intensity_value = 1
+is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
-[sub_resource type="Resource" id="Resource_tfctd"]
-script = ExtResource("1_1wbxw")
-type = 3
-curve = SubResource("Curve_fhju5")
-
-[sub_resource type="Curve" id="Curve_matg7"]
-_data = [Vector2(0.756208, 0), 0.0, 0.0, 0, 0, Vector2(0.880361, 0.269787), 3.77807, 3.77807, 0, 0, Vector2(0.941309, 0.491064), -9.14906, -9.14906, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="Resource" id="Resource_t22sp"]
-script = ExtResource("1_1wbxw")
-type = 2
-curve = SubResource("Curve_matg7")
+[sub_resource type="Resource" id="Resource_pamvc"]
+script = ExtResource("2_j8is3")
+normal_flavor = 1
+normal_flavor_intensity_value = 1
+is_changed_by_heat = false
+heated_flavor = 5
+heated_flavor_intensity_value = 0
 
 [resource]
 script = ExtResource("1_ag2be")
 name = "Gooseberry"
 name_regex = "(?i)gooseberr(y|ies)"
-property_curves = Array[ExtResource("1_1wbxw")]([SubResource("Resource_tfctd"), SubResource("Resource_t22sp")])
 rarity = 85.0
 market_quantity = 2
 sell_price = 10
+flavor_queue = Array[ExtResource("2_j8is3")]([SubResource("Resource_7n840"), SubResource("Resource_pamvc")])

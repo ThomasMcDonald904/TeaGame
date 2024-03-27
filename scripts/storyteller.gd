@@ -27,12 +27,7 @@ func generate_story(guest_profile: GuestProfile):
 		story += selected_trait.text
 		for trait_tag in selected_trait.trait_tags:
 			var change = -1 if trait_tag.is_negative else 1
-			if trait_tag.affected_property == DrinkProperty.PropertyType.TEMPERATURE:
-				preference_not_ignored(guest_profile.preference.temperature_preference)
-				guest_profile.preference.temperature_preference.value += change
-				guest_profile.preference.temperature_preference.lower_bound += change
-				guest_profile.preference.temperature_preference.upper_bound += change
-			elif trait_tag.affected_property == DrinkProperty.PropertyType.ASTRINGENCY:
+			if trait_tag.affected_property == DrinkProperty.PropertyType.ASTRINGENCY:
 				preference_not_ignored(guest_profile.preference.astringency_preference)
 				guest_profile.preference.astringency_preference.value += change
 				guest_profile.preference.astringency_preference.lower_bound += change
@@ -47,16 +42,16 @@ func generate_story(guest_profile: GuestProfile):
 				guest_profile.preference.florality_preference.value += change
 				guest_profile.preference.florality_preference.lower_bound += change
 				guest_profile.preference.florality_preference.upper_bound += change
-			elif trait_tag.affected_property == DrinkProperty.PropertyType.SPICEDNESS:
-				preference_not_ignored(guest_profile.preference.spicedness_preference)
-				guest_profile.preference.spicedness_preference.value += change
-				guest_profile.preference.spicedness_preference.lower_bound += change
-				guest_profile.preference.spicedness_preference.upper_bound += change
-			elif trait_tag.affected_property == DrinkProperty.PropertyType.NUTTYNESS:
-				preference_not_ignored(guest_profile.preference.nuttyness_preference)
-				guest_profile.preference.nuttyness_preference.value += change
-				guest_profile.preference.nuttyness_preference.lower_bound += change
-				guest_profile.preference.nuttyness_preference.upper_bound += change
+			elif trait_tag.affected_property == DrinkProperty.PropertyType.SPICE:
+				preference_not_ignored(guest_profile.preference.spice_preference)
+				guest_profile.preference.spice_preference.value += change
+				guest_profile.preference.spice_preference.lower_bound += change
+				guest_profile.preference.spice_preference.upper_bound += change
+			elif trait_tag.affected_property == DrinkProperty.PropertyType.NUTTINESS:
+				preference_not_ignored(guest_profile.preference.nuttiness_preference)
+				guest_profile.preference.nuttiness_preference.value += change
+				guest_profile.preference.nuttiness_preference.lower_bound += change
+				guest_profile.preference.nuttiness_preference.upper_bound += change
 	
 	guest_profile.story = story
 

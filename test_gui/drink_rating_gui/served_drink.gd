@@ -4,11 +4,11 @@ var temperature = 0
 var astringency = 0
 var sweetness = 0
 var florality = 0
-var spicedness = 0
-var nuttyness = 0
+var spice = 0
+var nuttiness = 0
 
 func get_drink_preferences():
-	return DrinkProperties.new(temperature, astringency, sweetness, florality, spicedness, nuttyness)
+	return DrinkProperties.new(astringency, sweetness, florality, spice, nuttiness)
 
 func _on_temp_slider_value_changed(value):
 	$VBox/TempSliderContainer/TempValue.text = "%04.1f"%value
@@ -30,11 +30,11 @@ func _on_florality_slider_value_changed(value):
 	florality = value
 
 
-func _on_spicedness_slider_value_changed(value):
+func _on_spice_slider_value_changed(value):
 	$VBox/SpicednessSliderContainer/SpicednessValue.text = "%04.1f"%value
-	spicedness = value
+	spice = value
 
 
-func _on_nuttyness_slider_value_changed(value):
+func _on_nuttiness_slider_value_changed(value):
 	$VBox/NuttynessSliderContainer/NuttynessValue.text = "%04.1f"%value
-	nuttyness = value
+	nuttiness = value
