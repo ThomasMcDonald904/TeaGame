@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cllhv3hfk3s1x"]
+[gd_scene load_steps=10 format=3 uid="uid://cllhv3hfk3s1x"]
 
 [ext_resource type="Script" path="res://scripts/particle_manager.gd" id="1_8ibno"]
 [ext_resource type="Texture2D" uid="uid://knt42j31bdxk" path="res://resources/textures/flavour_content_graph/flavour_content_graph_nothing.png" id="2_dquit"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ykjiuhk4ygb0" path="res://resources/textures/flavour_content_graph/flavour_content_graph_nuttyness.png" id="5_qusof"]
 [ext_resource type="Texture2D" uid="uid://b2cvn1l3h3dhw" path="res://resources/textures/flavour_content_graph/flavour_content_graph_spicedness.png" id="6_brs1i"]
 [ext_resource type="Texture2D" uid="uid://cvjc22xcxg0oc" path="res://resources/textures/flavour_content_graph/flavour_content_graph_sweetness.png" id="7_umgcc"]
+[ext_resource type="Texture2D" uid="uid://c5j4xuk36v6k3" path="res://resources/textures/flavour_label.png" id="8_wwxp1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bguel"]
 radius = 161.012
@@ -57,7 +58,7 @@ fill_mode = 4
 texture_progress = ExtResource("4_rn1ys")
 radial_fill_degrees = 0.0
 
-[node name="GraphNuttyness" type="TextureProgressBar" parent="."]
+[node name="GraphNuttiness" type="TextureProgressBar" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -78,7 +79,7 @@ fill_mode = 4
 texture_progress = ExtResource("5_qusof")
 radial_fill_degrees = 0.0
 
-[node name="GraphSpicedness" type="TextureProgressBar" parent="."]
+[node name="GraphSpice" type="TextureProgressBar" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -120,6 +121,20 @@ fill_mode = 4
 texture_progress = ExtResource("7_umgcc")
 radial_fill_degrees = 0.0
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
 
@@ -127,6 +142,227 @@ collision_mask = 2
 visible = false
 shape = SubResource("CircleShape2D_bguel")
 
+[node name="AstringencyLabel" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_wwxp1")
+
+[node name="Title" type="RichTextLabel" parent="AstringencyLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0546875
+anchor_top = 0.046875
+anchor_right = 0.953125
+anchor_bottom = 0.289063
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "Astringency"
+scroll_active = false
+shortcut_keys_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="FlavourText" type="RichTextLabel" parent="AstringencyLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0546875
+anchor_top = 0.296875
+anchor_right = 0.953125
+anchor_bottom = 0.914063
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 13
+text = "Makes you pucker, can be pleasant in small quantities"
+scroll_active = false
+shortcut_keys_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="SweetnessLabel" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_wwxp1")
+
+[node name="Title" type="RichTextLabel" parent="SweetnessLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0546875
+anchor_top = 0.046875
+anchor_right = 0.953125
+anchor_bottom = 0.28125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "Sweetness"
+scroll_active = false
+shortcut_keys_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="FlavourText" type="RichTextLabel" parent="SweetnessLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0546875
+anchor_top = 0.273438
+anchor_right = 0.960938
+anchor_bottom = 0.945313
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 10
+text = "Embodies a delightful sugary sensation, adding a pleasant touch of indulgence to the palate"
+scroll_active = false
+shortcut_keys_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="FloralityLabel" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_wwxp1")
+
+[node name="Title" type="RichTextLabel" parent="FloralityLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0546875
+anchor_top = 0.046875
+anchor_right = 0.953125
+anchor_bottom = 0.226563
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "Florality"
+scroll_active = false
+shortcut_keys_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="FlavourText" type="RichTextLabel" parent="FloralityLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0546875
+anchor_top = 0.226563
+anchor_right = 0.953125
+anchor_bottom = 0.914063
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "Reminiscent of fresh flowers, offering a delicate and fragrant taste sensation"
+scroll_active = false
+shortcut_keys_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="NuttinessLabel" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_wwxp1")
+
+[node name="Title" type="RichTextLabel" parent="NuttinessLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0546875
+anchor_top = 0.046875
+anchor_right = 0.953125
+anchor_bottom = 0.265625
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "Nuttiness
+"
+scroll_active = false
+shortcut_keys_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="FlavourText" type="RichTextLabel" parent="NuttinessLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0546875
+anchor_top = 0.226563
+anchor_right = 0.953125
+anchor_bottom = 0.914063
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "Imparts a rich and earthy taste, reminiscent of roasted nuts"
+scroll_active = false
+shortcut_keys_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="SpiceLabel" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 259.0
+offset_top = -150.0
+offset_right = 387.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_wwxp1")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="RichTextLabel" parent="SpiceLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0546875
+anchor_top = 0.046875
+anchor_right = 0.953125
+anchor_bottom = 0.265625
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "Spice
+"
+scroll_active = false
+shortcut_keys_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="FlavourText" type="RichTextLabel" parent="SpiceLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0546875
+anchor_top = 0.226563
+anchor_right = 0.953125
+anchor_bottom = 0.914063
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "Ignites the palate with a tantalizing blend of aromatic warmth and fiery zest"
+scroll_active = false
+shortcut_keys_enabled = false
+metadata/_edit_use_anchors_ = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

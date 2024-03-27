@@ -1,7 +1,7 @@
 class_name DrinkProperty
 extends Resource
 
-enum PropertyType {ASTRINGENCY, SWEETNESS, FLORALITY, SPICEDNESS, NUTTYNESS, NONE}
+enum PropertyType {ASTRINGENCY, SWEETNESS, FLORALITY, SPICE, NUTTINESS, NONE}
 @export var type : PropertyType = PropertyType.NONE
 
 @export_range(0, 10) var value: int:  # 0 to 10

@@ -4,13 +4,15 @@ var FLAVOUR_PARTICLE_PS: PackedScene = preload("res://scenes/flavour_particle.ts
 
 @onready var drink_contents: DrinkContents = DrinkContents.new()
 
+# Vector represents starting and ending angle of the graph
 @onready var flavour_graphs = {
-	DrinkProperty.PropertyType.ASTRINGENCY: [$GraphAstringency, Vector2(0, 0)],
-	DrinkProperty.PropertyType.SWEETNESS: [$GraphSweetness, Vector2(0, 0)],
-	DrinkProperty.PropertyType.FLORALITY: [$GraphFlorality, Vector2(0, 0)],
-	DrinkProperty.PropertyType.SPICEDNESS: [$GraphSpicedness, Vector2(0, 0)],
-	DrinkProperty.PropertyType.NUTTYNESS: [$GraphNuttyness, Vector2(0, 0)]
+	DrinkProperty.PropertyType.ASTRINGENCY: [$GraphAstringency, Vector2(0, 0), $AstringencyLabel],
+	DrinkProperty.PropertyType.SWEETNESS: [$GraphSweetness, Vector2(0, 0), $SweetnessLabel],
+	DrinkProperty.PropertyType.FLORALITY: [$GraphFlorality, Vector2(0, 0), $FloralityLabel],
+	DrinkProperty.PropertyType.SPICE: [$GraphSpice, Vector2(0, 0), $SpiceLabel],
+	DrinkProperty.PropertyType.NUTTINESS: [$GraphNuttiness, Vector2(0, 0), $NuttinessLabel]
 }
+var currently_highlighted_graph
 
 var spawn_radius = 30
 
@@ -57,16 +59,38 @@ func _on_area_2d_mouse_entered():
 	var angle_degrees = 360 - (rad_to_deg(angle_rad) + 360 if angle_rad < 0 else rad_to_deg(angle_rad))
 	for graph in flavour_graphs.values():
 		if angle_degrees >= graph[1].x and angle_degrees < graph[1].y:
-			var tweener1 = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
-			#var tweener2 = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
-			tweener1.tween_property(graph[0], "scale", Vector2(1.1, 1.1), 0.2)
-			#tweener2.tween_property(graph[0], "position", Vector2(graph[0].position.x * 1.1, graph[0].position.y * 1.1), 0.2)
+			maximize_graph(graph)
 
 
 func _on_area_2d_mouse_exited():
 	for graph in flavour_graphs.values():
-			var tweener1 = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
-			#var tweener2 = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
-			#tweener2.tween_property(graph[0], "position", Vector2(-160, -160), 0.2)
-			tweener1.tween_property(graph[0], "scale", Vector2(1, 1), 0.2)
+			minimize_graph(graph)
+
+func minimize_graph(graph):
+	var tweener1 = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+	tweener1.tween_property(graph[0], "scale", Vector2(1, 1), 0.2)
+	var label: TextureRect = graph[2]
+	label.hide()
+
+func maximize_graph(graph):
+	var tweener1 = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+	tweener1.tween_property(graph[0], "scale", Vector2(1.1, 1.1), 0.2)
+	var label: TextureRect = graph[2]
+	var label_orbit_radius = 200
+	var angle = (graph[1].x + graph[1].y)/2
+	label.position.x = label_orbit_radius * cos((angle-90) * PI/180) - label.size.x/2
+	label.position.y = label_orbit_radius * sin((angle-90) * PI/180) - label.size.y/2
+	label.show()
+	currently_highlighted_graph = graph
+
+func _on_area_2d_input_event(viewport, event: InputEvent, shape_idx):
+	# This chunk of math which is surprisingly hard to do gives the angle between 
+	# the mouse cursor and the positive y axis
+	var angle_rad = atan2(-(get_window().get_mouse_position().x - position.x), -(get_window().get_mouse_position().y - position.y))
+	var angle_degrees = 360 - (rad_to_deg(angle_rad) + 360 if angle_rad < 0 else rad_to_deg(angle_rad))
+	for graph in flavour_graphs.values():
+		if angle_degrees >= graph[1].x and angle_degrees < graph[1].y:
+			if graph != currently_highlighted_graph:
+				minimize_graph(currently_highlighted_graph)
+				maximize_graph(graph)
 
