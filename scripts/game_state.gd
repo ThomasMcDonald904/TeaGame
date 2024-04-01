@@ -4,6 +4,7 @@ signal enter_main_menu()
 signal enter_brewdio()
 signal enter_office()
 signal enter_tea_room()
+signal enter_processing_room()
 
 @export var start : bool = false
 @export var first_time_experience: bool = true
@@ -13,6 +14,7 @@ signal enter_tea_room()
 @export var tassle_tugged: bool = false
 @export var tea_session_done: bool = false
 @export var guests_already_served: bool = false
+@export var processing_hatch_opened: bool =false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

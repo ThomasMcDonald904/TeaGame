@@ -57,10 +57,10 @@ animations = [{
 }]
 
 [node name="Fetchermann" type="AnimatedSprite2D"]
-position = Vector2(1668, 882)
-scale = Vector2(5, 5)
+position = Vector2(1621.5, 835.5)
+scale = Vector2(7.90625, 7.90625)
 sprite_frames = SubResource("SpriteFrames_srhcq")
-animation = &"arriving"
+animation = &"idle"
 autoplay = "idle"
 script = ExtResource("2_ouah6")
 

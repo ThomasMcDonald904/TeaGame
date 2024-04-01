@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfj5qs1trsk3u"]
+[gd_scene load_steps=18 format=3 uid="uid://dfj5qs1trsk3u"]
 
 [ext_resource type="Script" path="res://scripts/brewdio.gd" id="1_i58jh"]
 [ext_resource type="PackedScene" uid="uid://daxef2qwixq63" path="res://scenes/pouch.tscn" id="1_iglth"]
@@ -10,7 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://b8a4rc0qrcpob" path="res://scenes/window.tscn" id="9_glo33"]
 [ext_resource type="Texture2D" uid="uid://5emjdd1yhkiw" path="res://resources/textures/night.png" id="10_5wulb"]
 [ext_resource type="PackedScene" uid="uid://dte2nn23yewb1" path="res://scenes/service_tassle.tscn" id="12_8ffxp"]
+[ext_resource type="Texture2D" uid="uid://nl2wm7w2jn3p" path="res://resources/textures/brewdio_table.png" id="12_cjb5q"]
 [ext_resource type="PackedScene" uid="uid://clsm6pait5i83" path="res://scenes/door.tscn" id="13_7bdeo"]
+[ext_resource type="Texture2D" uid="uid://doi0dwiwcqsg4" path="res://resources/textures/shelves.png" id="13_yf8yo"]
+[ext_resource type="PackedScene" uid="uid://bal4kqi7wls8t" path="res://scenes/processing_hatch.tscn" id="14_l0mft"]
 
 [sub_resource type="Animation" id="Animation_p8sbg"]
 resource_name = "fade_to_night"
@@ -99,19 +102,19 @@ script = ExtResource("1_i58jh")
 steeper = NodePath("Steeper")
 
 [node name="Pouch" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_iglth")]
-position = Vector2(1482, 151)
+position = Vector2(1805, 206)
 collider = NodePath("../PouchCollider")
 
 [node name="Pouch2" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_iglth")]
-position = Vector2(1486, 357)
+position = Vector2(1560.88, 220.875)
 collider = NodePath("../PouchCollider")
 
 [node name="Sac" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("5_787md")]
-position = Vector2(1512, 646)
+position = Vector2(1824, 551)
 collider = NodePath("../SacCollider")
 
 [node name="Steeper" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("7_bwegx")]
-position = Vector2(953, 1001)
+position = Vector2(487, 740)
 collider = NodePath("../SteeperCollider")
 
 [node name="PouchCollider" parent="." instance=ExtResource("2_o5jyf")]
@@ -121,10 +124,13 @@ collider = NodePath("../SteeperCollider")
 [node name="SteeperCollider" parent="." instance=ExtResource("8_ni6wm")]
 
 [node name="Window" parent="." instance=ExtResource("9_glo33")]
-position = Vector2(539, 227)
+z_index = -1
+position = Vector2(587, 242)
 
 [node name="Door" parent="." instance=ExtResource("13_7bdeo")]
-position = Vector2(190, 612)
+z_index = -1
+position = Vector2(220, 453)
+scale = Vector2(10, 14.6875)
 flip_h = false
 
 [node name="CollisionPolygon2D" parent="Door/Area2D" index="0"]
@@ -205,8 +211,26 @@ text = " [center][wave freq=12 amp=35]New letter arriving this morning"
 fit_content = true
 
 [node name="ServiceTassle" parent="." instance=ExtResource("12_8ffxp")]
-position = Vector2(1789, -2)
+position = Vector2(1289, 7)
+
+[node name="Table" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(783.703, 794)
+scale = Vector2(18.6968, 14.3388)
+texture = ExtResource("12_cjb5q")
+metadata/_edit_lock_ = true
+
+[node name="Shelves" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(1592, 513)
+scale = Vector2(16.0714, 16.0714)
+texture = ExtResource("13_yf8yo")
+metadata/_edit_lock_ = true
+
+[node name="ProcessingHatch" parent="." instance=ExtResource("14_l0mft")]
+position = Vector2(1049, 987)
 
 [connection signal="tassle_pulled" from="ServiceTassle" to="." method="_on_service_tassle_tassle_pulled"]
+[connection signal="animation_finished" from="ProcessingHatch" to="." method="_on_processing_hatch_animation_finished"]
 
 [editable path="Door"]

@@ -59,6 +59,7 @@ _data = {
 }
 
 [node name="ServiceTassle" type="Node2D" node_paths=PackedStringArray("end_segment")]
+z_index = -1
 script = ExtResource("1_7f1e3")
 end_segment = NodePath("EndSegment")
 

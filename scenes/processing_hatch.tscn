@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://bal4kqi7wls8t"]
+
+[ext_resource type="Texture2D" uid="uid://d2jyty20obade" path="res://resources/textures/hatch.png" id="1_dpajb"]
+[ext_resource type="Script" path="res://scripts/processing_hatch.gd" id="2_n50wu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy32k"]
+atlas = ExtResource("1_dpajb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oiagp"]
+atlas = ExtResource("1_dpajb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk3r8"]
+atlas = ExtResource("1_dpajb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8lam"]
+atlas = ExtResource("1_dpajb")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqsqp"]
+atlas = ExtResource("1_dpajb")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r71mx"]
+atlas = ExtResource("1_dpajb")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke8l8"]
+atlas = ExtResource("1_dpajb")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01cx6"]
+atlas = ExtResource("1_dpajb")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kpy4b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy32k")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oiagp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk3r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8lam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqsqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r71mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke8l8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01cx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01cx6")
+}],
+"loop": false,
+"name": &"open",
+"speed": 6.0
+}]
+
+[node name="ProcessingHatch" type="AnimatedSprite2D"]
+z_index = -2
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_kpy4b")
+animation = &"open"
+autoplay = "idle"
+script = ExtResource("2_n50wu")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PackedVector2Array(-16.6, -18.8, -29, 8.2, -29, 14.8, 30, 15.2, 30, 8.2, 19.2, -18.2, 3, -19)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bn6hec76x8wdf"]
+[gd_scene load_steps=22 format=3 uid="uid://bn6hec76x8wdf"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_pmjos"]
 
@@ -128,6 +128,23 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_xgc5j"]
+resource_name = "enter_processing_room"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"enter_processing_room"],
+"method": &"emit_signal"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_4o3ba"]
 resource_name = "enter_tea_room"
 tracks/0/type = "method"
@@ -163,6 +180,7 @@ _data = {
 "enter_brewdio": SubResource("Animation_67vul"),
 "enter_main_menu": SubResource("Animation_gvsad"),
 "enter_office": SubResource("Animation_tunf7"),
+"enter_processing_room": SubResource("Animation_xgc5j"),
 "enter_tea_room": SubResource("Animation_4o3ba")
 }
 
@@ -174,6 +192,9 @@ animation = &"enter_main_menu"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uaigd"]
 animation = &"enter_office"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mek2n"]
+animation = &"enter_processing_room"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k7hf0"]
 animation = &"enter_tea_room"
@@ -201,6 +222,10 @@ advance_expression = "tea_session_done"
 advance_mode = 2
 advance_expression = "brewdio_door_clicked"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v4h4m"]
+advance_mode = 2
+advance_expression = "processing_hatch_opened"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bsbxa"]
 states/Start/position = Vector2(162, 100)
 states/enter_brewdio/node = SubResource("AnimationNodeAnimation_ojt14")
@@ -209,10 +234,12 @@ states/enter_main_menu/node = SubResource("AnimationNodeAnimation_raf3b")
 states/enter_main_menu/position = Vector2(331, 100)
 states/enter_office/node = SubResource("AnimationNodeAnimation_uaigd")
 states/enter_office/position = Vector2(552, 100)
+states/enter_processing_room/node = SubResource("AnimationNodeAnimation_mek2n")
+states/enter_processing_room/position = Vector2(542, -87)
 states/enter_tea_room/node = SubResource("AnimationNodeAnimation_k7hf0")
-states/enter_tea_room/position = Vector2(773, 9)
-transitions = ["Start", "enter_main_menu", SubResource("AnimationNodeStateMachineTransition_ncvqx"), "enter_main_menu", "enter_office", SubResource("AnimationNodeStateMachineTransition_qf4t3"), "enter_office", "enter_brewdio", SubResource("AnimationNodeStateMachineTransition_eoeao"), "enter_brewdio", "enter_tea_room", SubResource("AnimationNodeStateMachineTransition_kk3qk"), "enter_tea_room", "enter_brewdio", SubResource("AnimationNodeStateMachineTransition_wuk07"), "enter_brewdio", "enter_office", SubResource("AnimationNodeStateMachineTransition_34g2h")]
-graph_offset = Vector2(96, -92)
+states/enter_tea_room/position = Vector2(770, 9)
+transitions = ["Start", "enter_main_menu", SubResource("AnimationNodeStateMachineTransition_ncvqx"), "enter_main_menu", "enter_office", SubResource("AnimationNodeStateMachineTransition_qf4t3"), "enter_office", "enter_brewdio", SubResource("AnimationNodeStateMachineTransition_eoeao"), "enter_brewdio", "enter_tea_room", SubResource("AnimationNodeStateMachineTransition_kk3qk"), "enter_tea_room", "enter_brewdio", SubResource("AnimationNodeStateMachineTransition_wuk07"), "enter_brewdio", "enter_office", SubResource("AnimationNodeStateMachineTransition_34g2h"), "enter_brewdio", "enter_processing_room", SubResource("AnimationNodeStateMachineTransition_v4h4m")]
+graph_offset = Vector2(-136, -158)
 
 [node name="GameState" type="AnimationTree"]
 root_node = NodePath(".")

@@ -1,8 +1,5 @@
 class_name Brewdio extends Node2D
 
-signal goto_tea_room()
-signal goto_office()
-
 var fetchermann_interface_PS: PackedScene = preload("res://scenes/GUI/fetchermann_interface.tscn")
 var fetchermann_yield_interface_PS: PackedScene = preload("res://scenes/GUI/fetchermann_yield_interface.tscn")
 var fetchermann_PS: PackedScene = preload("res://scenes/fetchermann.tscn")
@@ -47,9 +44,6 @@ func populate_global_steeper_ingredients():
 			Globals.steeper_ingredients.append((item as Item).ingredient)
 	Globals.steeper_ingredients_changed.emit()
 
-func _on_service_tassle_tassle_pulled():
-	goto_tea_room.emit()
-
 func show_fetchermann_journal():
 	var inst = fetchermann_interface_PS.instantiate()
 	add_child(inst)
@@ -77,3 +71,12 @@ func arrive_fetchermann():
 			$Fetchermann.fetchermann_clicked.connect(show_fetchermann_journal)
 			$Fetchermann.fetchermann_arrived.connect(show_fetchermann_yield)
 			Market.fetchermann_day_sent = -1
+
+
+func _on_service_tassle_tassle_pulled():
+	GameState.tassle_tugged = true
+
+
+func _on_processing_hatch_animation_finished():
+	if $ProcessingHatch.get_animation() == "open":
+		GameState.processing_hatch_opened = true

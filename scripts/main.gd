@@ -4,6 +4,7 @@ extends Node
 
 var main_menu_scene
 var brewdio_scene: Brewdio
+var processing_room_scene
 var office_scene
 var tea_room_scene
 
@@ -13,10 +14,8 @@ func _ready():
 	GameState.enter_brewdio.connect(show_brewdio)
 	GameState.enter_office.connect(show_office)
 	GameState.enter_tea_room.connect(show_tea_room)
+	GameState.enter_processing_room.connect(show_processing_room)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
 
 func show_main_menu():
 	var main_menu_packed_scene:PackedScene = resource_preloader.get_resource("main_menu")
@@ -33,7 +32,6 @@ func show_brewdio():
 		office_scene.queue_free()
 	if tea_room_scene != null:
 		tea_room_scene.queue_free()
-	brewdio_scene.connect("goto_tea_room", func(): GameState.tassle_tugged = true)
 	add_child(brewdio_scene)
 
 func show_office():
@@ -58,3 +56,10 @@ func show_tea_room():
 	if office_scene != null:
 		office_scene.queue_free()
 	add_child(tea_room_scene)
+
+func show_processing_room():
+	var processing_room_packed_scene: PackedScene = resource_preloader.get_resource("processing_room")
+	processing_room_scene = processing_room_packed_scene.instantiate()
+	if brewdio_scene != null:
+		brewdio_scene.queue_free()
+	add_child(processing_room_scene)

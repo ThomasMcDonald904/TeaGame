@@ -2,7 +2,6 @@ class_name DrinkPropertiesDisplay extends VBoxContainer
 
 var drink_properties: DrinkProperties
 
-@export var temperature_value: Label
 @export var astringency_value: Label
 @export var sweetness_value: Label
 @export var florality_value: Label
@@ -15,7 +14,6 @@ func _ready():
 
 func refresh_values():
 	if drink_properties != null:
-		temperature_value.text = 	"Temperature   %5.2f"%drink_properties.temperature.value
 		astringency_value.text = 	"Astringency   %5.2f"%drink_properties.astringency.value
 		sweetness_value.text = 		"Sweetness     %5.2f"%drink_properties.sweetness.value
 		florality_value.text = 		"Florality     %5.2f"%drink_properties.florality.value
