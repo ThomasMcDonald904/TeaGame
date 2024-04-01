@@ -15,7 +15,6 @@ script = ExtResource("2_hdoj5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-3.59331e-06, 1.10694e-07)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_rgqx5")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
