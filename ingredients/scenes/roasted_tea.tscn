@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cif27w0f80lan"]
+
+[ext_resource type="Script" path="res://scripts/item.gd" id="1_m4io8"]
+[ext_resource type="Resource" uid="uid://dfprhayare0ov" path="res://ingredients/ingredient_roasted_tea.tres" id="2_6cyy3"]
+[ext_resource type="Texture2D" uid="uid://4q67s8x5qabl" path="res://resources/textures/ingredients/roasted_tea.png" id="3_ihhh8"]
+
+[node name="RoastedTea" type="RigidBody2D"]
+script = ExtResource("1_m4io8")
+ingredient = ExtResource("2_6cyy3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("3_ihhh8")
+
+[node name="Collider" type="CollisionPolygon2D" parent="."]
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(-12, 3, -11, 2, -11, 1, -8, 1, -7, 4, -4, 6, -1, 7, 5, 7, 7, 6, 11, 2, 11, -5, 10, -5, 8, -2, 6, -3, 5, -5, 4, -6, 2, -7, -3, -7, -2.66667, -4, -8, -4, -10, -3, -11, -2, -12, -1, -13, 1, -13, 3)

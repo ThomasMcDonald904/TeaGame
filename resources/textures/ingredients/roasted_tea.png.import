@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4q67s8x5qabl"
-path="res://.godot/imported/OxydizedTea.png-acbb829f67ac4e8dddb54a3f713e4fdd.ctex"
+path="res://.godot/imported/roasted_tea.png-776f88601dbc7b52e2ef52b149244f18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/textures/ingredients/OxydizedTea.png"
-dest_files=["res://.godot/imported/OxydizedTea.png-acbb829f67ac4e8dddb54a3f713e4fdd.ctex"]
+source_file="res://resources/textures/ingredients/roasted_tea.png"
+dest_files=["res://.godot/imported/roasted_tea.png-776f88601dbc7b52e2ef52b149244f18.ctex"]
 
 [params]
 

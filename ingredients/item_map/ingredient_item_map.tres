@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="IngredientItemMap" load_steps=15 format=3 uid="uid://cit4hjuid88de"]
+[gd_resource type="Resource" script_class="IngredientItemMap" load_steps=19 format=3 uid="uid://cit4hjuid88de"]
 
 [ext_resource type="Script" path="res://IngredientItemMap.gd" id="1_bodwg"]
 [ext_resource type="Resource" uid="uid://r1nm54f41143" path="res://ingredients/ingredient_tea_leaves.tres" id="1_r28ow"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dkd7obs26pjd0" path="res://ingredients/scenes/orange_peel.tscn" id="7_jvrwl"]
 [ext_resource type="Resource" uid="uid://bx6io3rrmaie7" path="res://ingredients/ingredient_gooseberry.tres" id="8_f4je5"]
 [ext_resource type="PackedScene" uid="uid://cqpb2l5pc3nbp" path="res://ingredients/scenes/gooseberry.tscn" id="9_qcids"]
+[ext_resource type="Resource" uid="uid://cug4opkndfokc" path="res://ingredients/ingredient_black_tea.tres" id="10_k4wmw"]
+[ext_resource type="PackedScene" uid="uid://cbamb7ngqxuhj" path="res://ingredients/scenes/black_tea.tscn" id="11_xc6ho"]
 
 [sub_resource type="Resource" id="Resource_qj1ej"]
 script = ExtResource("3_tkp41")
@@ -31,6 +33,14 @@ script = ExtResource("3_tkp41")
 ingredient = ExtResource("8_f4je5")
 item = ExtResource("9_qcids")
 
+[sub_resource type="Resource" id="Resource_lqyxi"]
+script = ExtResource("3_tkp41")
+ingredient = ExtResource("10_k4wmw")
+item = ExtResource("11_xc6ho")
+
+[sub_resource type="Resource" id="Resource_jhgrb"]
+script = ExtResource("3_tkp41")
+
 [resource]
 script = ExtResource("1_bodwg")
-ingredient_item_pairs = Array[ExtResource("3_tkp41")]([SubResource("Resource_qj1ej"), SubResource("Resource_mmxsj"), SubResource("Resource_i1kr3"), SubResource("Resource_cdkd2")])
+ingredient_item_pairs = Array[ExtResource("3_tkp41")]([SubResource("Resource_qj1ej"), SubResource("Resource_mmxsj"), SubResource("Resource_i1kr3"), SubResource("Resource_cdkd2"), SubResource("Resource_lqyxi"), SubResource("Resource_jhgrb")])

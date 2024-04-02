@@ -23,3 +23,7 @@ var days_to_prepare: int = 2
 
 var steeper_ingredients: Array[Ingredient] = []
 var inventories: Array[ContainerInventory] = []
+
+var amount_of_tea_being_processed: int = 0
+var being_processed_into: Ingredient
+var day_processing_started: int = 0
